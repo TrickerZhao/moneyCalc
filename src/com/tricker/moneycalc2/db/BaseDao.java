@@ -5,6 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * DB类
+ */
 public class BaseDao extends SQLiteOpenHelper {
 	public static final String TABLE_PROJECT = "PROJECT";
 	public static final String QUERY_ALL = "select * from " + BaseDao.TABLE_PROJECT;
