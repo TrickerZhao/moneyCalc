@@ -1,0 +1,1341 @@
+Index: build/intermediates/res/merged/debug/values/values.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build/intermediates/res/merged/debug/values/values.xml	(date 1473669362000)
++++ build/intermediates/res/merged/debug/values/values.xml	(revision )
+@@ -23,11 +23,17 @@
+     <string name="action_settings">设置</string>
+     <string name="app_name">MoneyCalc</string>
+     <string name="condition">在此输入查询条件</string>
++    <string name="copy">复制当前数据库</string>
+     <string name="count">统计</string>
+     <string name="count_money">统计</string>
++    <string name="cover">覆盖当前数据库</string>
+     <string name="date">日期：</string>
+     <string name="getPath">获取路径</string>
++    <string name="hello_blank_fragment">Hello blank fragment</string>
++    <string name="hello_world">Hello world!</string>
++    <string name="home">Home</string>
+     <string name="location">所在位置</string>
++    <string name="mark">~</string>
+     <string name="money">金额：</string>
+     <string name="navigation_drawer_close">Close navigation drawer</string>
+     <string name="navigation_drawer_open">Open navigation drawer</string>
+@@ -36,12 +42,17 @@
+     <string name="project">项目：</string>
+     <string name="query">查询</string>
+     <string name="query_info">以下是查询信息</string>
++    <string name="refresh">refresh</string>
+     <string name="remark">备注：</string>
+     <string name="save">保存</string>
+     <string name="state">状态：</string>
++    <string name="title_activity_choose_area">ChooseAreaActivity</string>
++    <string name="title_activity_weather">WeatherActivity</string>
+     <string name="title_section1">记录</string>
+     <string name="title_section2">查询</string>
+-    <string name="title_section3">未知</string>
++    <string name="title_section3">地图</string>
++    <string name="title_section4">天气</string>
++    <string name="title_section5">未知</string>
+     <style name="AppBaseTheme" parent="android:Theme.Light">
+         <!--
+             Theme customizations available in newer API levels can go in
+\ No newline at end of file
+Index: gen/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gen/.gitignore	(date 1473669362000)
++++ gen/.gitignore	(revision )
+@@ -1,1 +1,2 @@
+ /com/
++/.gitignore
+Index: build/intermediates/blame/res/debug/single/menu.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build/intermediates/blame/res/debug/single/menu.json	(date 1473669362000)
++++ build/intermediates/blame/res/debug/single/menu.json	(revision )
+@@ -4,6 +4,14 @@
+         "source": "F:\\git\\MoneyCalc2\\res\\menu\\main.xml"
+     },
+     {
++        "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\menu\\weather.xml",
++        "source": "F:\\git\\MoneyCalc2\\res\\menu\\weather.xml"
++    },
++    {
++        "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\menu\\choose_area.xml",
++        "source": "F:\\git\\MoneyCalc2\\res\\menu\\choose_area.xml"
++    },
++    {
+         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\menu\\global.xml",
+         "source": "F:\\git\\MoneyCalc2\\res\\menu\\global.xml"
+     }
+\ No newline at end of file
+Index: build/intermediates/res/merged/debug/layout/fragment_query.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build/intermediates/res/merged/debug/layout/fragment_query.xml	(date 1473669362000)
++++ build/intermediates/res/merged/debug/layout/fragment_query.xml	(revision )
+@@ -27,7 +27,9 @@
+             android:layout_weight="1"
+             android:ems="10"
+             android:hint="@string/condition"
+-            android:inputType="text" >
++            android:inputType="text"
++            android:imeOptions="actionSearch"
++             >
+ 
+         </EditText>
+     </LinearLayout>
+\ No newline at end of file
+Index: build/intermediates/blame/res/debug/single/layout.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build/intermediates/blame/res/debug/single/layout.json	(date 1473669362000)
++++ build/intermediates/blame/res/debug/single/layout.json	(revision )
+@@ -1,5 +1,13 @@
+ [
+     {
++        "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\layout\\activity_choose_area.xml",
++        "source": "F:\\git\\MoneyCalc2\\res\\layout\\activity_choose_area.xml"
++    },
++    {
++        "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\layout\\activity_weather.xml",
++        "source": "F:\\git\\MoneyCalc2\\res\\layout\\activity_weather.xml"
++    },
++    {
+         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_query.xml",
+         "source": "F:\\git\\MoneyCalc2\\res\\layout\\fragment_query.xml"
+     },
+@@ -10,6 +18,10 @@
+     {
+         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_record.xml",
+         "source": "F:\\git\\MoneyCalc2\\res\\layout\\fragment_record.xml"
++    },
++    {
++        "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_map.xml",
++        "source": "F:\\git\\MoneyCalc2\\res\\layout\\fragment_map.xml"
+     },
+     {
+         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\layout\\list_cell.xml",
+\ No newline at end of file
+Index: build/intermediates/incremental/mergeDebugResources/merger.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build/intermediates/incremental/mergeDebugResources/merger.xml	(date 1473669362000)
++++ build/intermediates/incremental/mergeDebugResources/merger.xml	(revision )
+@@ -11,7 +11,7 @@
+     </string-array><string-array name="percent">
+         <item>2/3</item>
+         <item>1/2</item>
+-    </string-array></file><file path="F:\git\MoneyCalc2\res\values\strings.xml" qualifiers=""><string name="location">所在位置</string><string name="state">状态：</string><string name="getPath">获取路径</string><string name="query_info">以下是查询信息</string><string name="count_money">统计</string><string name="remark">备注：</string><string name="navigation_drawer_open">Open navigation drawer</string><string name="about">关于</string><string name="onekeyset">一键设置已结算</string><string name="date">日期：</string><string name="count">统计</string><string name="action_settings">设置</string><string name="app_name">MoneyCalc</string><string name="percent">占比：</string><string name="save">保存</string><string name="condition">在此输入查询条件</string><string name="query">查询</string><string name="action_example">Example action</string><string name="project">项目：</string><string name="navigation_drawer_close">Close navigation drawer</string><string name="title_section1">记录</string><string name="money">金额：</string><string name="title_section3">未知</string><string name="title_section2">查询</string></file><file path="F:\git\MoneyCalc2\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="AppBaseTheme">
++    </string-array></file><file path="F:\git\MoneyCalc2\res\values\strings.xml" qualifiers=""><string name="location">所在位置</string><string name="state">状态：</string><string name="getPath">获取路径</string><string name="cover">覆盖当前数据库</string><string name="home">Home</string><string name="query_info">以下是查询信息</string><string name="title_activity_choose_area">ChooseAreaActivity</string><string name="title_activity_weather">WeatherActivity</string><string name="refresh">refresh</string><string name="count_money">统计</string><string name="mark">~</string><string name="remark">备注：</string><string name="navigation_drawer_open">Open navigation drawer</string><string name="about">关于</string><string name="hello_world">Hello world!</string><string name="onekeyset">一键设置已结算</string><string name="date">日期：</string><string name="count">统计</string><string name="action_settings">设置</string><string name="app_name">MoneyCalc</string><string name="percent">占比：</string><string name="save">保存</string><string name="condition">在此输入查询条件</string><string name="query">查询</string><string name="action_example">Example action</string><string name="project">项目：</string><string name="hello_blank_fragment">Hello blank fragment</string><string name="navigation_drawer_close">Close navigation drawer</string><string name="title_section5">未知</string><string name="title_section4">天气</string><string name="title_section1">记录</string><string name="money">金额：</string><string name="copy">复制当前数据库</string><string name="title_section3">地图</string><string name="title_section2">查询</string></file><file path="F:\git\MoneyCalc2\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="AppBaseTheme">
+         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+     </style><style name="AppBaseTheme" parent="android:Theme.Light">
+         <!--
+@@ -23,4 +23,4 @@
+         <!-- API 11 theme customizations can go here. -->
+     </style></file><file path="F:\git\MoneyCalc2\res\values-v14\styles.xml" qualifiers="v14"><style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+         <!-- API 14 theme customizations can go here. -->
+-    </style></file><file path="F:\git\MoneyCalc2\res\values-w820dp\dimens.xml" qualifiers="w820dp-v13"><dimen name="activity_horizontal_margin">64dp</dimen></file></source><source path="F:\git\MoneyCalc2\build\generated\res\rs\debug"/><source path="F:\git\MoneyCalc2\build\generated\res\resValues\debug"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="F:\git\MoneyCalc2\build-types\debug\res"/></dataSet><mergedItems/></merger>
+\ No newline at end of file
++    </style></file><file path="F:\git\MoneyCalc2\res\values-w820dp\dimens.xml" qualifiers="w820dp-v13"><dimen name="activity_horizontal_margin">64dp</dimen></file><file name="activity_weather" path="F:\git\MoneyCalc2\res\layout\activity_weather.xml" qualifiers="" type="layout"/><file name="weather" path="F:\git\MoneyCalc2\res\menu\weather.xml" qualifiers="" type="menu"/><file name="choose_area" path="F:\git\MoneyCalc2\res\menu\choose_area.xml" qualifiers="" type="menu"/><file name="activity_choose_area" path="F:\git\MoneyCalc2\res\layout\activity_choose_area.xml" qualifiers="" type="layout"/><file name="fragment_map" path="F:\git\MoneyCalc2\res\layout\fragment_map.xml" qualifiers="" type="layout"/></source><source path="F:\git\MoneyCalc2\build\generated\res\rs\debug"/><source path="F:\git\MoneyCalc2\build\generated\res\resValues\debug"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="F:\git\MoneyCalc2\build-types\debug\res"/></dataSet><mergedItems/></merger>
+\ No newline at end of file
+Index: build/intermediates/manifests/full/debug/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build/intermediates/manifests/full/debug/AndroidManifest.xml	(date 1473669362000)
++++ build/intermediates/manifests/full/debug/AndroidManifest.xml	(revision )
+@@ -8,16 +8,38 @@
+         android:minSdkVersion="14"
+         android:targetSdkVersion="24" />
+ 
+-    <uses-permission android:name="android.permission.INTERNET" />
+     <uses-permission android:name="android.permission.BLUETOOTH" />
++    <!--
++    <uses-permission android:name="android.permission.INTERNET" />
+-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
++	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
++	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
++    -->
++    <!-- 地图包、搜索包需要的基础权限 -->
+ 
++    <uses-permission android:name="android.permission.INTERNET" />
++    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
++    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
++    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
++    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
++    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
++
++    <!-- 定位包、导航包需要的额外权限（注：基础权限也需要） -->
++    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
++    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
++    <!-- <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" /> -->
++    <!-- AS报错 -->
++    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
++
+     <application
+         android:allowBackup="true"
+         android:icon="@drawable/ic_launcher"
+         android:label="@string/app_name"
+         android:theme="@style/AppTheme" >
++        <meta-data
++            android:name="com.amap.api.v2.apikey"
++            android:value="7161b33fa2e62faac17c28ba798552b9" >
++        </meta-data>
++
+         <activity
+             android:name="com.tricker.moneycalc2.MainActivity"
+             android:label="@string/app_name" >
+@@ -27,6 +49,31 @@
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
++
++        <!-- 定位需要的服务 使用2.0的定位需要加上这个 -->
++        <service android:name="com.amap.api.location.APSService" >
++        </service>
++
++        <activity
++            android:name="com.tricker.moneycalc2.ChooseAreaActivity"
++            android:label="@string/title_activity_choose_area" >
++        </activity>
++        <activity
++            android:name="com.tricker.moneycalc2.WeatherActivity"
++            android:label="@string/title_activity_weather" >
++        </activity>
++
++        <service
++            android:name="com.tricker.moneycalc2.service.AutoUpdateService"
++            android:enabled="true"
++            android:exported="true" >
++        </service>
++
++        <receiver
++            android:name="com.tricker.moneycalc2.receiver.AutoUpdateReceiver"
++            android:enabled="true"
++            android:exported="true" >
++        </receiver>
+     </application>
+ 
+ </manifest>
+\ No newline at end of file
+Index: build/outputs/logs/manifest-merger-debug-report.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build/outputs/logs/manifest-merger-debug-report.txt	(date 1473669362000)
++++ build/outputs/logs/manifest-merger-debug-report.txt	(revision )
+@@ -1,6 +1,6 @@
+ -- Merging decision tree log ---
+ manifest
+-ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:2:1-31:12
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:2:1-81:12
+ 	package
+ 		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:3:5-37
+ 	android:versionName
+@@ -19,45 +19,107 @@
+ 		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:9:9-38
+ 	android:minSdkVersion
+ 		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:8:9-35
++uses-permission#android.permission.BLUETOOTH
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:11:5-68
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:11:22-65
+ uses-permission#android.permission.INTERNET
+-ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:11:5-67
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:22:5-67
+ 	android:name
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:11:22-64
+-uses-permission#android.permission.BLUETOOTH
+-ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:12:5-68
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:22:22-64
++uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:23:5-81
+ 	android:name
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:12:22-65
+-uses-permission#android.permission.ACCESS_FINE_LOCATION
+-ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:13:2-76
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:23:22-78
++uses-permission#android.permission.ACCESS_NETWORK_STATE
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:24:5-79
+ 	android:name
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:13:19-73
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:24:22-76
++uses-permission#android.permission.ACCESS_WIFI_STATE
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:25:5-76
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:25:22-73
++uses-permission#android.permission.READ_PHONE_STATE
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:26:5-75
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:26:22-72
+ uses-permission#android.permission.ACCESS_COARSE_LOCATION
+-ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:14:2-78
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:27:5-81
+ 	android:name
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:14:19-75
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:27:22-78
++uses-permission#android.permission.ACCESS_FINE_LOCATION
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:30:5-79
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:30:22-76
++uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:31:5-89
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:31:22-86
++uses-permission#android.permission.CHANGE_WIFI_STATE
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:33:5-76
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:33:22-73
+ application
+-ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:15:5-29:19
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:35:5-79:19
+ 	android:label
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:18:9-41
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:38:9-41
+ 	android:allowBackup
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:16:9-35
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:36:9-35
+ 	android:icon
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:17:9-45
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:37:9-45
+ 	android:theme
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:19:9-40
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:39:9-40
++meta-data#com.amap.api.v2.apikey
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:40:9-43:21
++	android:value
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:42:13-61
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:41:13-50
+ activity#com.tricker.moneycalc2.MainActivity
+-ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:20:9-28:20
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:45:9-53:20
+ 	android:label
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:22:13-45
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:47:13-45
+ 	android:name
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:21:13-41
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:46:13-41
+ intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+-ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:23:13-27:29
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:48:13-52:29
+ action#android.intent.action.MAIN
+-ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:24:17-69
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:49:17-69
+ 	android:name
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:24:25-66
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:49:25-66
+ category#android.intent.category.LAUNCHER
+-ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:26:17-77
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:51:17-77
+ 	android:name
+-		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:26:27-74
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:51:27-74
++service#com.amap.api.location.APSService
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:56:9-57:19
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:56:18-65
++activity#com.tricker.moneycalc2.ChooseAreaActivity
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:59:9-62:20
++	android:label
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:61:13-63
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:60:13-47
++activity#com.tricker.moneycalc2.WeatherActivity
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:63:9-66:20
++	android:label
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:65:13-59
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:64:13-44
++service#com.tricker.moneycalc2.service.AutoUpdateService
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:68:9-72:19
++	android:enabled
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:70:13-35
++	android:exported
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:71:13-36
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:69:13-54
++receiver#com.tricker.moneycalc2.receiver.AutoUpdateReceiver
++ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:74:9-78:20
++	android:enabled
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:76:13-35
++	android:exported
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:77:13-36
++	android:name
++		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:75:13-78
+Index: build/generated/source/r/debug/com/tricker/moneycalc2/R.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build/generated/source/r/debug/com/tricker/moneycalc2/R.java	(date 1473669362000)
++++ build/generated/source/r/debug/com/tricker/moneycalc2/R.java	(revision )
+@@ -26,47 +26,67 @@
+         public static final int ic_launcher=0x7f020002;
+     }
+     public static final class id {
+-        public static final int action_about=0x7f09001b;
+-        public static final int action_countMoney=0x7f09001c;
+-        public static final int action_oneKeySet=0x7f09001d;
+-        public static final int btnSave=0x7f09001a;
+-        public static final int container=0x7f090001;
+-        public static final int countMoney=0x7f090006;
+-        public static final int drawer_layout=0x7f090000;
+-        public static final int editDate=0x7f09000a;
+-        public static final int editMoney=0x7f09000d;
+-        public static final int editPercent=0x7f090013;
+-        public static final int editProject=0x7f090010;
+-        public static final int editQuery=0x7f090004;
+-        public static final int editRemark=0x7f090019;
+-        public static final int editState=0x7f090016;
+-        public static final int navigation_drawer=0x7f090002;
+-        public static final int queryInfo=0x7f090005;
+-        public static final int row1=0x7f090008;
+-        public static final int row2=0x7f09000b;
+-        public static final int row3=0x7f09000e;
+-        public static final int row4=0x7f090011;
+-        public static final int row5=0x7f090014;
+-        public static final int row6=0x7f090017;
+-        public static final int spSymbol=0x7f090003;
+-        public static final int txtDate=0x7f090009;
+-        public static final int txtLocation=0x7f090007;
+-        public static final int txtMoney=0x7f09000c;
+-        public static final int txtPercent=0x7f090012;
+-        public static final int txtProject=0x7f09000f;
+-        public static final int txtRemark=0x7f090018;
+-        public static final int txtState=0x7f090015;
++        public static final int action_about=0x7f090028;
++        public static final int action_copyDB=0x7f090029;
++        public static final int action_countMoney=0x7f09002b;
++        public static final int action_coverDB=0x7f09002a;
++        public static final int action_oneKeySet=0x7f09002c;
++        public static final int action_settings=0x7f090027;
++        public static final int btnSave=0x7f090026;
++        public static final int city_name=0x7f090006;
++        public static final int container=0x7f090003;
++        public static final int countMoney=0x7f090012;
++        public static final int current_date=0x7f09000a;
++        public static final int drawer_layout=0x7f090002;
++        public static final int editDate=0x7f090016;
++        public static final int editMoney=0x7f090019;
++        public static final int editPercent=0x7f09001f;
++        public static final int editProject=0x7f09001c;
++        public static final int editQuery=0x7f090010;
++        public static final int editRemark=0x7f090025;
++        public static final int editState=0x7f090022;
++        public static final int list_view=0x7f090001;
++        public static final int map=0x7f09000e;
++        public static final int navigation_drawer=0x7f090004;
++        public static final int publish_text=0x7f090008;
++        public static final int queryInfo=0x7f090011;
++        public static final int refresh_weather=0x7f090007;
++        public static final int row1=0x7f090014;
++        public static final int row2=0x7f090017;
++        public static final int row3=0x7f09001a;
++        public static final int row4=0x7f09001d;
++        public static final int row5=0x7f090020;
++        public static final int row6=0x7f090023;
++        public static final int spSymbol=0x7f09000f;
++        public static final int switch_city=0x7f090005;
++        public static final int temp1=0x7f09000c;
++        public static final int temp2=0x7f09000d;
++        public static final int title_text=0x7f090000;
++        public static final int txtDate=0x7f090015;
++        public static final int txtLocation=0x7f090013;
++        public static final int txtMoney=0x7f090018;
++        public static final int txtPercent=0x7f09001e;
++        public static final int txtProject=0x7f09001b;
++        public static final int txtRemark=0x7f090024;
++        public static final int txtState=0x7f090021;
++        public static final int weather_desp=0x7f09000b;
++        public static final int weather_info_layout=0x7f090009;
+     }
+     public static final class layout {
+-        public static final int activity_main=0x7f030000;
+-        public static final int fragment_navigation_drawer=0x7f030001;
+-        public static final int fragment_query=0x7f030002;
+-        public static final int fragment_record=0x7f030003;
+-        public static final int list_cell=0x7f030004;
++        public static final int activity_choose_area=0x7f030000;
++        public static final int activity_main=0x7f030001;
++        public static final int activity_weather=0x7f030002;
++        public static final int fragment_map=0x7f030003;
++        public static final int fragment_navigation_drawer=0x7f030004;
++        public static final int fragment_query=0x7f030005;
++        public static final int fragment_record=0x7f030006;
++        public static final int list_cell=0x7f030007;
+     }
+     public static final class menu {
+-        public static final int global=0x7f080000;
+-        public static final int main=0x7f080001;
++        public static final int choose_area=0x7f080000;
++        public static final int global=0x7f080001;
++        public static final int main=0x7f080002;
++        public static final int weather=0x7f080003;
+     }
+     public static final class string {
+         public static final int about=0x7f070000;
+@@ -74,25 +94,36 @@
+         public static final int action_settings=0x7f070002;
+         public static final int app_name=0x7f070003;
+         public static final int condition=0x7f070004;
+-        public static final int count=0x7f070005;
+-        public static final int count_money=0x7f070006;
+-        public static final int date=0x7f070007;
+-        public static final int getPath=0x7f070008;
+-        public static final int location=0x7f070009;
+-        public static final int money=0x7f07000a;
+-        public static final int navigation_drawer_close=0x7f07000b;
+-        public static final int navigation_drawer_open=0x7f07000c;
+-        public static final int onekeyset=0x7f07000d;
+-        public static final int percent=0x7f07000e;
+-        public static final int project=0x7f07000f;
+-        public static final int query=0x7f070010;
+-        public static final int query_info=0x7f070011;
+-        public static final int remark=0x7f070012;
+-        public static final int save=0x7f070013;
+-        public static final int state=0x7f070014;
+-        public static final int title_section1=0x7f070015;
+-        public static final int title_section2=0x7f070016;
+-        public static final int title_section3=0x7f070017;
++        public static final int copy=0x7f070005;
++        public static final int count=0x7f070006;
++        public static final int count_money=0x7f070007;
++        public static final int cover=0x7f070008;
++        public static final int date=0x7f070009;
++        public static final int getPath=0x7f07000a;
++        public static final int hello_blank_fragment=0x7f07000b;
++        public static final int hello_world=0x7f07000c;
++        public static final int home=0x7f07000d;
++        public static final int location=0x7f07000e;
++        public static final int mark=0x7f07000f;
++        public static final int money=0x7f070010;
++        public static final int navigation_drawer_close=0x7f070011;
++        public static final int navigation_drawer_open=0x7f070012;
++        public static final int onekeyset=0x7f070013;
++        public static final int percent=0x7f070014;
++        public static final int project=0x7f070015;
++        public static final int query=0x7f070016;
++        public static final int query_info=0x7f070017;
++        public static final int refresh=0x7f070018;
++        public static final int remark=0x7f070019;
++        public static final int save=0x7f07001a;
++        public static final int state=0x7f07001b;
++        public static final int title_activity_choose_area=0x7f07001c;
++        public static final int title_activity_weather=0x7f07001d;
++        public static final int title_section1=0x7f07001e;
++        public static final int title_section2=0x7f07001f;
++        public static final int title_section3=0x7f070020;
++        public static final int title_section4=0x7f070021;
++        public static final int title_section5=0x7f070022;
+     }
+     public static final class style {
+         /**  API 11 theme customizations can go here. 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/workspace.xml	(date 1473669362000)
++++ .idea/workspace.xml	(revision )
+@@ -10,7 +10,25 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="506294aa-c6fa-4192-b11e-066ade058911" name="Default" comment="test2">
+-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/build/intermediates/res/resources-debug.ap_" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/.gitignore" afterPath="$PROJECT_DIR$/bin/classes/.gitignore" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/source/r/debug/com/tricker/moneycalc2/R.java" afterPath="$PROJECT_DIR$/build/generated/source/r/debug/com/tricker/moneycalc2/R.java" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/build/intermediates/blame/res/debug/multi/values.json" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/layout.json" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/menu.json" afterPath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/menu.json" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/merger.xml" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout/fragment_query.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout/fragment_query.xml" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/merged/debug/menu/global.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/merged/debug/menu/global.xml" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/merged/debug/values/values.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/merged/debug/values/values.xml" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/build/outputs/logs/manifest-merger-debug-report.txt" />
++      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/.gitignore" afterPath="$PROJECT_DIR$/gen/.gitignore" />
+     </list>
+     <ignored path="MoneyCalc2.iws" />
+     <ignored path=".idea/workspace.xml" />
+@@ -731,6 +749,7 @@
+                       <ExternalModuleBuildClasspathPojo>
+                         <option name="entries">
+                           <list>
++                            <option value="$MODULE_DIR$/libs/AMap3DMap_3.3.3_AMapNavi_1.9.1_AMapSearch_3.3.0_AMapLocation_2.7.0_20160726.jar" />
+                             <option value="$MODULE_DIR$/libs/android-support-v4.jar" />
+                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle/2.1.3/gradle-2.1.3.jar" />
+                             <option value="$APPLICATION_HOME_DIR$/gradle/m2repository/com/android/tools/build/gradle-core/2.1.3/gradle-core-2.1.3.jar" />
+@@ -953,41 +972,31 @@
+       <foldersAlwaysOnTop value="true" />
+     </navigator>
+     <panes>
+-      <pane id="ProjectPane">
++      <pane id="PackagesPane">
+         <subPane>
+           <PATH>
+             <PATH_ELEMENT>
+               <option name="myItemId" value="MoneyCalc2" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+-              <option name="myItemId" value="External Libraries" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+-            </PATH_ELEMENT>
+-          </PATH>
+-          <PATH>
+-            <PATH_ELEMENT>
+               <option name="myItemId" value="MoneyCalc2" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+-              <option name="myItemId" value="MoneyCalc2" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
++              <option name="myItemId" value="Libraries" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
+             </PATH_ELEMENT>
+           </PATH>
+           <PATH>
+             <PATH_ELEMENT>
+               <option name="myItemId" value="MoneyCalc2" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+               <option name="myItemId" value="MoneyCalc2" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+             </PATH_ELEMENT>
+-            <PATH_ELEMENT>
+-              <option name="myItemId" value="libs" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+-            </PATH_ELEMENT>
+           </PATH>
+         </subPane>
+       </pane>
+@@ -1009,38 +1018,66 @@
+               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+             </PATH_ELEMENT>
+           </PATH>
++          <PATH>
++            <PATH_ELEMENT>
++              <option name="myItemId" value="MoneyCalc2" />
++              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT>
++              <option name="myItemId" value="MoneyCalc2" />
++              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT>
++              <option name="myItemId" value="java" />
++              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
++            </PATH_ELEMENT>
++            <PATH_ELEMENT>
++              <option name="myItemId" value="moneycalc2" />
++              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
++            </PATH_ELEMENT>
++          </PATH>
+         </subPane>
+       </pane>
+-      <pane id="Scratches" />
+-      <pane id="Scope" />
+-      <pane id="PackagesPane">
++      <pane id="ProjectPane">
+         <subPane>
+           <PATH>
+             <PATH_ELEMENT>
+               <option name="myItemId" value="MoneyCalc2" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
++              <option name="myItemId" value="External Libraries" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
++            </PATH_ELEMENT>
++          </PATH>
++          <PATH>
++            <PATH_ELEMENT>
+               <option name="myItemId" value="MoneyCalc2" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+-              <option name="myItemId" value="Libraries" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewLibrariesNode" />
++              <option name="myItemId" value="MoneyCalc2" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
+           </PATH>
+           <PATH>
+             <PATH_ELEMENT>
+               <option name="myItemId" value="MoneyCalc2" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+             </PATH_ELEMENT>
+             <PATH_ELEMENT>
+               <option name="myItemId" value="MoneyCalc2" />
+-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+             </PATH_ELEMENT>
++            <PATH_ELEMENT>
++              <option name="myItemId" value="libs" />
++              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
++            </PATH_ELEMENT>
+           </PATH>
+         </subPane>
+       </pane>
++      <pane id="Scope" />
++      <pane id="Scratches" />
+     </panes>
+   </component>
+   <component name="PropertiesComponent">
+@@ -1377,14 +1414,14 @@
+       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32998884" sideWeight="0.50852877" order="7" side_tool="true" content_ui="tabs" />
+       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3979933" sideWeight="0.4914712" order="8" side_tool="false" content_ui="tabs" />
+-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32998884" sideWeight="0.4914712" order="9" side_tool="false" content_ui="tabs" />
++      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32998884" sideWeight="0.4914712" order="9" side_tool="false" content_ui="tabs" />
+       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="true" content_ui="tabs" />
+       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3272921" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
++      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3272921" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+@@ -1451,6 +1488,14 @@
+     <watches-manager />
+   </component>
+   <component name="editorHistoryManager">
++    <entry file="file://$PROJECT_DIR$/.idea/runConfigurations.xml">
++      <provider selected="true" editor-type-id="text-editor">
++        <state vertical-scroll-proportion="0.0">
++          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
++          <folding />
++        </state>
++      </provider>
++    </entry>
+     <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+       <provider selected="true" editor-type-id="text-editor">
+         <state vertical-scroll-proportion="0.0">
+\ No newline at end of file
+Index: build/intermediates/blame/res/debug/multi/values.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build/intermediates/blame/res/debug/multi/values.json	(date 1473669362000)
++++ build/intermediates/blame/res/debug/multi/values.json	(revision )
+@@ -142,8 +142,27 @@
+                     "startLine": 25,
+                     "startColumn": 4,
+                     "startOffset": 831,
++                    "endColumn": 40,
++                    "endOffset": 867
++                },
++                "from": {
++                    "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
++                    "position": {
++                        "startLine": 30,
++                        "startColumn": 4,
++                        "startOffset": 1349,
++                        "endColumn": 40,
++                        "endOffset": 1385
++                    }
++                }
++            },
++            {
++                "to": {
++                    "startLine": 26,
++                    "startColumn": 4,
++                    "startOffset": 872,
+                     "endColumn": 36,
+-                    "endOffset": 863
++                    "endOffset": 904
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -151,11 +170,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 26,
++                    "startLine": 27,
+                     "startColumn": 4,
+-                    "startOffset": 868,
++                    "startOffset": 909,
+                     "endColumn": 42,
+-                    "endOffset": 906
++                    "endOffset": 947
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -163,11 +182,30 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 27,
++                    "startLine": 28,
+                     "startColumn": 4,
+-                    "startOffset": 911,
++                    "startOffset": 952,
++                    "endColumn": 41,
++                    "endOffset": 989
++                },
++                "from": {
++                    "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
++                    "position": {
++                        "startLine": 31,
++                        "startColumn": 4,
++                        "startOffset": 1391,
++                        "endColumn": 41,
++                        "endOffset": 1428
++                    }
++                }
++            },
++            {
++                "to": {
++                    "startLine": 29,
++                    "startColumn": 4,
++                    "startOffset": 994,
+                     "endColumn": 36,
+-                    "endOffset": 943
++                    "endOffset": 1026
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -175,11 +213,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 28,
++                    "startLine": 30,
+                     "startColumn": 4,
+-                    "startOffset": 948,
++                    "startOffset": 1031,
+                     "endColumn": 40,
+-                    "endOffset": 984
++                    "endOffset": 1067
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -187,11 +225,68 @@
+             },
+             {
+                 "to": {
++                    "startLine": 31,
++                    "startColumn": 4,
++                    "startOffset": 1072,
++                    "endColumn": 69,
++                    "endOffset": 1137
++                },
++                "from": {
++                    "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
++                    "position": {
+-                    "startLine": 29,
+-                    "startColumn": 4,
++                        "startLine": 29,
++                        "startColumn": 4,
+-                    "startOffset": 989,
++                        "startOffset": 1278,
++                        "endColumn": 69,
++                        "endOffset": 1343
++                    }
++                }
++            },
++            {
++                "to": {
++                    "startLine": 32,
++                    "startColumn": 4,
++                    "startOffset": 1142,
++                    "endColumn": 52,
++                    "endOffset": 1190
++                },
++                "from": {
++                    "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
++                    "position": {
++                        "startLine": 33,
++                        "startColumn": 4,
++                        "startOffset": 1509,
++                        "endColumn": 52,
++                        "endOffset": 1557
++                    }
++                }
++            },
++            {
++                "to": {
++                    "startLine": 33,
++                    "startColumn": 4,
++                    "startOffset": 1195,
++                    "endColumn": 37,
++                    "endOffset": 1228
++                },
++                "from": {
++                    "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
++                    "position": {
++                        "startLine": 36,
++                        "startColumn": 4,
++                        "startOffset": 1667,
++                        "endColumn": 37,
++                        "endOffset": 1700
++                    }
++                }
++            },
++            {
++                "to": {
++                    "startLine": 34,
++                    "startColumn": 4,
++                    "startOffset": 1233,
+                     "endColumn": 41,
+-                    "endOffset": 1026
++                    "endOffset": 1270
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -199,11 +294,30 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 30,
++                    "startLine": 35,
+                     "startColumn": 4,
+-                    "startOffset": 1031,
++                    "startOffset": 1275,
++                    "endColumn": 34,
++                    "endOffset": 1305
++                },
++                "from": {
++                    "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
++                    "position": {
++                        "startLine": 35,
++                        "startColumn": 4,
++                        "startOffset": 1631,
++                        "endColumn": 34,
++                        "endOffset": 1661
++                    }
++                }
++            },
++            {
++                "to": {
++                    "startLine": 36,
++                    "startColumn": 4,
++                    "startOffset": 1310,
+                     "endColumn": 37,
+-                    "endOffset": 1064
++                    "endOffset": 1343
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -211,11 +325,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 31,
++                    "startLine": 37,
+                     "startColumn": 4,
+-                    "startOffset": 1069,
++                    "startOffset": 1348,
+                     "endColumn": 75,
+-                    "endOffset": 1140
++                    "endOffset": 1419
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -223,11 +337,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 32,
++                    "startLine": 38,
+                     "startColumn": 4,
+-                    "startOffset": 1145,
++                    "startOffset": 1424,
+                     "endColumn": 73,
+-                    "endOffset": 1214
++                    "endOffset": 1493
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -235,11 +349,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 33,
++                    "startLine": 39,
+                     "startColumn": 4,
+-                    "startOffset": 1219,
++                    "startOffset": 1498,
+                     "endColumn": 45,
+-                    "endOffset": 1260
++                    "endOffset": 1539
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -247,11 +361,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 34,
++                    "startLine": 40,
+                     "startColumn": 4,
+-                    "startOffset": 1265,
++                    "startOffset": 1544,
+                     "endColumn": 39,
+-                    "endOffset": 1300
++                    "endOffset": 1579
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -259,11 +373,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 35,
++                    "startLine": 41,
+                     "startColumn": 4,
+-                    "startOffset": 1305,
++                    "startOffset": 1584,
+                     "endColumn": 39,
+-                    "endOffset": 1340
++                    "endOffset": 1619
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -271,11 +385,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 36,
++                    "startLine": 42,
+                     "startColumn": 4,
+-                    "startOffset": 1345,
++                    "startOffset": 1624,
+                     "endColumn": 36,
+-                    "endOffset": 1377
++                    "endOffset": 1656
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -283,11 +397,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 37,
++                    "startLine": 43,
+                     "startColumn": 4,
+-                    "startOffset": 1382,
++                    "startOffset": 1661,
+                     "endColumn": 46,
+-                    "endOffset": 1424
++                    "endOffset": 1703
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -295,11 +409,30 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 38,
++                    "startLine": 44,
+                     "startColumn": 4,
+-                    "startOffset": 1429,
++                    "startOffset": 1708,
++                    "endColumn": 43,
++                    "endOffset": 1747
++                },
++                "from": {
++                    "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
++                    "position": {
++                        "startLine": 37,
++                        "startColumn": 4,
++                        "startOffset": 1706,
++                        "endColumn": 43,
++                        "endOffset": 1745
++                    }
++                }
++            },
++            {
++                "to": {
++                    "startLine": 45,
++                    "startColumn": 4,
++                    "startOffset": 1752,
+                     "endColumn": 38,
+-                    "endOffset": 1463
++                    "endOffset": 1786
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -307,11 +440,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 39,
++                    "startLine": 46,
+                     "startColumn": 4,
+-                    "startOffset": 1468,
++                    "startOffset": 1791,
+                     "endColumn": 35,
+-                    "endOffset": 1499
++                    "endOffset": 1822
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -319,11 +452,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 40,
++                    "startLine": 47,
+                     "startColumn": 4,
+-                    "startOffset": 1504,
++                    "startOffset": 1827,
+                     "endColumn": 37,
+-                    "endOffset": 1537
++                    "endOffset": 1860
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -331,11 +464,49 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 41,
++                    "startLine": 48,
+                     "startColumn": 4,
+-                    "startOffset": 1542,
++                    "startOffset": 1865,
++                    "endColumn": 73,
++                    "endOffset": 1934
++                },
++                "from": {
++                    "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
++                    "position": {
++                        "startLine": 32,
++                        "startColumn": 4,
++                        "startOffset": 1434,
++                        "endColumn": 73,
++                        "endOffset": 1503
++                    }
++                }
++            },
++            {
++                "to": {
++                    "startLine": 49,
++                    "startColumn": 4,
++                    "startOffset": 1939,
++                    "endColumn": 66,
++                    "endOffset": 2001
++                },
++                "from": {
++                    "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
++                    "position": {
++                        "startLine": 34,
++                        "startColumn": 4,
++                        "startOffset": 1563,
++                        "endColumn": 66,
++                        "endOffset": 1625
++                    }
++                }
++            },
++            {
++                "to": {
++                    "startLine": 50,
++                    "startColumn": 4,
++                    "startOffset": 2006,
+                     "endColumn": 45,
+-                    "endOffset": 1583
++                    "endOffset": 2047
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -343,11 +514,11 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 42,
++                    "startLine": 51,
+                     "startColumn": 4,
+-                    "startOffset": 1588,
++                    "startOffset": 2052,
+                     "endColumn": 45,
+-                    "endOffset": 1629
++                    "endOffset": 2093
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml"
+@@ -355,31 +526,69 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 43,
++                    "startLine": 52,
+                     "startColumn": 4,
+-                    "startOffset": 1634,
++                    "startOffset": 2098,
+                     "endColumn": 45,
+-                    "endOffset": 1675
++                    "endOffset": 2139
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
+                     "position": {
+                         "startLine": 6,
+                         "startColumn": 4,
+-                        "startOffset": 200,
++                        "startOffset": 217,
+                         "endColumn": 45,
+-                        "endOffset": 241
++                        "endOffset": 258
+                     }
+                 }
+             },
+             {
+                 "to": {
+-                    "startLine": 44,
++                    "startLine": 53,
+                     "startColumn": 4,
+-                    "startOffset": 1680,
+-                    "endLine": 50,
++                    "startOffset": 2144,
++                    "endColumn": 45,
++                    "endOffset": 2185
++                },
++                "from": {
++                    "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
++                    "position": {
++                        "startLine": 7,
++                        "startColumn": 4,
++                        "startOffset": 264,
++                        "endColumn": 45,
++                        "endOffset": 305
++                    }
++                }
++            },
++            {
++                "to": {
++                    "startLine": 54,
++                    "startColumn": 4,
++                    "startOffset": 2190,
++                    "endColumn": 45,
++                    "endOffset": 2231
++                },
++                "from": {
++                    "file": "F:\\git\\MoneyCalc2\\res\\values\\strings.xml",
++                    "position": {
++                        "startLine": 8,
++                        "startColumn": 4,
++                        "startOffset": 311,
++                        "endColumn": 45,
++                        "endOffset": 352
++                    }
++                }
++            },
++            {
++                "to": {
++                    "startLine": 55,
++                    "startColumn": 4,
++                    "startOffset": 2236,
++                    "endLine": 61,
+                     "endColumn": 12,
+-                    "endOffset": 1966
++                    "endOffset": 2522
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\styles.xml"
+@@ -387,12 +596,12 @@
+             },
+             {
+                 "to": {
+-                    "startLine": 51,
++                    "startLine": 62,
+                     "startColumn": 4,
+-                    "startOffset": 1971,
+-                    "endLine": 53,
++                    "startOffset": 2527,
++                    "endLine": 64,
+                     "endColumn": 12,
+-                    "endOffset": 2126
++                    "endOffset": 2682
+                 },
+                 "from": {
+                     "file": "F:\\git\\MoneyCalc2\\res\\values\\styles.xml"
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(date 1473669362000)
++++ .idea/misc.xml	(revision )
+@@ -37,7 +37,7 @@
+     <ConfirmationsSetting value="0" id="Add" />
+     <ConfirmationsSetting value="0" id="Remove" />
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+\ No newline at end of file
+Index: build/intermediates/res/merged/debug/menu/global.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build/intermediates/res/merged/debug/menu/global.xml	(date 1473669362000)
++++ build/intermediates/res/merged/debug/menu/global.xml	(revision )
+@@ -5,5 +5,15 @@
+         android:orderInCategory="100"
+         android:showAsAction="never"
+         android:title="@string/about"/>
++    <item
++        android:id="@+id/action_copyDB"
++        android:orderInCategory="100"
++        android:showAsAction="never"
++        android:title="@string/copy"/>
++    <item
++        android:id="@+id/action_coverDB"
++        android:orderInCategory="100"
++        android:showAsAction="never"
++        android:title="@string/cover"/>
+ 
+ </menu>
+Index: bin/classes/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- bin/classes/.gitignore	(date 1473669362000)
++++ bin/classes/.gitignore	(revision )
+@@ -1,1 +1,2 @@
+ /com/
++/.gitignore

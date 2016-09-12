@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "F:\\git\\MoneyCalc2\\res\\drawable-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\drawer_shadow.9.png",
+        "source": "F:\\git\\MoneyCalc2\\res\\drawable-xhdpi\\drawer_shadow.9.png"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\ic_drawer.png",
+        "source": "F:\\git\\MoneyCalc2\\res\\drawable-xhdpi\\ic_drawer.png"
+    }
+]

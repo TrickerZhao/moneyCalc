@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.tricker.moneycalc2.MainActivity" >
+
+    <item
+        android:id="@+id/action_countMoney"
+        android:showAsAction="withText|ifRoom"
+        android:title="@string/count_money"/>
+    <item
+        android:id="@+id/action_oneKeySet"
+        android:showAsAction="withText|ifRoom"
+        android:title="@string/onekeyset"/>
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/about"/>
+   <!--  <item
+        android:id="@+id/action_getPath"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/getPath"/> -->
+
+</menu>

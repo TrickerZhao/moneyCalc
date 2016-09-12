@@ -1,0 +1,125 @@
+-- Merging decision tree log ---
+manifest
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:2:1-81:12
+	package
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:3:5-37
+	android:versionName
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:5:5-30
+		INJECTED from F:\git\MoneyCalc2\AndroidManifest.xml
+		INJECTED from F:\git\MoneyCalc2\AndroidManifest.xml
+	android:versionCode
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:4:5-28
+		INJECTED from F:\git\MoneyCalc2\AndroidManifest.xml
+		INJECTED from F:\git\MoneyCalc2\AndroidManifest.xml
+	xmlns:android
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:2:11-69
+uses-sdk
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:7:5-9:41
+	android:targetSdkVersion
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:9:9-38
+	android:minSdkVersion
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:8:9-35
+uses-permission#android.permission.BLUETOOTH
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:11:5-68
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:11:22-65
+uses-permission#android.permission.INTERNET
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:22:5-67
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:22:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:23:5-81
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:23:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:24:5-79
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:24:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:25:5-76
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:25:22-73
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:26:5-75
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:26:22-72
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:27:5-81
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:27:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:30:5-79
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:30:22-76
+uses-permission#android.permission.ACCESS_LOCATION_EXTRA_COMMANDS
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:31:5-89
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:31:22-86
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:33:5-76
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:33:22-73
+application
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:35:5-79:19
+	android:label
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:38:9-41
+	android:allowBackup
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:36:9-35
+	android:icon
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:37:9-45
+	android:theme
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:39:9-40
+meta-data#com.amap.api.v2.apikey
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:40:9-43:21
+	android:value
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:42:13-61
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:41:13-50
+activity#com.tricker.moneycalc2.MainActivity
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:45:9-53:20
+	android:label
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:47:13-45
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:46:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:48:13-52:29
+action#android.intent.action.MAIN
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:49:17-69
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:49:25-66
+category#android.intent.category.LAUNCHER
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:51:17-77
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:51:27-74
+service#com.amap.api.location.APSService
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:56:9-57:19
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:56:18-65
+activity#com.tricker.moneycalc2.ChooseAreaActivity
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:59:9-62:20
+	android:label
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:61:13-63
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:60:13-47
+activity#com.tricker.moneycalc2.WeatherActivity
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:63:9-66:20
+	android:label
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:65:13-59
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:64:13-44
+service#com.tricker.moneycalc2.service.AutoUpdateService
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:68:9-72:19
+	android:enabled
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:70:13-35
+	android:exported
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:71:13-36
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:69:13-54
+receiver#com.tricker.moneycalc2.receiver.AutoUpdateReceiver
+ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:74:9-78:20
+	android:enabled
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:76:13-35
+	android:exported
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:77:13-36
+	android:name
+		ADDED from F:\git\MoneyCalc2\AndroidManifest.xml:75:13-78
