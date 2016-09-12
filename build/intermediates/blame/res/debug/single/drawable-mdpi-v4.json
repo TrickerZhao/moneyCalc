@@ -4,8 +4,20 @@
         "source": "F:\\git\\MoneyCalc2\\res\\drawable-mdpi\\ic_drawer.png"
     },
     {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
+        "source": "F:\\git\\MoneyCalc\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_drawer.png",
+        "source": "F:\\git\\MoneyCalc\\res\\drawable-mdpi\\ic_drawer.png"
+    },
+    {
         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
         "source": "F:\\git\\MoneyCalc2\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\drawer_shadow.9.png",
+        "source": "F:\\git\\MoneyCalc\\res\\drawable-mdpi\\drawer_shadow.9.png"
     },
     {
         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\drawer_shadow.9.png",

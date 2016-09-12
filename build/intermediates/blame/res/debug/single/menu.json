@@ -8,8 +8,24 @@
         "source": "F:\\git\\MoneyCalc2\\res\\menu\\weather.xml"
     },
     {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\menu\\choose_area.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\menu\\choose_area.xml"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\menu\\weather.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\menu\\weather.xml"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\menu\\global.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\menu\\global.xml"
+    },
+    {
         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\menu\\choose_area.xml",
         "source": "F:\\git\\MoneyCalc2\\res\\menu\\choose_area.xml"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\menu\\main.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\menu\\main.xml"
     },
     {
         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\menu\\global.xml",

@@ -4,12 +4,28 @@
         "source": "F:\\git\\MoneyCalc2\\res\\layout\\activity_choose_area.xml"
     },
     {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\layout\\list_cell.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\layout\\list_cell.xml"
+    },
+    {
         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\layout\\activity_weather.xml",
         "source": "F:\\git\\MoneyCalc2\\res\\layout\\activity_weather.xml"
     },
     {
         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_query.xml",
         "source": "F:\\git\\MoneyCalc2\\res\\layout\\fragment_query.xml"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_query.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\layout\\fragment_query.xml"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_map.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\layout\\fragment_map.xml"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\layout\\activity_main.xml"
     },
     {
         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
@@ -20,8 +36,24 @@
         "source": "F:\\git\\MoneyCalc2\\res\\layout\\fragment_record.xml"
     },
     {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_record.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\layout\\fragment_record.xml"
+    },
+    {
         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_map.xml",
         "source": "F:\\git\\MoneyCalc2\\res\\layout\\fragment_map.xml"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\layout\\activity_choose_area.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\layout\\activity_choose_area.xml"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\layout\\activity_weather.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\layout\\activity_weather.xml"
+    },
+    {
+        "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_navigation_drawer.xml",
+        "source": "F:\\git\\MoneyCalc\\res\\layout\\fragment_navigation_drawer.xml"
     },
     {
         "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\layout\\list_cell.xml",
