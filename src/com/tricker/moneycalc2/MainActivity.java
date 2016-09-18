@@ -181,7 +181,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
 		if (id == R.id.action_about) {
-			TrickerUtils.showToast(this, "Tricker 出品，必属精品！");
+			TrickerUtils.showToast(this, "Tricker 出品，必属精品！！！");
 			clickCount=0;
 			return true;
 		}else if(id==R.id.action_copyDB){

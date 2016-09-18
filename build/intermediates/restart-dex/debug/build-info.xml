@@ -4,29 +4,29 @@
     api-level="19"
     density="xxhdpi"
     format="7"
-    timestamp="10955660956497"
-    token="-5938215083641343478" >
+    timestamp="29175917585300"
+    token="-4586919512905284314" >
 
     <task
         name="javac"
-        duration="1027" />
+        duration="231" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="41" />
+        duration="33" />
     <task
         name="verifier"
-        duration="16" />
+        duration="10" />
 
     <artifact
-        location="F:\git\MoneyCalc2\build\outputs\apk\MoneyCalc2-debug.apk"
+        location="F:\git\MoneyCalc\build\outputs\apk\MoneyCalc-debug.apk"
         type="MAIN" />
 
-    <build timestamp="10955660956497" >
+    <build timestamp="29175917585300" >
         <artifact
-            location="F:\git\MoneyCalc2\build\outputs\apk\MoneyCalc2-debug.apk"
+            location="F:\git\MoneyCalc\build\outputs\apk\MoneyCalc-debug.apk"
             type="MAIN" />
     </build>
 
