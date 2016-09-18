@@ -2,11 +2,18 @@
 <items version="2" >
 
     <item
-        jar="F:\git\MoneyCalc2\libs\android-support-v4.jar"
-        jumboMode="false"
+        jar="F:\git\MoneyCalc\libs\AMap3DMap_3.3.3_AMapNavi_1.9.1_AMapSearch_3.3.0_AMapLocation_2.7.0_20160726.jar"
+        jumboMode="true"
         revision="24.0.0"
-        sha1="1dc1f63cee098b27db60b9a2833fd7ca58f89636">
-        <dex dex="F:\git\MoneyCalc2\build\intermediates\pre-dexed\debug\android-support-v4_f2cab0fdd6faed1499d3ded40a54eac9ad8bc216.jar" />
+        sha1="817a53c1bbef5256e2dc216adaef3c63bd4dad83">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\2\AMap3DMap_3.3.3_AMapNavi_1.9.1_AMapSearch_3.3.0_AMapLocation_2.7.0_20160726_10f8aea4ff06c76291cb2d33ece455e7c940cc81\classes.dex" />
+    </item>
+    <item
+        jar="F:\git\MoneyCalc\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="7a6e21608e16999eafe4a200f8cf629e85c9b81f">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_bf85378d28243d62503bb911382612b7ffa7361e\classes.dex" />
     </item>
     <item
         jar="F:\git\MoneyCalc2\libs\AMap3DMap_3.3.3_AMapNavi_1.9.1_AMapSearch_3.3.0_AMapLocation_2.7.0_20160726.jar"
@@ -14,6 +21,27 @@
         revision="24.0.0"
         sha1="817a53c1bbef5256e2dc216adaef3c63bd4dad83">
         <dex dex="F:\git\MoneyCalc2\build\intermediates\pre-dexed\debug\AMap3DMap_3.3.3_AMapNavi_1.9.1_AMapSearch_3.3.0_AMapLocation_2.7.0_20160726_4301fae5672583179c8d657fd3ed0d97e8f54150.jar" />
+    </item>
+    <item
+        jar="F:\git\MoneyCalc\libs\android-support-v4.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="1dc1f63cee098b27db60b9a2833fd7ca58f89636">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\2\android-support-v4_cf1e3b8ba3be9fc1260495606489ea07d461d136\classes.dex" />
+    </item>
+    <item
+        jar="F:\git\MoneyCalc2\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="1dc1f63cee098b27db60b9a2833fd7ca58f89636">
+        <dex dex="F:\git\MoneyCalc2\build\intermediates\pre-dexed\debug\android-support-v4_f2cab0fdd6faed1499d3ded40a54eac9ad8bc216.jar" />
+    </item>
+    <item
+        jar="F:\git\MoneyCalc\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="9982590b0152c618b4a1ecea56894ba88a0dcd66">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_f281651a9723b9808241e84db7e5924794442c76\classes.dex" />
     </item>
 
 </items>

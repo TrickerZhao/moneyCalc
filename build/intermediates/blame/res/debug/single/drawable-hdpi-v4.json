@@ -1,19 +1,7 @@
 [
     {
-        "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_drawer.png",
-        "source": "F:\\git\\MoneyCalc2\\res\\drawable-hdpi\\ic_drawer.png"
-    },
-    {
-        "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
-        "source": "F:\\git\\MoneyCalc2\\res\\drawable-hdpi\\ic_launcher.png"
-    },
-    {
         "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\drawer_shadow.9.png",
         "source": "F:\\git\\MoneyCalc\\res\\drawable-hdpi\\drawer_shadow.9.png"
-    },
-    {
-        "merged": "F:\\git\\MoneyCalc2\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\drawer_shadow.9.png",
-        "source": "F:\\git\\MoneyCalc2\\res\\drawable-hdpi\\drawer_shadow.9.png"
     },
     {
         "merged": "F:\\git\\MoneyCalc\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
