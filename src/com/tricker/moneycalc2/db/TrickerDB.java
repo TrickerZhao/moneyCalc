@@ -4,10 +4,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tricker.moneycalc2.MyApplication;
 import com.tricker.moneycalc2.model.City;
 import com.tricker.moneycalc2.model.County;
 import com.tricker.moneycalc2.model.Project;
 import com.tricker.moneycalc2.model.Province;
+import com.tricker.moneycalc2.model.User;
 import com.tricker.moneycalc2.util.TrickerUtils;
 
 import android.content.ContentValues;
@@ -16,9 +18,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
+import static com.tricker.moneycalc2.R.string.project;
+
 public class TrickerDB {
 	public static final String DB_NAME = "db";
-	public static final int VERSION=5;
+	public static final int VERSION=8;
 	private static TrickerDB trickerDB;
 	private SQLiteDatabase db;
 	private Context context;
@@ -83,6 +87,7 @@ public class TrickerDB {
 	public void saveProject(Project project){
 		saveProject(project, false);
 	}
+
 	/**
 	 * 保存及修改Project
 	 * @param project
@@ -108,12 +113,46 @@ public class TrickerDB {
 			String result =TrickerUtils.copyfile(fromFile, toFile , true);
 		}
 	}
+	public void saveUser(User user){
+		if(user!=null){
+			ContentValues values = new ContentValues();
+			values.put("name",user.getName());
+			values.put("pwd", user.getPwd());
+			db.insert(BaseDao.TABLE_USER, null, values);
+			//无论修改和添加都需要备份当前的最新数据库
+			File fromFile = new File(TrickerUtils.getPath(context, TrickerUtils.DATABASE_PATH));
+			File toFile = new File(Environment.getExternalStorageDirectory().getPath()+File.separator+"tricker"+File.separator+"tricker.db");
+			String result =TrickerUtils.copyfile(fromFile, toFile , true);
+		}
+	}
+	public User findUserByName(String name){
+		User user =null;
+		Cursor cursor =db.rawQuery("select pwd from user where name ='"+name+"'",null);
+		if(cursor!=null&&cursor.getCount()>0){
+			if(cursor.moveToFirst()){
+				user = new User(name,cursor.getString(cursor.getColumnIndex("pwd")));
+			}
+
+		}
+		if(cursor!=null){
+			cursor.close();
+		}
+		return  user;
+	}
 	public void deleteProject(int projectId){
 		String[] condition = new String[] { projectId + "" };
 		db.delete(BaseDao.TABLE_PROJECT, "_id=?", condition);
 		File fromFile = new File(TrickerUtils.getPath(this.context, TrickerUtils.DATABASE_PATH));
 		File toFile = new File(Environment.getExternalStorageDirectory().getPath()+File.separator+"tricker"+File.separator+"tricker.db");
 		String result =TrickerUtils.copyfile(fromFile, toFile , true);
+	}
+
+	/**
+	 * 根据id一键设置已结算
+	 * @param ids
+     */
+	public void updateProject(String ids){
+		db.execSQL("update " + BaseDao.TABLE_PROJECT + " set state='已结算' where _id in(" + ids + ")");
 	}
 	/*public List<Project> loadProjects(){
 		List<Project> list = new ArrayList<Project>();
@@ -140,10 +179,11 @@ public class TrickerDB {
 		return list;
 	}*/
 	public Cursor loadProjects(){
-		return loadProjects("");
+		return loadProjects(" where 1=1 ");
 	}
 	public Cursor loadProjects(String condition){
-		String sql = BaseDao.QUERY_ALL + condition+ " order by date desc";
+		condition+=" and user='"+ MyApplication.getUser().getName()+"'";
+		String sql = BaseDao.QUERY_ALL + condition+ "  order by date desc";
 		return db.rawQuery(sql, null);
 	}
 	/**

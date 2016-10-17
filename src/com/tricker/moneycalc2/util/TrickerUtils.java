@@ -17,6 +17,7 @@ import android.content.Context;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -64,12 +65,17 @@ public class TrickerUtils {
 
 	public static void showToast(Context context, String text) {
 		if (TextUtils.isEmpty(text)) {
-			text = "并没有提示内容！";
+			text = "nothing";
 		}
 		Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
 		;
 	}
 
+	/**
+	 * 选择日期
+	 * @param context
+	 * @param editDate
+     */
 	public static void selectDate(Context context, final EditText editDate) {
 		int year = Calendar.getInstance().get(Calendar.YEAR);
 		int month = Calendar.getInstance().get(Calendar.MONTH);
@@ -218,6 +224,33 @@ public class TrickerUtils {
 
 	public static SimpleDateFormat getDateFormat() {
 		return format;
+	}
+
+	/**
+	 * 打卡软键盘
+	 *
+	 * @param mEditText 输入框
+	 * @param mContext  上下文
+	 */
+	public static void openKeybord(EditText mEditText, Context mContext) {
+		InputMethodManager imm = (InputMethodManager) mContext
+				.getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.showSoftInput(mEditText, InputMethodManager.RESULT_SHOWN);
+		imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,
+				InputMethodManager.HIDE_IMPLICIT_ONLY);
+	}
+
+	/**
+	 * 关闭软键盘
+	 *
+	 * @param mEditText 输入框
+	 * @param mContext  上下文
+	 */
+	public static void closeKeybord(EditText mEditText, Context mContext) {
+		InputMethodManager imm = (InputMethodManager) mContext
+				.getSystemService(Context.INPUT_METHOD_SERVICE);
+
+		imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
 	}
 
 }

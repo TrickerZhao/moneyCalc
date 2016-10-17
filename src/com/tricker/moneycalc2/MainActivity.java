@@ -1,13 +1,5 @@
 package com.tricker.moneycalc2;
 
-import java.io.File;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.Calendar;
-
-import com.tricker.moneycalc2.db.BaseDao;
-import com.tricker.moneycalc2.util.TrickerUtils;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,21 +7,37 @@ import android.app.AlertDialog.Builder;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
-public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+import com.tricker.moneycalc2.db.BaseDao;
+import com.tricker.moneycalc2.db.TrickerDB;
+import com.tricker.moneycalc2.util.TrickerUtils;
 
+import java.io.File;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Calendar;
+import android.support.v7.widget.Toolbar;
+
+public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks{
 	private static final BigDecimal HALF = new BigDecimal(0.5);// 1/2
 	private static final BigDecimal TWO_PART = new BigDecimal(0.6666666667);// 2/3
 	private static final BigDecimal ONE_THIRD = new BigDecimal(0.3333333333);// 1/3
@@ -87,6 +95,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 		dao = new BaseDao(this);
 	}
+
 
 	@Override
 	public void onNavigationDrawerItemSelected(int position) {
@@ -265,10 +274,11 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 										}
 									}
 									ids += "-999";// 避免多一个都好，又不想subStr
-									SQLiteDatabase db = dao.getWritableDatabase();
-									db.execSQL("update " + BaseDao.TABLE_PROJECT + " set state='已结算' where _id in("
-											+ ids + ")");
-									db.close();
+//									SQLiteDatabase db = dao.getWritableDatabase();
+//									db.execSQL("update " + BaseDao.TABLE_PROJECT + " set state='已结算' where _id in("
+//											+ ids + ")");
+//									db.close();
+									TrickerDB.getInstance(MainActivity.this).updateProject(ids);
 									queryFragment.refreshView();
 
 								}
@@ -294,12 +304,13 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		return super.onOptionsItemSelected(item);
 	}
 
+
 	private long lastTime = 0;
 
 	@Override
 	public void onBackPressed() {
 		if (System.currentTimeMillis() - lastTime > 2000) {
-			TrickerUtils.showToast(this, "再按一次退出！");
+			TrickerUtils.showToast(this, "再按一次退出登录！");
 			lastTime = System.currentTimeMillis();
 		} else {
 			super.onBackPressed();

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/back_pressed" android:state_focused="true"></item>
+    <item android:drawable="@drawable/back_pressed" android:state_pressed="true"></item>
+    <!-- 这句必须放最后，放第一行会不生效 -->
+    <item android:drawable="@drawable/back_normal"></item>
+
+</selector>

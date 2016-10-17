@@ -16,6 +16,9 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
+/**
+ * 天气工具类
+ */
 public class Utility {
 	public synchronized static boolean handleProvincesResponse(TrickerDB db,String response){
 		if(!TextUtils.isEmpty(response)){

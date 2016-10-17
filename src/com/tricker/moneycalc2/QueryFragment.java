@@ -20,6 +20,7 @@ import android.app.ListFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -145,7 +146,7 @@ public class QueryFragment extends ListFragment
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
+//		((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
 	}
 
 	@Override
@@ -289,8 +290,9 @@ public class QueryFragment extends ListFragment
 		 * condition=" where date like '%"+data+"%'"; } }
 		 */
 		// 强制关闭输入法
-		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.hideSoftInputFromWindow(editQuery.getWindowToken(), 0);
+//		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+//		imm.hideSoftInputFromWindow(editQuery.getWindowToken(), 0);
+		TrickerUtils.closeKeybord(editQuery,getActivity());
 		refreshView(condition);
 
 	}
@@ -334,7 +336,7 @@ public class QueryFragment extends ListFragment
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.editQuery:
-				selectDate();
+				selectDate(v);
 				break;
 
 			default:
@@ -342,7 +344,7 @@ public class QueryFragment extends ListFragment
 		}
 	}
 
-	private void selectDate() {
+	private void selectDate(View view) {
 		if(!editQuery.isFocusableInTouchMode()){//弹出日期选择器
 			OnDateSetListener callBack = new OnDateSetListener() {
 				@Override
@@ -354,6 +356,11 @@ public class QueryFragment extends ListFragment
 			};
 			TrickerUtils.selectDate(getActivity(), editQuery,callBack);
 
+
+		}else{
+			//暂时屏蔽掉搜索历史功能
+//			Intent intent = new Intent(getActivity(), SearchActivity.class);
+//			startActivity(intent);
 
 		}
 	}

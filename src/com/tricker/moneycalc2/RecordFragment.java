@@ -15,23 +15,38 @@ import com.tricker.moneycalc2.util.TrickerUtils;
 
 import android.app.Activity;
 import android.app.Fragment;
+//import android.support.v4.app.Fragment;
+
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 public class RecordFragment extends Fragment implements OnClickListener, LocationSource, AMapLocationListener {
+	private Toolbar mToolbar;
+	private Toast mToast;
+	private PopupWindow mPopupWindow;
 	private EditText editDate, editMoney, editProject, editRemark;
 	private Spinner editPercent, editState;
 	// private SimpleDateFormat format;
@@ -89,9 +104,65 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 		findViews(rootView);
 		if (isEdit) {// 编辑
 			setValues();
-
 		}
-
+//		mToolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+//		// App Logo
+////        mToolbar.setLogo(R.drawable.app_icon);
+//		// 主标题,默认为app_label的名字
+//		mToolbar.setTitle("Title");
+//		mToolbar.setTitleTextColor(Color.YELLOW);
+//		// 副标题
+//		mToolbar.setSubtitle("Sub title");
+//		mToolbar.setSubtitleTextColor(Color.parseColor("#80ff0000"));
+//		//侧边栏的按钮
+//		mToolbar.setNavigationIcon(R.drawable.back_normal);
+//		//取代原本的actionbar
+//		((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
+//		//设置NavigationIcon的点击事件,需要放在setSupportActionBar之后设置才会生效,
+//		//因为setSupportActionBar里面也会setNavigationOnClickListener
+//		mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				mToast.setText("click NavigationIcon");
+//				mToast.show();
+//			}
+//		});
+//		//设置toolBar上的MenuItem点击事件
+//		mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+//			@Override
+//			public boolean onMenuItemClick(MenuItem item) {
+//				switch (item.getItemId()) {
+//					case R.id.action_edit:
+//						mToast.setText("click edit");
+//						break;
+//					case R.id.action_share:
+//						mToast.setText("click share");
+//						break;
+//					case R.id.action_overflow:
+//						//弹出自定义overflow
+//						popUpMyOverflow();
+//						return true;
+//				}
+//				mToast.show();
+//				return true;
+//			}
+//		});
+//		//ToolBar里面还可以包含子控件
+//		mToolbar.findViewById(R.id.btn_diy).setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				mToast.setText("点击自定义按钮");
+//				mToast.show();
+//			}
+//		});
+//		mToolbar.findViewById(R.id.tv_title).setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				mToast.setText("点击自定义标题");
+//				mToast.show();
+//			}
+//		});
+//		setHasOptionsMenu(true);
 		//利用安卓API加google地图定位，并不是非常准确，用高德地图代替
 		/*locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 		List<String> providers = locationManager.getProviders(true);
@@ -137,6 +208,39 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 			txtLocation.setText("1:"+amapLocation.getAddress());
 		}
 		return rootView;
+	}
+	/**
+	 * 弹出自定义的popWindow
+	 */
+	public void popUpMyOverflow() {
+		//获取状态栏高度
+		Rect frame = new Rect();
+		((AppCompatActivity) getActivity()).getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
+		//状态栏高度+toolbar的高度
+		int yOffset = frame.top + mToolbar.getHeight();
+		if (null == mPopupWindow) {
+			//初始化PopupWindow的布局
+			View popView = ((AppCompatActivity) getActivity()).getLayoutInflater().inflate(R.layout.action_overflow_popwindow, null);
+			//popView即popupWindow的布局，ture设置focusAble.
+			mPopupWindow = new PopupWindow(popView,
+					ViewGroup.LayoutParams.WRAP_CONTENT,
+					ViewGroup.LayoutParams.WRAP_CONTENT, true);
+			//必须设置BackgroundDrawable后setOutsideTouchable(true)才会有效
+			mPopupWindow.setBackgroundDrawable(new ColorDrawable());
+			//点击外部关闭。
+			mPopupWindow.setOutsideTouchable(true);
+			//设置一个动画。
+			mPopupWindow.setAnimationStyle(android.R.style.Animation_Dialog);
+			//设置Gravity，让它显示在右上角。
+			mPopupWindow.showAtLocation(mToolbar, Gravity.RIGHT | Gravity.TOP, 0, yOffset);
+			//设置item的点击监听
+			popView.findViewById(R.id.ll_item1).setOnClickListener(this);
+			popView.findViewById(R.id.ll_item2).setOnClickListener(this);
+			popView.findViewById(R.id.ll_item3).setOnClickListener(this);
+		} else {
+			mPopupWindow.showAtLocation(mToolbar, Gravity.RIGHT | Gravity.TOP, 0, yOffset);
+		}
+
 	}
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -324,7 +428,8 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
-		((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
+		//注释
+//		((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
 	}
 
 	@Override
@@ -345,10 +450,24 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 				mainActivity.onSectionAttached(3);
 				mainActivity.restoreActionBar();
 				break;
+			case R.id.ll_item1:
+				mToast.setText("哈哈");
+				break;
+			case R.id.ll_item2:
+				mToast.setText("呵呵");
+				break;
+			case R.id.ll_item3:
+				mToast.setText("嘻嘻");
+				break;
 
 			default:
 				break;
 		}
+		//点击PopWindow的item后,关闭此PopWindow
+		if (null != mPopupWindow && mPopupWindow.isShowing()) {
+			mPopupWindow.dismiss();
+		}
+		mToast.show();
 	}
 
 	private void saveData() {

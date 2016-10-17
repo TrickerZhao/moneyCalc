@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/layout_clear_et"
+        android:layout_width="fill_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/nav_bg"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/ib_back_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|left"
+            android:background="@drawable/search_et_back" />
+
+        <com.tricker.moneycalc2.util.SearchClearEditText
+            android:id="@+id/et_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.91"
+            android:background="@drawable/et_search_clear_attr"
+            android:drawableLeft="@drawable/umeng_socialize_search_icon"
+            android:drawableRight="@drawable/search_clear"
+            android:ems="10"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="请输入查询条件"
+            android:paddingLeft="5dp"
+            android:paddingRight="3dp"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/tv_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:padding="5dp"
+            android:text="搜索"
+            android:textColor="#FFFFFF"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/search_framelayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ListView
+            android:id="@+id/search_history_lv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" >
+        </ListView>
+
+        <ListView
+            android:id="@+id/search_xianshi_lv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+        </ListView>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/clear_search_history_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/delete_history_icon"
+        android:text="清除历史记录"
+        android:visibility="visible" >
+    </Button>
+
+</LinearLayout>

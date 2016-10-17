@@ -5,21 +5,37 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.tricker.moneycalc2.SearchActivity;
+
+import static android.R.attr.key;
+import static android.R.attr.text;
+import static android.R.id.primary;
+
 /**
  * DB类
  */
 public class BaseDao extends SQLiteOpenHelper {
-	public static final String TABLE_PROJECT = "PROJECT";
+	/*项目表*/
+	public static final String TABLE_PROJECT = "PROJECT",TABLE_USER="USER";
+	/*查询所有的项目*/
 	public static final String QUERY_ALL = "select * from " + BaseDao.TABLE_PROJECT;
+	/*创建项目表*/
 	public static final String CREATE_PROJECT = "create table project (_id integer primary key autoincrement,"
 			+ "project text default 0,money int default 0,date date,percent real,remark text  default \"备注\","
-			+ "state text default \"未结算\")";
+			+ "state text default \"未结算\",user text default \"Tricker\")";
+	/*创建省份表*/
 	public static final String CREATE_PROVINCE="create table province(_id integer primary key autoincrement,"
 			+ "name text,code text)";
+	/*创建城市表*/
 	public static final String CREATE_CITY="create table city(_id integer primary key autoincrement,"
 			+ "name text,code text,province_id integer)";
+	/*创建县/区表*/
 	public static final String CREATE_COUNTY="create table county(_id integer primary key autoincrement,"
 			+ "name text,code text,city_id integer)";
+	/*创建历史记录表*/
+	public static final String CREATE_HISTORY = "create table history (_id integer primary key autoincrement, h_name text not null)";
+	/*创建用户表*/
+	public static final String CREATE_USER = "create table user (_id integer primary key autoincrement, name text not null, pwd text not null)";
 
 	public BaseDao(Context context) {
 		super(context, "db", null, TrickerDB.VERSION);
@@ -34,6 +50,8 @@ public class BaseDao extends SQLiteOpenHelper {
 		db.execSQL(CREATE_PROVINCE);
 		db.execSQL(CREATE_CITY);
 		db.execSQL(CREATE_COUNTY);
+		db.execSQL(CREATE_HISTORY);
+		db.execSQL(CREATE_USER);
 	}
 
 	@Override
@@ -54,6 +72,12 @@ public class BaseDao extends SQLiteOpenHelper {
 				db.execSQL("drop table city");
 				db.execSQL(CREATE_CITY);
 			case 5:
+				db.execSQL(CREATE_HISTORY);//增加搜索历史记录
+			case 6:
+				db.execSQL(CREATE_USER);//增加用户表，实现登录功能
+			case 7:
+				db.execSQL("alter table project add user text default \"Tricker\"");//项目表和人员挂钩
+			case 8:
 			default:
 				break;
 		}

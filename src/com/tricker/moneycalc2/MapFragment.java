@@ -129,7 +129,7 @@ public class MapFragment extends Fragment implements LocationSource, AMapLocatio
 		// throw new ClassCastException(activity.toString() + " must implement
 		// OnFragmentInteractionListener");
 		// }
-		((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
+//		((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
 	}
 
 	@Override

@@ -17,4 +17,29 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+    <!--<style name="AppTheme.Base" parent="Theme.AppCompat">-->
+        <!--&lt;!&ndash;将ActionBar隐藏,这里使用ToolBar&ndash;&gt;-->
+        <!--<item name="windowActionBar">false</item>-->
+        <!--&lt;!&ndash; 使用 API Level 22以上编译的话，要拿掉前綴字 &ndash;&gt;-->
+        <!--<item name="windowNoTitle">true</item>-->
+        <!--&lt;!&ndash;colorPrimaryDark对应状态栏的颜色&ndash;&gt;-->
+        <!--<item name="colorPrimaryDark">@color/statusColor</item>-->
+        <!--&lt;!&ndash;colorPrimary 对应ToolBar的颜色&ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/toolBarColor</item>-->
+        <!--&lt;!&ndash;colorAccent 对应EditText编辑时、RadioButton选中、CheckBox等选中时的颜色。&ndash;&gt;-->
+        <!--<item name="colorAccent">@color/editColor</item>-->
+        <!--&lt;!&ndash;窗口的颜色&ndash;&gt;-->
+        <!--<item name="android:windowBackground">@color/widowColor</item>-->
+
+    <!--</style>-->
+
+    <!--&lt;!&ndash;Status bar color&ndash;&gt;-->
+    <!--<color name="statusColor">#ff0000</color>-->
+    <!--&lt;!&ndash; toolBar color &ndash;&gt;-->
+    <!--<color name="toolBarColor">#0000ff</color>-->
+    <!--&lt;!&ndash;EditText,RadioButton,CheckBox color&ndash;&gt;-->
+    <!--<color name="editColor">#FD87A9</color>-->
+    <!--&lt;!&ndash;Window color&ndash;&gt;-->
+    <!--<color name="widowColor">#ffffff</color>-->
+
 </resources>
