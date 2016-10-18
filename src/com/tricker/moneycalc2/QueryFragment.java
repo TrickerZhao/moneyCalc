@@ -41,15 +41,18 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import static android.R.attr.data;
+import static com.amap.api.mapcore.offlinemap.a.b;
+
 public class QueryFragment extends ListFragment
 		implements OnItemLongClickListener, OnKeyListener, OnItemSelectedListener, android.view.View.OnClickListener {
-	private SimpleCursorAdapter adapter;
+	private SimpleCursorAdapter adapter,adapter2;
 	private BaseDao dao;
 	private TextView txtQueryInfo, txtTotalMoney;
 	private EditText editQuery;
-	private Spinner spSymbol;
+	private Spinner spSymbol,editType;
 	private Cursor cursor;
-
+	private boolean isRent=true;
 
 	public Cursor getCursor() {
 		return cursor;
@@ -85,9 +88,11 @@ public class QueryFragment extends ListFragment
 		txtTotalMoney = (TextView) rootView.findViewById(R.id.countMoney);
 		editQuery = (EditText) rootView.findViewById(R.id.editQuery);
 		spSymbol = (Spinner) rootView.findViewById(R.id.spSymbol);
+		editType = (Spinner) rootView.findViewById(R.id.editType);
 		editQuery.setOnClickListener(this);
 		editQuery.setOnKeyListener(this);
 		spSymbol.setOnItemSelectedListener(this);
+		editType.setOnItemSelectedListener(this);
 		return rootView;
 	}
 
@@ -113,34 +118,46 @@ public class QueryFragment extends ListFragment
 		db.close();*/
 
 		Cursor cursor =TrickerDB.getInstance(getActivity()).loadProjects();
+		Cursor cursor2 =TrickerDB.getInstance(getActivity()).loadMarries();
 		setCursor(cursor);
 		updateTitle(cursor);
 		String[] from = new String[] { "project", "money", "date", "percent", "state" };
 		int[] to = new int[] { R.id.txtProject, R.id.txtMoney, R.id.txtDate, R.id.txtPercent, R.id.txtState };
 		adapter = new SimpleCursorAdapter(getActivity(), R.layout.list_cell, cursor, from, to,
 				SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+
+		String[] from2 = new String[] { "name", "getMoney", "payMoney"};
+		int[] to2 = new int[] { R.id.txtProject, R.id.txtMoney,  R.id.txtPercent};
+		adapter2 = new SimpleCursorAdapter(getActivity(), R.layout.list_cell, cursor2, from2, to2,
+				SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 		setListAdapter(adapter);
 
 		getListView().setOnItemLongClickListener(this);
 	}
-
-	private void updateTitle(Cursor c) {
+	private void updateTitle(Cursor c,boolean isRent) {
 		// double totalMoney = 0;
 		BigDecimal totalMoney = new BigDecimal(0);
-		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-			// totalMoney+=c.getDouble(c.getColumnIndex("money"));
-			String strMoney = c.getString(c.getColumnIndex("money"));
-			totalMoney = totalMoney.add(TrickerUtils.parseToDecimal(strMoney));
+		if(isRent){
+			for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+				// totalMoney+=c.getDouble(c.getColumnIndex("money"));
+				String strMoney = c.getString(c.getColumnIndex("money"));
+				totalMoney = totalMoney.add(TrickerUtils.parseToDecimal(strMoney));
+			}
+		}else{
+			for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+				// totalMoney+=c.getDouble(c.getColumnIndex("money"));
+				String strMoney = c.getString(c.getColumnIndex("getMoney"));
+				totalMoney = totalMoney.add(TrickerUtils.parseToDecimal(strMoney));
+			}
 		}
 		totalMoney = TrickerUtils.setScale(totalMoney, 2, RoundingMode.HALF_UP);
-		// while 循环 在删除数据后刷新会发生问题，暂时不知道怎么回事
-		// while (c.moveToNext()) {
-		// totalMoney+=c.getDouble(c.getColumnIndex("money"));
-		// }
 		txtQueryInfo.setText("以下是查询信息(共" + c.getCount() + "条)");
 		txtTotalMoney.setText(totalMoney + "");
 
 //		TrickerUtils.showToast(getActivity(), "数据刷新成功！");
+	}
+	private void updateTitle(Cursor c) {
+		updateTitle(c,true);
 	}
 
 	@Override
@@ -156,6 +173,9 @@ public class QueryFragment extends ListFragment
 		MainActivity mainActivity = (MainActivity) getActivity();
 		int count = mainActivity.getClickCount();
 		Cursor c = adapter.getCursor();
+		if(editType.getSelectedItem().equals("份子钱")){
+			c = adapter2.getCursor();
+		}
 		if(count==3){
 			c.moveToPosition(position);
 			mainActivity.setEditCursor(c);
@@ -189,20 +209,20 @@ public class QueryFragment extends ListFragment
 						int minute = Calendar.getInstance().get(Calendar.MINUTE);
 						int total = hour + minute;
 						if (password.getText() != null && password.getText().toString().equals(String.valueOf(total))) {
-							Cursor c = adapter.getCursor();
-							c.moveToPosition(position);
-							int projectId = c.getInt(c.getColumnIndex("_id"));
-							TrickerDB.getInstance(getActivity()).deleteProject(projectId);
-//							SQLiteDatabase db = dao.getWritableDatabase();
-//							String[] condition = new String[] { projectId + "" };
-//							db.delete(BaseDao.TABLE_PROJECT, "_id=?", condition);
-//							db.close();
-							refreshView();
-							//删除数据成功后需要备份数据库(移动到具体的增删改)
-//							File fromFile = new File(TrickerUtils.getPath(getActivity(), TrickerUtils.DATABASE_PATH));
-//							File toFile = new File(Environment.getExternalStorageDirectory().getPath()+File.separator+"tricker"+File.separator+"tricker.db");
-////							TrickerUtils.showToast(this,Environment.getExternalStorageDirectory().getPath());
-//							String result =TrickerUtils.copyfile(fromFile, toFile , true);
+							//判断是删除份子钱还是房租
+							if(isRent){
+								Cursor c = adapter.getCursor();
+								c.moveToPosition(position);
+								int projectId = c.getInt(c.getColumnIndex("_id"));
+								TrickerDB.getInstance(getActivity()).deleteProject(projectId);
+								refreshView();
+							}else{
+								Cursor c = adapter2.getCursor();
+								c.moveToPosition(position);
+								int marryId = c.getInt(c.getColumnIndex("_id"));
+								TrickerDB.getInstance(getActivity()).deleteMarry(marryId);
+								refreshView(false);
+							}
 						} else {
 							TrickerUtils.showToast(getActivity(), "Are You Kidding Me??");
 						}
@@ -218,11 +238,18 @@ public class QueryFragment extends ListFragment
 	}
 
 	public void refreshView() {
-		refreshView("");
+		refreshView("",true);
 
 	}
+	public void refreshView(boolean isRent) {
+		refreshView("",isRent);
 
+	}
 	private void refreshView(String condition) {
+		refreshView(condition,true);
+	}
+	private void refreshView(String condition,boolean isRent) {
+		if(isRent){
 //		String sql = BaseDao.QUERY_ALL + condition + " order by date desc";
 //		SQLiteDatabase db = dao.getReadableDatabase();
 //		Cursor c = db.rawQuery(sql, null);
@@ -232,11 +259,22 @@ public class QueryFragment extends ListFragment
 //		updateTitle(c);
 //
 //		db.close();
-		Cursor cursor =TrickerDB.getInstance(getActivity()).loadProjects(condition);
-		setCursor(cursor);
-		adapter.swapCursor(cursor);
+			Cursor cursor =TrickerDB.getInstance(getActivity()).loadProjects(condition);
+			setCursor(cursor);
+			setListAdapter(adapter);
+			adapter.swapCursor(cursor);
 //		adapter.notifyDataSetChanged();
-		updateTitle(cursor);
+			updateTitle(cursor);
+		}else{
+//			Cursor cursor =TrickerDB.getInstance(getActivity()).loadProjects(condition);
+//			setCursor(cursor);
+//			adapter.swapCursor(cursor);
+
+			setListAdapter(adapter2);
+			Cursor cursor =TrickerDB.getInstance(getActivity()).loadMarries(condition);
+			adapter2.swapCursor(cursor);
+			updateTitle(cursor,false);
+		}
 	}
 
 	/*
@@ -258,60 +296,85 @@ public class QueryFragment extends ListFragment
 		return false;//设置成true，点击键盘上的   × 会无效
 	}
 
-	private void execQuery() {
-		String data = editQuery.getText().toString();
-		String strSymbol = spSymbol.getSelectedItem().toString();
+	/**
+	 * 房租or份子钱
+	 * @param isRent
+     */
+	private void execQuery(boolean isRent) {
 		String condition = "";
-		if (strSymbol == null || strSymbol.equals("")) {// like
-			condition = " where project like '%" + data + "%'  or state like '%" + data + "%' or date like '%"
-					+ data + "%'";
-		} else if (strSymbol.equals("!")) {// 非 针对时间
-			condition = " where date not like '%" + data + "%'";
-		} else if (strSymbol.equals(">")) {// 大于 针对时间
-			condition = " where date > '" + data + "'";
-		} else if (strSymbol.equals("<")) {// ＜小于 针对时间
-			condition = " where date < '" + data + "'";
-		} else if (strSymbol.equals("=")) {// 等于 针对时间
-			condition = " where date = '" + data + "'";
+		String data = editQuery.getText().toString();
+		if(isRent){
+			String strSymbol = spSymbol.getSelectedItem().toString();
+			if (strSymbol == null || strSymbol.equals("")) {// like
+				condition = " where project like '%" + data + "%'  or state like '%" + data + "%' or date like '%"
+						+ data + "%'";
+			} else if (strSymbol.equals("!")) {// 非 针对时间
+				condition = " where date not like '%" + data + "%'";
+			} else if (strSymbol.equals(">")) {// 大于 针对时间
+				condition = " where date > '" + data + "'";
+			} else if (strSymbol.equals("<")) {// ＜小于 针对时间
+				condition = " where date < '" + data + "'";
+			} else if (strSymbol.equals("=")) {// 等于 针对时间
+				condition = " where date = '" + data + "'";
+			}
+			refreshView(condition);
+		}else{
+//			TrickerUtils.showToast(getActivity(),"份子钱查询");
+			data="";//不加条件
+			condition=" where name like '%"+data+"%' ";
+			refreshView(condition,false);
 		}
-		/*
-		 * //查询条件匹配项目、日期、状态 String condition =
-		 * " where project like '%"+data+"%'  or state like '%"
-		 * +data+"%' or date like '%"+data+"%'";
-		 * //判断如果输入的是日期，则按照日期查询，如果对日期取反，就按照非当前日期查询，如果是<日期就小于，＞日期就大于 String
-		 * strData = data.replace("/", ""); int count = data.length() -
-		 * strData.length(); if(count==2){//简单判断，如果包含2个斜杠就是日期
-		 * if(data.startsWith("!")){ data=data.substring(1);
-		 * condition=" where date not like '%"+data+"%'"; }else
-		 * if(data.startsWith(">")){ data=data.substring(1);
-		 * condition=" where date > '"+data+"'"; }else
-		 * if(data.startsWith("<")){ data=data.substring(1);
-		 * condition=" where date < '"+data+"'"; }else{
-		 * condition=" where date like '%"+data+"%'"; } }
-		 */
 		// 强制关闭输入法
 //		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 //		imm.hideSoftInputFromWindow(editQuery.getWindowToken(), 0);
 		TrickerUtils.closeKeybord(editQuery,getActivity());
-		refreshView(condition);
-
+	}
+	private void execQuery() {
+		execQuery(true);
 	}
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-		switch (position) {
-			case 0:
-				setEditDate(false);
-				break;
-			case 1:
-			case 2:
-			case 3:
-			case 4:
-				setEditDate(true);
-				break;
+		if(parent.getId()==R.id.editType){
+			if(position==0){
+				setWidgetVisible(true);
+				execQuery(true);
+//				setProjectVisible(true);
+			}else if(position==1){
+				setWidgetVisible(false);
+				execQuery(false);
+//				setProjectVisible(false);
+			}
+		}else if(parent.getId()==R.id.spSymbol){
+			switch (position) {
+				case 0:
+					setEditDate(false);
+					break;
+				case 1:
+				case 2:
+				case 3:
+				case 4:
+					setEditDate(true);
+					break;
 
-			default:
-				break;
+				default:
+					break;
+			}
+		}
+	}
+
+	private void setWidgetVisible(boolean b) {
+		isRent = b;
+		if(b){
+			spSymbol.setVisibility(View.VISIBLE);
+//			txtQueryInfo.setVisibility(View.VISIBLE);
+//			txtTotalMoney.setVisibility(View.VISIBLE);
+			editQuery.setVisibility(View.VISIBLE);
+		}else{
+			spSymbol.setVisibility(View.GONE);
+//			txtQueryInfo.setVisibility(View.GONE);
+//			txtTotalMoney.setVisibility(View.GONE);
+			editQuery.setVisibility(View.GONE);
 		}
 	}
 
@@ -362,6 +425,16 @@ public class QueryFragment extends ListFragment
 //			Intent intent = new Intent(getActivity(), SearchActivity.class);
 //			startActivity(intent);
 
+		}
+	}
+	private void setProjectVisible(boolean b) {
+		execQuery(b);
+		if(b){
+//			tableLayoutProject.setVisibility(View.VISIBLE);
+//			tableLayoutMarry.setVisibility(View.GONE);
+		}else{
+//			tableLayoutProject.setVisibility(View.GONE);
+//			tableLayoutMarry.setVisibility(View.VISIBLE);
 		}
 	}
 }

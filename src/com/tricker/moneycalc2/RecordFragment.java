@@ -10,6 +10,7 @@ import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.LocationSource;
 import com.tricker.moneycalc2.db.BaseDao;
 import com.tricker.moneycalc2.db.TrickerDB;
+import com.tricker.moneycalc2.model.Marry;
 import com.tricker.moneycalc2.model.Project;
 import com.tricker.moneycalc2.util.TrickerUtils;
 
@@ -35,20 +36,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.R.id.edit;
+import static com.tricker.moneycalc2.R.id.editMoney1;
+import static com.tricker.moneycalc2.R.id.editMoney2;
+import static com.tricker.moneycalc2.R.id.editName;
+import static com.tricker.moneycalc2.R.id.editRemark1;
+import static com.tricker.moneycalc2.R.id.editState1;
 
-public class RecordFragment extends Fragment implements OnClickListener, LocationSource, AMapLocationListener {
-	private Toolbar mToolbar;
-	private Toast mToast;
-	private PopupWindow mPopupWindow;
-	private EditText editDate, editMoney, editProject, editRemark;
-	private Spinner editPercent, editState;
+
+public class RecordFragment extends Fragment implements OnClickListener, LocationSource, AMapLocationListener, AdapterView.OnItemSelectedListener {
+	private TableLayout tableLayoutProject,tableLayoutMarry;
+	private EditText editDate, editMoney, editProject, editRemark,editName,editMoney1,editMoney2,editRemark1;
+	private Spinner editPercent, editState,editType,editState1;
 	// private SimpleDateFormat format;
 	private Button btnSave;
 	private TextView txtLocation;
@@ -105,64 +113,6 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 		if (isEdit) {// 编辑
 			setValues();
 		}
-//		mToolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
-//		// App Logo
-////        mToolbar.setLogo(R.drawable.app_icon);
-//		// 主标题,默认为app_label的名字
-//		mToolbar.setTitle("Title");
-//		mToolbar.setTitleTextColor(Color.YELLOW);
-//		// 副标题
-//		mToolbar.setSubtitle("Sub title");
-//		mToolbar.setSubtitleTextColor(Color.parseColor("#80ff0000"));
-//		//侧边栏的按钮
-//		mToolbar.setNavigationIcon(R.drawable.back_normal);
-//		//取代原本的actionbar
-//		((AppCompatActivity) getActivity()).setSupportActionBar(mToolbar);
-//		//设置NavigationIcon的点击事件,需要放在setSupportActionBar之后设置才会生效,
-//		//因为setSupportActionBar里面也会setNavigationOnClickListener
-//		mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				mToast.setText("click NavigationIcon");
-//				mToast.show();
-//			}
-//		});
-//		//设置toolBar上的MenuItem点击事件
-//		mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-//			@Override
-//			public boolean onMenuItemClick(MenuItem item) {
-//				switch (item.getItemId()) {
-//					case R.id.action_edit:
-//						mToast.setText("click edit");
-//						break;
-//					case R.id.action_share:
-//						mToast.setText("click share");
-//						break;
-//					case R.id.action_overflow:
-//						//弹出自定义overflow
-//						popUpMyOverflow();
-//						return true;
-//				}
-//				mToast.show();
-//				return true;
-//			}
-//		});
-//		//ToolBar里面还可以包含子控件
-//		mToolbar.findViewById(R.id.btn_diy).setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				mToast.setText("点击自定义按钮");
-//				mToast.show();
-//			}
-//		});
-//		mToolbar.findViewById(R.id.tv_title).setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				mToast.setText("点击自定义标题");
-//				mToast.show();
-//			}
-//		});
-//		setHasOptionsMenu(true);
 		//利用安卓API加google地图定位，并不是非常准确，用高德地图代替
 		/*locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 		List<String> providers = locationManager.getProviders(true);
@@ -208,39 +158,6 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 			txtLocation.setText("1:"+amapLocation.getAddress());
 		}
 		return rootView;
-	}
-	/**
-	 * 弹出自定义的popWindow
-	 */
-	public void popUpMyOverflow() {
-		//获取状态栏高度
-		Rect frame = new Rect();
-		((AppCompatActivity) getActivity()).getWindow().getDecorView().getWindowVisibleDisplayFrame(frame);
-		//状态栏高度+toolbar的高度
-		int yOffset = frame.top + mToolbar.getHeight();
-		if (null == mPopupWindow) {
-			//初始化PopupWindow的布局
-			View popView = ((AppCompatActivity) getActivity()).getLayoutInflater().inflate(R.layout.action_overflow_popwindow, null);
-			//popView即popupWindow的布局，ture设置focusAble.
-			mPopupWindow = new PopupWindow(popView,
-					ViewGroup.LayoutParams.WRAP_CONTENT,
-					ViewGroup.LayoutParams.WRAP_CONTENT, true);
-			//必须设置BackgroundDrawable后setOutsideTouchable(true)才会有效
-			mPopupWindow.setBackgroundDrawable(new ColorDrawable());
-			//点击外部关闭。
-			mPopupWindow.setOutsideTouchable(true);
-			//设置一个动画。
-			mPopupWindow.setAnimationStyle(android.R.style.Animation_Dialog);
-			//设置Gravity，让它显示在右上角。
-			mPopupWindow.showAtLocation(mToolbar, Gravity.RIGHT | Gravity.TOP, 0, yOffset);
-			//设置item的点击监听
-			popView.findViewById(R.id.ll_item1).setOnClickListener(this);
-			popView.findViewById(R.id.ll_item2).setOnClickListener(this);
-			popView.findViewById(R.id.ll_item3).setOnClickListener(this);
-		} else {
-			mPopupWindow.showAtLocation(mToolbar, Gravity.RIGHT | Gravity.TOP, 0, yOffset);
-		}
-
 	}
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -412,8 +329,20 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 		btnSave = (Button) rootView.findViewById(R.id.btnSave);
 		editRemark = (EditText) rootView.findViewById(R.id.editRemark);
 		editState = (Spinner) rootView.findViewById(R.id.editState);
-		btnSave.setText("保存");
+		editType= (Spinner) rootView.findViewById(R.id.editType);
 		txtLocation = (TextView) rootView.findViewById(R.id.txtLocation);
+		tableLayoutProject = (TableLayout) rootView.findViewById(R.id.project);
+		tableLayoutMarry = (TableLayout) rootView.findViewById(R.id.marry);
+		btnSave.setText("保存");
+
+		editName = (EditText) rootView.findViewById(R.id.editName);
+		editMoney1 = (EditText) rootView.findViewById(R.id.editMoney1);
+		editMoney2 = (EditText) rootView.findViewById(R.id.editMoney2);
+		editState1 = (Spinner) rootView.findViewById(R.id.editState1);
+		editRemark1 = (EditText) rootView.findViewById(R.id.editRemark1);
+
+		editType.setOnItemSelectedListener(this);
+
 
 		// format = new SimpleDateFormat("yyyy/MM/dd");
 		// String date = format.format(Calendar.getInstance().getTime());
@@ -450,63 +379,80 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 				mainActivity.onSectionAttached(3);
 				mainActivity.restoreActionBar();
 				break;
-			case R.id.ll_item1:
-				mToast.setText("哈哈");
-				break;
-			case R.id.ll_item2:
-				mToast.setText("呵呵");
-				break;
-			case R.id.ll_item3:
-				mToast.setText("嘻嘻");
-				break;
-
 			default:
 				break;
 		}
-		//点击PopWindow的item后,关闭此PopWindow
-		if (null != mPopupWindow && mPopupWindow.isShowing()) {
-			mPopupWindow.dismiss();
-		}
-		mToast.show();
 	}
 
 	private void saveData() {
 		BaseDao dao = new BaseDao(getActivity());
 //		SQLiteDatabase db = dao.getWritableDatabase();
+		//判断是保存房租还是份子钱
+		if(editType.getSelectedItem().equals("房租")){
+			String projectName = this.editProject.getText().toString();
+			String money = this.editMoney.getText().toString();
+			String editDate = this.editDate.getText().toString();
+			String editPercent = this.editPercent.getSelectedItem().toString();
+			String editRemark = this.editRemark.getText().toString();
+			String editState = this.editState.getSelectedItem().toString();
+			if (TextUtils.isEmpty(money)) {
+				TrickerUtils.showToast(getActivity(), "金额不能为空！");
+			}
+			if (TextUtils.isEmpty(projectName)) {
+				TrickerUtils.showToast(getActivity(), "项目不能为空！");
+				return;
+			}
+			if (TextUtils.isEmpty(editPercent)) {
+				TrickerUtils.showToast(getActivity(), "占比不能为空！");
+			}
+			Project project = new Project();
+			project.setProject(projectName);
+			project.setMoney(money);
+			project.setDate(editDate);
+			project.setPercent(editPercent);
+			project.setRemark(editRemark);
+			project.setState(editState);
+			if (isEdit) {
+				project.setId(getArguments().getInt("_id"));
+				TrickerDB.getInstance(getActivity()).saveProject(project,true);
+				// TrickerUtils.showToast(getActivity(), "修改成功！");
+				MainActivity mainActivity = (MainActivity) getActivity();
+				mainActivity.getmNavigationDrawerFragment().selectItem(1);
+			} else {
+				TrickerDB.getInstance(getActivity()).saveProject(project);
+				TrickerUtils.showToast(getActivity(), "保存成功！");
+			}
 
-		String projectName = this.editProject.getText().toString();
-		String money = this.editMoney.getText().toString();
-		String editDate = this.editDate.getText().toString();
-		String editPercent = this.editPercent.getSelectedItem().toString();
-		String editRemark = this.editRemark.getText().toString();
-		String editState = this.editState.getSelectedItem().toString();
-		if (TextUtils.isEmpty(money)) {
-			TrickerUtils.showToast(getActivity(), "金额不能为空！");
+		}else if(editType.getSelectedItem().equals("份子钱")){
+			String name = this.editName.getText().toString();
+			String money1 = this.editMoney1.getText().toString();
+			String money2 = this.editMoney2.getText().toString();
+			String editRemark1 = this.editRemark1.getText().toString();
+			String editState1 = this.editState1.getSelectedItem().toString();
+			if (TextUtils.isEmpty(money1)) {
+				TrickerUtils.showToast(getActivity(), "获得金额不能为空！");
+			}
+			if (TextUtils.isEmpty(name)) {
+				TrickerUtils.showToast(getActivity(), "姓名不能为空！");
+				return;
+			}
+			Marry marry = new Marry();
+			marry.setName(name);
+			marry.setGetMoney(money1);
+			marry.setPayMoney(money2);
+			marry.setRemark(editRemark1);
+			marry.setState(editState1);
+			if (isEdit) {
+				marry.setId(getArguments().getInt("_id"));
+				TrickerDB.getInstance(getActivity()).saveMarry(marry,true);
+				MainActivity mainActivity = (MainActivity) getActivity();
+				mainActivity.getmNavigationDrawerFragment().selectItem(1);
+			} else {
+				TrickerDB.getInstance(getActivity()).saveMarry(marry);
+				TrickerUtils.showToast(getActivity(), "保存成功！");
+			}
 		}
-		if (TextUtils.isEmpty(projectName)) {
-			TrickerUtils.showToast(getActivity(), "项目不能为空！");
-			return;
-		}
-		if (TextUtils.isEmpty(editPercent)) {
-			TrickerUtils.showToast(getActivity(), "占比不能为空！");
-		}
-		Project project = new Project();
-		project.setProject(projectName);
-		project.setMoney(money);
-		project.setDate(editDate);
-		project.setPercent(editPercent);
-		project.setRemark(editRemark);
-		project.setState(editState);
-		if (isEdit) {
-			project.setId(getArguments().getInt("_id"));
-			TrickerDB.getInstance(getActivity()).saveProject(project,true);
-			// TrickerUtils.showToast(getActivity(), "修改成功！");
-			MainActivity mainActivity = (MainActivity) getActivity();
-			mainActivity.getmNavigationDrawerFragment().selectItem(1);
-		} else {
-			TrickerDB.getInstance(getActivity()).saveProject(project);
-			TrickerUtils.showToast(getActivity(), "保存成功！");
-		}
+
 
 //		//无论修改和添加都需要备份当前的最新数据库（提取到增删改里）
 //		File fromFile = new File(TrickerUtils.getPath(getActivity(), TrickerUtils.DATABASE_PATH));
@@ -582,5 +528,30 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 				TrickerUtils.showToast(getActivity(), errText);
 			}
 		}
+	}
+
+	@Override
+	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//		TrickerUtils.showToast(getActivity(),"ss");
+		if(position==0){
+			setProjectVisible(true);
+		}else if(position==1){
+			setProjectVisible(false);
+		}
+	}
+
+	private void setProjectVisible(boolean b) {
+		if(b){
+			tableLayoutProject.setVisibility(View.VISIBLE);
+			tableLayoutMarry.setVisibility(View.GONE);
+		}else{
+			tableLayoutProject.setVisibility(View.GONE);
+			tableLayoutMarry.setVisibility(View.VISIBLE);
+		}
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> parent) {
+
 	}
 }

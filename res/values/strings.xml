@@ -53,5 +53,9 @@
     </string>
     <string name="title_activity_tab">TabActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="type">类型：</string>
+    <string name="name">姓名：</string>
+    <string name="getMoney">获得金额</string>
+    <string name="payMoney">支出金额：</string>
 
 </resources>

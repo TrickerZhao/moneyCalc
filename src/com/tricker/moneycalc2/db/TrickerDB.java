@@ -7,6 +7,7 @@ import java.util.List;
 import com.tricker.moneycalc2.MyApplication;
 import com.tricker.moneycalc2.model.City;
 import com.tricker.moneycalc2.model.County;
+import com.tricker.moneycalc2.model.Marry;
 import com.tricker.moneycalc2.model.Project;
 import com.tricker.moneycalc2.model.Province;
 import com.tricker.moneycalc2.model.User;
@@ -18,11 +19,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
+import static com.tricker.moneycalc2.R.string.condition;
 import static com.tricker.moneycalc2.R.string.project;
 
 public class TrickerDB {
 	public static final String DB_NAME = "db";
-	public static final int VERSION=8;
+	public static final int VERSION=9;
 	private static TrickerDB trickerDB;
 	private SQLiteDatabase db;
 	private Context context;
@@ -102,10 +104,40 @@ public class TrickerDB {
 			values.put("percent", project.getPercent());
 			values.put("remark", project.getRemark());
 			values.put("state", project.getState());
+			values.put("user",MyApplication.getUser().getName());
 			if(isEdit){
 				db.update(BaseDao.TABLE_PROJECT, values, " _id=?", new String[] { "" + project.getId() });
 			}else{
 				db.insert(BaseDao.TABLE_PROJECT, null, values);
+			}
+			//无论修改和添加都需要备份当前的最新数据库
+			File fromFile = new File(TrickerUtils.getPath(context, TrickerUtils.DATABASE_PATH));
+			File toFile = new File(Environment.getExternalStorageDirectory().getPath()+File.separator+"tricker"+File.separator+"tricker.db");
+			String result =TrickerUtils.copyfile(fromFile, toFile , true);
+		}
+	}
+	public void saveMarry(Marry marry){
+		saveMarry(marry, false);
+	}
+
+	/**
+	 * 保存及修改Project
+	 * @param marry
+	 * @param isEdit
+	 */
+	public void saveMarry(Marry marry,boolean isEdit){
+		if(marry!=null){
+			ContentValues values = new ContentValues();
+			values.put("name", marry.getName());
+			values.put("getMoney", marry.getGetMoney());
+			values.put("payMoney", marry.getPayMoney());
+			values.put("remark", marry.getRemark());
+			values.put("state", marry.getState());
+			values.put("user",MyApplication.getUser().getName());
+			if(isEdit){
+				db.update(BaseDao.TABLE_MARRY, values, " _id=?", new String[] { "" + marry.getId() });
+			}else{
+				db.insert(BaseDao.TABLE_MARRY, null, values);
 			}
 			//无论修改和添加都需要备份当前的最新数据库
 			File fromFile = new File(TrickerUtils.getPath(context, TrickerUtils.DATABASE_PATH));
@@ -146,6 +178,13 @@ public class TrickerDB {
 		File toFile = new File(Environment.getExternalStorageDirectory().getPath()+File.separator+"tricker"+File.separator+"tricker.db");
 		String result =TrickerUtils.copyfile(fromFile, toFile , true);
 	}
+	public void deleteMarry(int projectId){
+		String[] condition = new String[] { projectId + "" };
+		db.delete(BaseDao.TABLE_MARRY, "_id=?", condition);
+		File fromFile = new File(TrickerUtils.getPath(this.context, TrickerUtils.DATABASE_PATH));
+		File toFile = new File(Environment.getExternalStorageDirectory().getPath()+File.separator+"tricker"+File.separator+"tricker.db");
+		String result =TrickerUtils.copyfile(fromFile, toFile , true);
+	}
 
 	/**
 	 * 根据id一键设置已结算
@@ -179,11 +218,25 @@ public class TrickerDB {
 		return list;
 	}*/
 	public Cursor loadProjects(){
-		return loadProjects(" where 1=1 ");
+		return loadProjects("");
+	}
+	public Cursor loadMarries(){
+		return loadMarries("");
 	}
 	public Cursor loadProjects(String condition){
+		if(condition==null||condition.equals("")){
+			condition+=" where 1=1 ";
+		}
 		condition+=" and user='"+ MyApplication.getUser().getName()+"'";
-		String sql = BaseDao.QUERY_ALL + condition+ "  order by date desc";
+		String sql = BaseDao.QUERY_ALL_PROJECT + condition+ "  order by date desc";
+		return db.rawQuery(sql, null);
+	}
+	public Cursor loadMarries(String condition){
+		if(condition==null||condition.equals("")){
+			condition+=" where 1=1 ";
+		}
+		condition+=" and user='"+ MyApplication.getUser().getName()+"'";
+		String sql = BaseDao.QUERY_ALL_MARRY + condition+ "  order by getMoney desc";
 		return db.rawQuery(sql, null);
 	}
 	/**
