@@ -3,6 +3,7 @@
     <string-array name="type">
         <item >房租</item>
         <item >份子钱</item>
+        <item >销售额</item>
     </string-array>
     <string-array name="percent">
         <item >2/3</item>
@@ -19,5 +20,16 @@
         <item >&lt;</item>
         <item >&gt;</item>
     </string-array>
-    
+    <string-array name="saleType">
+        <item >堆堆袜</item>
+        <item >短袜</item>
+        <item >连裤袜</item>
+        <item >打底衫</item>
+        <item >打底裤</item>
+        <item >内裤</item>
+        <item >睡衣</item>
+        <item >内衣</item>
+        <item >其他</item>
+    </string-array>
+
 </resources>

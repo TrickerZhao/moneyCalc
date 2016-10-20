@@ -16,10 +16,11 @@ import static android.R.id.primary;
  */
 public class BaseDao extends SQLiteOpenHelper {
 	/*项目表*/
-	public static final String TABLE_PROJECT = "PROJECT",TABLE_USER="USER",TABLE_MARRY="MARRY";
+	public static final String TABLE_PROJECT = "PROJECT",TABLE_USER="USER",TABLE_MARRY="MARRY",TABLE_SALE="SALE";
 	/*查询所有的项目*/
 	public static final String QUERY_ALL_PROJECT = "select * from " + BaseDao.TABLE_PROJECT;
 	public static final String QUERY_ALL_MARRY = "select * from " + BaseDao.TABLE_MARRY;
+	public static final String QUERY_ALL_SALE = "select * from " + BaseDao.TABLE_SALE;
 	/*创建项目表*/
 	public static final String CREATE_PROJECT = "create table project (_id integer primary key autoincrement,"
 			+ "project text default 0,money int default 0,date date,percent real,remark text  default \"备注\","
@@ -40,7 +41,9 @@ public class BaseDao extends SQLiteOpenHelper {
 	/*创建份子钱表*/
 	public static final String CREATE_MARRY = "create table marry (_id integer primary key autoincrement, name text not null, getMoney int default 0" +
 			", payMoney int default 0,remark text,state text default \"未结算\",user text default \"Tricker\")";
-
+	/*创建销售表*/
+	public static final String CREATE_SALE = "create table sale (_id integer primary key autoincrement, date text not null, week text not null" +
+			", money int default 0,remark text,type text,user text default \"Tricker\")";
 	public BaseDao(Context context) {
 		super(context, "db", null, TrickerDB.VERSION);
 	}
@@ -57,6 +60,7 @@ public class BaseDao extends SQLiteOpenHelper {
 		db.execSQL(CREATE_HISTORY);
 		db.execSQL(CREATE_USER);
 		db.execSQL(CREATE_MARRY);
+		db.execSQL(CREATE_SALE);
 	}
 
 	@Override
@@ -85,6 +89,8 @@ public class BaseDao extends SQLiteOpenHelper {
 			case 8:
 				db.execSQL(CREATE_MARRY);//增加记录份子钱
 			case 9:
+				db.execSQL(CREATE_SALE);//增加记录销售
+			case 10:
 
 			default:
 				break;

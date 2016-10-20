@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
     abi="armeabi-v7a,armeabi"
-    api-level="22"
-    density="xxhdpi"
+    api-level="21"
+    density="xhdpi"
     format="8"
     plugin-version="2.2.1"
-    timestamp="26393662810096"
+    timestamp="112318991070615"
     token="-4586919512905284314"
     verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="609" />
+        duration="244" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="478" />
+        duration="28" />
     <task
         name="verifier"
-        duration="400" />
+        duration="2" />
 
     <artifact
         location="F:\git\MoneyCalc\build\outputs\apk\MoneyCalc-debug.apk"
         type="MAIN" />
 
     <build
-        timestamp="26393662810096"
+        timestamp="112318991070615"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="F:\git\MoneyCalc\build\outputs\apk\MoneyCalc-debug.apk"

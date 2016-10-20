@@ -10,8 +10,10 @@ import java.util.List;
 import com.tricker.moneycalc2.db.BaseDao;
 import com.tricker.moneycalc2.db.TrickerDB;
 import com.tricker.moneycalc2.model.Project;
+import com.tricker.moneycalc2.util.Constant;
 import com.tricker.moneycalc2.util.TrickerUtils;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -27,6 +29,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import android.view.ViewGroup;
@@ -43,16 +47,18 @@ import android.widget.TextView;
 
 import static android.R.attr.data;
 import static com.amap.api.mapcore.offlinemap.a.b;
+import static com.tricker.moneycalc2.R.string.condition;
 
 public class QueryFragment extends ListFragment
 		implements OnItemLongClickListener, OnKeyListener, OnItemSelectedListener, android.view.View.OnClickListener {
-	private SimpleCursorAdapter adapter,adapter2;
+	private SimpleCursorAdapter adapter,adapter2,adapter3;
 	private BaseDao dao;
 	private TextView txtQueryInfo, txtTotalMoney;
 	private EditText editQuery;
 	private Spinner spSymbol,editType;
 	private Cursor cursor;
-	private boolean isRent=true;
+//	private boolean isRent=true;
+	private int type= -1;
 
 	public Cursor getCursor() {
 		return cursor;
@@ -93,6 +99,11 @@ public class QueryFragment extends ListFragment
 		editQuery.setOnKeyListener(this);
 		spSymbol.setOnItemSelectedListener(this);
 		editType.setOnItemSelectedListener(this);
+		if(!MyApplication.getUser().getName().equals("Tricker")){
+			editType.setSelection(2);
+//			editType.setClickable(false);
+			editType.setEnabled(false);//设置不可编辑
+		}
 		return rootView;
 	}
 
@@ -119,6 +130,7 @@ public class QueryFragment extends ListFragment
 
 		Cursor cursor =TrickerDB.getInstance(getActivity()).loadProjects();
 		Cursor cursor2 =TrickerDB.getInstance(getActivity()).loadMarries();
+		Cursor cursor3 =TrickerDB.getInstance(getActivity()).loadSales();
 		setCursor(cursor);
 		updateTitle(cursor);
 		String[] from = new String[] { "project", "money", "date", "percent", "state" };
@@ -130,23 +142,35 @@ public class QueryFragment extends ListFragment
 		int[] to2 = new int[] { R.id.txtProject, R.id.txtMoney,  R.id.txtPercent};
 		adapter2 = new SimpleCursorAdapter(getActivity(), R.layout.list_cell, cursor2, from2, to2,
 				SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+
+		String[] from3 = new String[] { "type", "money", "date", "week" };
+		int[] to3 = new int[] { R.id.txtProject, R.id.txtMoney,R.id.txtDate,  R.id.txtState};
+		adapter3 = new SimpleCursorAdapter(getActivity(), R.layout.list_cell, cursor3, from3, to3,
+				SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+
+
 		setListAdapter(adapter);
 
 		getListView().setOnItemLongClickListener(this);
 	}
-	private void updateTitle(Cursor c,boolean isRent) {
+	private void updateTitle(Cursor c,int type) {
 		// double totalMoney = 0;
 		BigDecimal totalMoney = new BigDecimal(0);
-		if(isRent){
+		if(type==Constant.RENT){
 			for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
 				// totalMoney+=c.getDouble(c.getColumnIndex("money"));
 				String strMoney = c.getString(c.getColumnIndex("money"));
 				totalMoney = totalMoney.add(TrickerUtils.parseToDecimal(strMoney));
 			}
-		}else{
+		}else if(type==Constant.MARRY){
 			for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
 				// totalMoney+=c.getDouble(c.getColumnIndex("money"));
 				String strMoney = c.getString(c.getColumnIndex("getMoney"));
+				totalMoney = totalMoney.add(TrickerUtils.parseToDecimal(strMoney));
+			}
+		}else if(type==Constant.SALE){
+			for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+				String strMoney = c.getString(c.getColumnIndex("money"));
 				totalMoney = totalMoney.add(TrickerUtils.parseToDecimal(strMoney));
 			}
 		}
@@ -157,7 +181,7 @@ public class QueryFragment extends ListFragment
 //		TrickerUtils.showToast(getActivity(), "数据刷新成功！");
 	}
 	private void updateTitle(Cursor c) {
-		updateTitle(c,true);
+		updateTitle(c,Constant.RENT);
 	}
 
 	@Override
@@ -210,18 +234,24 @@ public class QueryFragment extends ListFragment
 						int total = hour + minute;
 						if (password.getText() != null && password.getText().toString().equals(String.valueOf(total))) {
 							//判断是删除份子钱还是房租
-							if(isRent){
+							if(type==Constant.RENT){
 								Cursor c = adapter.getCursor();
 								c.moveToPosition(position);
 								int projectId = c.getInt(c.getColumnIndex("_id"));
 								TrickerDB.getInstance(getActivity()).deleteProject(projectId);
 								refreshView();
-							}else{
+							}else if(type==Constant.MARRY){
 								Cursor c = adapter2.getCursor();
 								c.moveToPosition(position);
 								int marryId = c.getInt(c.getColumnIndex("_id"));
 								TrickerDB.getInstance(getActivity()).deleteMarry(marryId);
-								refreshView(false);
+								refreshView(Constant.MARRY);
+							}else if(type==Constant.SALE){
+								Cursor c = adapter3.getCursor();
+								c.moveToPosition(position);
+								int saleId = c.getInt(c.getColumnIndex("_id"));
+								TrickerDB.getInstance(getActivity()).deleteSale(saleId);
+								refreshView(Constant.SALE);
 							}
 						} else {
 							TrickerUtils.showToast(getActivity(), "Are You Kidding Me??");
@@ -238,18 +268,18 @@ public class QueryFragment extends ListFragment
 	}
 
 	public void refreshView() {
-		refreshView("",true);
+		refreshView("",Constant.RENT);
 
 	}
-	public void refreshView(boolean isRent) {
-		refreshView("",isRent);
+	public void refreshView(int type) {
+		refreshView("",type);
 
 	}
 	private void refreshView(String condition) {
-		refreshView(condition,true);
+		refreshView(condition,Constant.RENT);
 	}
-	private void refreshView(String condition,boolean isRent) {
-		if(isRent){
+	private void refreshView(String condition,int type) {
+		if(type ==Constant.RENT){
 //		String sql = BaseDao.QUERY_ALL + condition + " order by date desc";
 //		SQLiteDatabase db = dao.getReadableDatabase();
 //		Cursor c = db.rawQuery(sql, null);
@@ -265,7 +295,7 @@ public class QueryFragment extends ListFragment
 			adapter.swapCursor(cursor);
 //		adapter.notifyDataSetChanged();
 			updateTitle(cursor);
-		}else{
+		}else if(type==Constant.MARRY){
 //			Cursor cursor =TrickerDB.getInstance(getActivity()).loadProjects(condition);
 //			setCursor(cursor);
 //			adapter.swapCursor(cursor);
@@ -273,7 +303,12 @@ public class QueryFragment extends ListFragment
 			setListAdapter(adapter2);
 			Cursor cursor =TrickerDB.getInstance(getActivity()).loadMarries(condition);
 			adapter2.swapCursor(cursor);
-			updateTitle(cursor,false);
+			updateTitle(cursor,Constant.MARRY);
+		}else if(type ==Constant.SALE){
+			setListAdapter(adapter3);
+			Cursor cursor =TrickerDB.getInstance(getActivity()).loadSales(condition);
+			adapter3.swapCursor(cursor);
+			updateTitle(cursor,Constant.SALE);
 		}
 	}
 
@@ -291,19 +326,22 @@ public class QueryFragment extends ListFragment
 	public boolean onKey(View view, int keyCode, KeyEvent event) {
 		// 用户点击回车键，并且是弹起操作！
 		if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
-			execQuery();
+			execQuery(type);
+
 		}
 		return false;//设置成true，点击键盘上的   × 会无效
 	}
 
+
 	/**
 	 * 房租or份子钱
-	 * @param isRent
+	 * @param type
      */
-	private void execQuery(boolean isRent) {
+	private void execQuery(int type) {
+		this.type = type;
 		String condition = "";
 		String data = editQuery.getText().toString();
-		if(isRent){
+		if(type ==Constant.RENT){
 			String strSymbol = spSymbol.getSelectedItem().toString();
 			if (strSymbol == null || strSymbol.equals("")) {// like
 				condition = " where project like '%" + data + "%'  or state like '%" + data + "%' or date like '%"
@@ -318,11 +356,15 @@ public class QueryFragment extends ListFragment
 				condition = " where date = '" + data + "'";
 			}
 			refreshView(condition);
-		}else{
+		}else if(type ==Constant.MARRY){
 //			TrickerUtils.showToast(getActivity(),"份子钱查询");
 			data="";//不加条件
 			condition=" where name like '%"+data+"%' ";
-			refreshView(condition,false);
+			refreshView(condition,Constant.MARRY);
+		}else if(type == Constant.SALE){
+//			data="";//不加条件
+			condition=" where type like '%"+data+"%' ";
+			refreshView(condition,Constant.SALE);
 		}
 		// 强制关闭输入法
 //		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -330,20 +372,21 @@ public class QueryFragment extends ListFragment
 		TrickerUtils.closeKeybord(editQuery,getActivity());
 	}
 	private void execQuery() {
-		execQuery(true);
+		execQuery(Constant.RENT);
 	}
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 		if(parent.getId()==R.id.editType){
 			if(position==0){
-				setWidgetVisible(true);
-				execQuery(true);
-//				setProjectVisible(true);
+				setWidgetVisible(position);
+				execQuery(Constant.RENT);
 			}else if(position==1){
-				setWidgetVisible(false);
-				execQuery(false);
-//				setProjectVisible(false);
+				setWidgetVisible(position);
+				execQuery(Constant.MARRY);
+			}else if(position==2){
+				setWidgetVisible(position);
+				execQuery(Constant.SALE);
 			}
 		}else if(parent.getId()==R.id.spSymbol){
 			switch (position) {
@@ -363,19 +406,18 @@ public class QueryFragment extends ListFragment
 		}
 	}
 
-	private void setWidgetVisible(boolean b) {
-		isRent = b;
-		if(b){
+	private void setWidgetVisible(int type) {
+		if(type==Constant.RENT){
 			spSymbol.setVisibility(View.VISIBLE);
-//			txtQueryInfo.setVisibility(View.VISIBLE);
-//			txtTotalMoney.setVisibility(View.VISIBLE);
 			editQuery.setVisibility(View.VISIBLE);
-		}else{
+		}else if(type==Constant.MARRY){
 			spSymbol.setVisibility(View.GONE);
-//			txtQueryInfo.setVisibility(View.GONE);
-//			txtTotalMoney.setVisibility(View.GONE);
 			editQuery.setVisibility(View.GONE);
+		}else if(type==Constant.SALE){
+			spSymbol.setVisibility(View.GONE);
+			editQuery.setVisibility(View.VISIBLE);
 		}
+
 	}
 
 	private void setEditDate(boolean isDate) {
@@ -427,14 +469,14 @@ public class QueryFragment extends ListFragment
 
 		}
 	}
-	private void setProjectVisible(boolean b) {
-		execQuery(b);
-		if(b){
-//			tableLayoutProject.setVisibility(View.VISIBLE);
-//			tableLayoutMarry.setVisibility(View.GONE);
-		}else{
-//			tableLayoutProject.setVisibility(View.GONE);
-//			tableLayoutMarry.setVisibility(View.VISIBLE);
-		}
-	}
+//	private void setProjectVisible(boolean b) {
+//		execQuery(b);
+//		if(b){
+////			tableLayoutProject.setVisibility(View.VISIBLE);
+////			tableLayoutMarry.setVisibility(View.GONE);
+//		}else{
+////			tableLayoutProject.setVisibility(View.GONE);
+////			tableLayoutMarry.setVisibility(View.VISIBLE);
+//		}
+//	}
 }

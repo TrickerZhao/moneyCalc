@@ -38,7 +38,7 @@
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="Tricker" />
+                />
 
             <EditText
                 android:id="@+id/password"
@@ -51,7 +51,7 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="881113" />
+                 />
 
             <Button
                 android:id="@+id/email_sign_in_button"

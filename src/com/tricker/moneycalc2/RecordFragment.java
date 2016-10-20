@@ -12,6 +12,8 @@ import com.tricker.moneycalc2.db.BaseDao;
 import com.tricker.moneycalc2.db.TrickerDB;
 import com.tricker.moneycalc2.model.Marry;
 import com.tricker.moneycalc2.model.Project;
+import com.tricker.moneycalc2.model.Sale;
+import com.tricker.moneycalc2.util.Constant;
 import com.tricker.moneycalc2.util.TrickerUtils;
 
 import android.app.Activity;
@@ -51,12 +53,15 @@ import static com.tricker.moneycalc2.R.id.editMoney2;
 import static com.tricker.moneycalc2.R.id.editName;
 import static com.tricker.moneycalc2.R.id.editRemark1;
 import static com.tricker.moneycalc2.R.id.editState1;
+import static com.tricker.moneycalc2.R.id.marry;
 
 
 public class RecordFragment extends Fragment implements OnClickListener, LocationSource, AMapLocationListener, AdapterView.OnItemSelectedListener {
-	private TableLayout tableLayoutProject,tableLayoutMarry;
+	private int type= -1;
+	private TableLayout tableLayoutRent,tableLayoutMarry,tableSale;
 	private EditText editDate, editMoney, editProject, editRemark,editName,editMoney1,editMoney2,editRemark1;
-	private Spinner editPercent, editState,editType,editState1;
+	private EditText editSaleDate,editSaleWeek,editSaleMoney,editSaleRemark;
+	private Spinner editPercent, editState,editType,editState1,editSaleType;
 	// private SimpleDateFormat format;
 	private Button btnSave;
 	private TextView txtLocation;
@@ -322,6 +327,7 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 	}
 
 	private void findViews(View rootView) {
+		//rent
 		editDate = (EditText) rootView.findViewById(R.id.editDate);
 		editMoney = (EditText) rootView.findViewById(R.id.editMoney);
 		editProject = (EditText) rootView.findViewById(R.id.editProject);
@@ -331,19 +337,32 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 		editState = (Spinner) rootView.findViewById(R.id.editState);
 		editType= (Spinner) rootView.findViewById(R.id.editType);
 		txtLocation = (TextView) rootView.findViewById(R.id.txtLocation);
-		tableLayoutProject = (TableLayout) rootView.findViewById(R.id.project);
-		tableLayoutMarry = (TableLayout) rootView.findViewById(R.id.marry);
+		tableLayoutRent = (TableLayout) rootView.findViewById(R.id.project);
+		tableLayoutMarry = (TableLayout) rootView.findViewById(marry);
+		tableSale = (TableLayout) rootView.findViewById(R.id.sale);
 		btnSave.setText("保存");
-
+		//marry
 		editName = (EditText) rootView.findViewById(R.id.editName);
 		editMoney1 = (EditText) rootView.findViewById(R.id.editMoney1);
 		editMoney2 = (EditText) rootView.findViewById(R.id.editMoney2);
 		editState1 = (Spinner) rootView.findViewById(R.id.editState1);
 		editRemark1 = (EditText) rootView.findViewById(R.id.editRemark1);
-
 		editType.setOnItemSelectedListener(this);
+		//Sale
+		editSaleDate= (EditText) rootView.findViewById(R.id.editSaleDate);
+		editSaleWeek= (EditText) rootView.findViewById(R.id.editWeek);
+		editSaleType= (Spinner) rootView.findViewById(R.id.editSaleType);
+		editSaleMoney= (EditText) rootView.findViewById(R.id.editSaleMoney);
+		editSaleRemark= (EditText) rootView.findViewById(R.id.editSaleRemark);
 
-
+		if(!MyApplication.getUser().getName().equals("Tricker")){
+			editType.setSelection(2);
+//			editType.setClickable(false);
+			editType.setEnabled(false);//设置不可编辑
+			editSaleMoney.requestFocus();
+		}
+		editSaleDate.setText(TrickerUtils.getSystemDateTime());
+		editSaleWeek.setText(TrickerUtils.getDayOfWeek());
 		// format = new SimpleDateFormat("yyyy/MM/dd");
 		// String date = format.format(Calendar.getInstance().getTime());
 		editDate.setText(TrickerUtils.getSystemDate());
@@ -397,6 +416,7 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 			String editState = this.editState.getSelectedItem().toString();
 			if (TextUtils.isEmpty(money)) {
 				TrickerUtils.showToast(getActivity(), "金额不能为空！");
+				return;
 			}
 			if (TextUtils.isEmpty(projectName)) {
 				TrickerUtils.showToast(getActivity(), "项目不能为空！");
@@ -404,6 +424,7 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 			}
 			if (TextUtils.isEmpty(editPercent)) {
 				TrickerUtils.showToast(getActivity(), "占比不能为空！");
+				return;
 			}
 			Project project = new Project();
 			project.setProject(projectName);
@@ -431,6 +452,7 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 			String editState1 = this.editState1.getSelectedItem().toString();
 			if (TextUtils.isEmpty(money1)) {
 				TrickerUtils.showToast(getActivity(), "获得金额不能为空！");
+				return;
 			}
 			if (TextUtils.isEmpty(name)) {
 				TrickerUtils.showToast(getActivity(), "姓名不能为空！");
@@ -449,6 +471,31 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 				mainActivity.getmNavigationDrawerFragment().selectItem(1);
 			} else {
 				TrickerDB.getInstance(getActivity()).saveMarry(marry);
+				TrickerUtils.showToast(getActivity(), "保存成功！");
+			}
+		}else if(editType.getSelectedItem().equals("销售额")){
+			String date = this.editSaleDate.getText().toString();
+			String week = this.editSaleWeek.getText().toString();
+			String money = this.editSaleMoney.getText().toString();
+			String remark = this.editSaleRemark.getText().toString();
+			String type = this.editSaleType.getSelectedItem().toString();
+			if (TextUtils.isEmpty(money)) {
+				TrickerUtils.showToast(getActivity(), "金额不能为空！");
+				return;
+			}
+			Sale sale = new Sale();
+			sale.setDate(date);
+			sale.setMoney(money);
+			sale.setRemark(remark);
+			sale.setType(type);
+			sale.setWeek(week);
+			if (isEdit) {
+				sale.setId(getArguments().getInt("_id"));
+				TrickerDB.getInstance(getActivity()).saveSale(sale,true);
+				MainActivity mainActivity = (MainActivity) getActivity();
+				mainActivity.getmNavigationDrawerFragment().selectItem(1);
+			} else {
+				TrickerDB.getInstance(getActivity()).saveSale(sale);
 				TrickerUtils.showToast(getActivity(), "保存成功！");
 			}
 		}
@@ -532,22 +579,34 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+		this.type = position;
 //		TrickerUtils.showToast(getActivity(),"ss");
-		if(position==0){
-			setProjectVisible(true);
-		}else if(position==1){
-			setProjectVisible(false);
-		}
+//		if(position==0){
+//			setProjectVisible(true);
+//		}else if(position==1){
+//			setProjectVisible(false);
+//		}
+		setVisible(position);
 	}
 
-	private void setProjectVisible(boolean b) {
-		if(b){
-			tableLayoutProject.setVisibility(View.VISIBLE);
+	private void setVisible(int type) {
+		if(type== Constant.RENT){
+			tableLayoutRent.setVisibility(View.VISIBLE);
 			tableLayoutMarry.setVisibility(View.GONE);
-		}else{
-			tableLayoutProject.setVisibility(View.GONE);
+			tableSale.setVisibility(View.GONE);
+			editMoney.requestFocus();
+		}else if(type==Constant.MARRY){
+			tableLayoutRent.setVisibility(View.GONE);
 			tableLayoutMarry.setVisibility(View.VISIBLE);
+			tableSale.setVisibility(View.GONE);
+			editName.requestFocus();
+		}else if(type==Constant.SALE){
+			tableLayoutRent.setVisibility(View.GONE);
+			tableLayoutMarry.setVisibility(View.GONE);
+			tableSale.setVisibility(View.VISIBLE);
+			editSaleMoney.requestFocus();
 		}
+
 	}
 
 	@Override

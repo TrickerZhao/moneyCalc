@@ -4,6 +4,17 @@
         <item>2/3</item>
         <item>1/2</item>
     </string-array>
+    <string-array name="saleType">
+        <item>堆堆袜</item>
+        <item>短袜</item>
+        <item>连裤袜</item>
+        <item>打底衫</item>
+        <item>打底裤</item>
+        <item>内裤</item>
+        <item>睡衣</item>
+        <item>内衣</item>
+        <item>其他</item>
+    </string-array>
     <string-array name="state">
         <item>未结算</item>
         <item>已结算</item>
@@ -18,6 +29,7 @@
     <string-array name="type">
         <item>房租</item>
         <item>份子钱</item>
+        <item>销售额</item>
     </string-array>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>

@@ -10,6 +10,7 @@ import com.tricker.moneycalc2.model.County;
 import com.tricker.moneycalc2.model.Marry;
 import com.tricker.moneycalc2.model.Project;
 import com.tricker.moneycalc2.model.Province;
+import com.tricker.moneycalc2.model.Sale;
 import com.tricker.moneycalc2.model.User;
 import com.tricker.moneycalc2.util.TrickerUtils;
 
@@ -19,12 +20,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
+import static com.tricker.moneycalc2.R.id.marry;
 import static com.tricker.moneycalc2.R.string.condition;
 import static com.tricker.moneycalc2.R.string.project;
 
 public class TrickerDB {
 	public static final String DB_NAME = "db";
-	public static final int VERSION=9;
+	public static final int VERSION=10;
 	private static TrickerDB trickerDB;
 	private SQLiteDatabase db;
 	private Context context;
@@ -121,7 +123,7 @@ public class TrickerDB {
 	}
 
 	/**
-	 * 保存及修改Project
+	 * 保存及修改Marry
 	 * @param marry
 	 * @param isEdit
 	 */
@@ -138,6 +140,35 @@ public class TrickerDB {
 				db.update(BaseDao.TABLE_MARRY, values, " _id=?", new String[] { "" + marry.getId() });
 			}else{
 				db.insert(BaseDao.TABLE_MARRY, null, values);
+			}
+			//无论修改和添加都需要备份当前的最新数据库
+			File fromFile = new File(TrickerUtils.getPath(context, TrickerUtils.DATABASE_PATH));
+			File toFile = new File(Environment.getExternalStorageDirectory().getPath()+File.separator+"tricker"+File.separator+"tricker.db");
+			String result =TrickerUtils.copyfile(fromFile, toFile , true);
+		}
+	}
+	public void saveSale(Sale sale){
+		saveSale(sale, false);
+	}
+
+	/**
+	 * 保存及修改Sale
+	 * @param sale
+	 * @param isEdit
+	 */
+	public void saveSale(Sale sale,boolean isEdit){
+		if(sale!=null){
+			ContentValues values = new ContentValues();
+			values.put("money", sale.getMoney());
+			values.put("type", sale.getType());
+			values.put("week", sale.getWeek());
+			values.put("remark", sale.getRemark());
+			values.put("date", sale.getDate());
+			values.put("user",MyApplication.getUser().getName());
+			if(isEdit){
+				db.update(BaseDao.TABLE_SALE, values, " _id=?", new String[] { "" + sale.getId() });
+			}else{
+				db.insert(BaseDao.TABLE_SALE, null, values);
 			}
 			//无论修改和添加都需要备份当前的最新数据库
 			File fromFile = new File(TrickerUtils.getPath(context, TrickerUtils.DATABASE_PATH));
@@ -178,9 +209,16 @@ public class TrickerDB {
 		File toFile = new File(Environment.getExternalStorageDirectory().getPath()+File.separator+"tricker"+File.separator+"tricker.db");
 		String result =TrickerUtils.copyfile(fromFile, toFile , true);
 	}
-	public void deleteMarry(int projectId){
-		String[] condition = new String[] { projectId + "" };
+	public void deleteMarry(int marryId){
+		String[] condition = new String[] { marryId + "" };
 		db.delete(BaseDao.TABLE_MARRY, "_id=?", condition);
+		File fromFile = new File(TrickerUtils.getPath(this.context, TrickerUtils.DATABASE_PATH));
+		File toFile = new File(Environment.getExternalStorageDirectory().getPath()+File.separator+"tricker"+File.separator+"tricker.db");
+		String result =TrickerUtils.copyfile(fromFile, toFile , true);
+	}
+	public void deleteSale(int saleId){
+		String[] condition = new String[] { saleId + "" };
+		db.delete(BaseDao.TABLE_SALE, "_id=?", condition);
 		File fromFile = new File(TrickerUtils.getPath(this.context, TrickerUtils.DATABASE_PATH));
 		File toFile = new File(Environment.getExternalStorageDirectory().getPath()+File.separator+"tricker"+File.separator+"tricker.db");
 		String result =TrickerUtils.copyfile(fromFile, toFile , true);
@@ -223,6 +261,9 @@ public class TrickerDB {
 	public Cursor loadMarries(){
 		return loadMarries("");
 	}
+	public Cursor loadSales(){
+		return loadSales("");
+	}
 	public Cursor loadProjects(String condition){
 		if(condition==null||condition.equals("")){
 			condition+=" where 1=1 ";
@@ -237,6 +278,14 @@ public class TrickerDB {
 		}
 		condition+=" and user='"+ MyApplication.getUser().getName()+"'";
 		String sql = BaseDao.QUERY_ALL_MARRY + condition+ "  order by getMoney desc";
+		return db.rawQuery(sql, null);
+	}
+	public Cursor loadSales(String condition){
+		if(condition==null||condition.equals("")){
+			condition+=" where 1=1 ";
+		}
+		condition+=" and user='"+ MyApplication.getUser().getName()+"'";
+		String sql = BaseDao.QUERY_ALL_SALE + condition+ "  order by date asc";
 		return db.rawQuery(sql, null);
 	}
 	/**

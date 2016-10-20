@@ -14,7 +14,9 @@ import java.util.Locale;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Message;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
@@ -22,8 +24,12 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.tricker.moneycalc2.MyApplication;
+import com.tricker.moneycalc2.model.User;
+
 public class TrickerUtils {
 	private static final SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd",Locale.CHINA);
+	private static final SimpleDateFormat timeFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm",Locale.CHINA);
 	public static final int PACKAGE_RESOURCE_PATH = 0;
 	public static final int FILES_DIR = 1;
 	public static final int FILES_DIR_ABSOLUTE_PATH = 2;
@@ -220,6 +226,15 @@ public class TrickerUtils {
 	public static String getSystemDate() {
 		String date = format.format(Calendar.getInstance().getTime());
 		return date;
+	}
+	public static String getSystemDateTime() {
+		String date = timeFormat.format(Calendar.getInstance().getTime());
+		return date;
+	}
+	public static  String getDayOfWeek(){
+		String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
+		int week =Calendar.getInstance().get(Calendar.DAY_OF_WEEK)-1;
+		return weekDays[week];
 	}
 
 	public static SimpleDateFormat getDateFormat() {
