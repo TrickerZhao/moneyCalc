@@ -13,6 +13,7 @@ import java.util.Locale;
 
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Message;
@@ -22,6 +23,7 @@ import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.tricker.moneycalc2.MyApplication;
@@ -65,16 +67,15 @@ public class TrickerUtils {
 	 * @param duration
 	 */
 	public static void showToast(Context context, String text, int duration) {
+		if (TextUtils.isEmpty(text)) {
+			text = "nothing";
+		}
 		Toast.makeText(context, text, duration).show();
 		;
 	}
 
 	public static void showToast(Context context, String text) {
-		if (TextUtils.isEmpty(text)) {
-			text = "nothing";
-		}
-		Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
-		;
+		showToast(context,text,Toast.LENGTH_SHORT);
 	}
 
 	/**
@@ -103,6 +104,34 @@ public class TrickerUtils {
 		DatePickerDialog dlg = new DatePickerDialog(context, callBack, year, month, day);
 		dlg.show();
 	}
+	/*public static void selectDateTime(Context context, final EditText editDate) {
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		int month = Calendar.getInstance().get(Calendar.MONTH);
+		int day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+		String data = editDate.getText().toString();
+		if (!TextUtils.isEmpty(data)) {
+			String strs[] = data.split("/");
+			year = Integer.parseInt(strs[0]);
+			month = Integer.parseInt(strs[1]) - 1;
+			day = Integer.parseInt(strs[2]);
+		}
+//		OnDateSetListener callBack = new OnDateSetListener() {
+//			@Override
+//			public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+//				String date = format.format(new Date(view.getCalendarView().getDate()));
+//				editDate.setText(date);
+//			}
+//		};
+		TimePickerDialog.OnTimeSetListener callBack = new TimePickerDialog.OnTimeSetListener() {
+			@Override
+			public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+			}
+		};
+//		DatePickerDialog dlg = new DatePickerDialog(context, callBack, year, month, day);
+		TimePickerDialog dlg = new TimePickerDialog(context,callBack,12,55,true);
+		dlg.show();
+	}*/
 
 	public static void selectDate(Context context, final EditText editDate, OnDateSetListener callBack) {
 		int year = Calendar.getInstance().get(Calendar.YEAR);
@@ -236,9 +265,19 @@ public class TrickerUtils {
 		int week =Calendar.getInstance().get(Calendar.DAY_OF_WEEK)-1;
 		return weekDays[week];
 	}
+	public static  String getDayOfWeek(Date date){
+		String[] weekDays = {"星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"};
+		Calendar calendar =Calendar.getInstance();
+		calendar.setTime(date);
+		int week =calendar.get(Calendar.DAY_OF_WEEK)-1;
+		return weekDays[week];
+	}
 
 	public static SimpleDateFormat getDateFormat() {
 		return format;
+	}
+	public static SimpleDateFormat getDateTimeFormat() {
+		return timeFormat;
 	}
 
 	/**

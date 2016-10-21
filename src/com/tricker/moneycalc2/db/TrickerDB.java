@@ -2,7 +2,10 @@ package com.tricker.moneycalc2.db;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import com.tricker.moneycalc2.MyApplication;
 import com.tricker.moneycalc2.model.City;
@@ -20,6 +23,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
+import static android.R.attr.key;
+import static android.R.id.list;
 import static com.tricker.moneycalc2.R.id.marry;
 import static com.tricker.moneycalc2.R.string.condition;
 import static com.tricker.moneycalc2.R.string.project;
@@ -285,8 +290,36 @@ public class TrickerDB {
 			condition+=" where 1=1 ";
 		}
 		condition+=" and user='"+ MyApplication.getUser().getName()+"'";
-		String sql = BaseDao.QUERY_ALL_SALE + condition+ "  order by date asc";
+//		String sql = BaseDao.QUERY_ALL_SALE + condition+ "  order by date desc";
+		//把日期和类型相同的进行合并处理
+
+		String sql = "select _id,substr(date,1,10) date,week,sum(money) money,remark,type,user,count(money) count from SALE" + condition+ " group by type,substr(date,1,10) order by date desc";
 		return db.rawQuery(sql, null);
+	}
+	public String getSaleInfo(String date,String type){
+		String result =type+":\n";
+		String sql="select money,date from SALE where type='"+type+"' and date like '%"+date+"%' order by money asc";
+		Cursor cursor = db.rawQuery(sql,null);
+		Map<String,Integer> map= new HashMap<>(cursor.getCount());
+		if(cursor.moveToFirst()){
+			do {
+				String money =cursor.getString(cursor.getColumnIndex("money"));
+				if(!map.containsKey(money)){
+					map.put(money,1);
+				}else{
+					Integer count =map.get(money);
+					map.put(money,++count);
+				}
+			} while (cursor.moveToNext());
+
+		}
+		for (String money :map.keySet()){
+			result +="\t\t￥"+money+"\t\t"+"数量："+map.get(money)+"\n";
+		}
+		if(cursor!=null&&!cursor.isClosed()){
+			cursor.close();
+		}
+		return  result;
 	}
 	/**
 	 * 获取省份
@@ -357,5 +390,8 @@ public class TrickerDB {
 			cursor.close();
 		}
 		return list;
+	}
+	public void execSQL(String sql){
+		db.execSQL(sql);
 	}
 }

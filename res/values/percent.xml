@@ -30,6 +30,7 @@
         <item >睡衣</item>
         <item >内衣</item>
         <item >其他</item>
+        <item >合计</item>
     </string-array>
 
 </resources>

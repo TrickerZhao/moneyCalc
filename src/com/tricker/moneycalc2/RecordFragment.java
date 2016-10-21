@@ -1,6 +1,8 @@
 package com.tricker.moneycalc2;
 
 import java.io.File;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -17,6 +19,7 @@ import com.tricker.moneycalc2.util.Constant;
 import com.tricker.moneycalc2.util.TrickerUtils;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Fragment;
 //import android.support.v4.app.Fragment;
 
@@ -30,6 +33,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -40,6 +44,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
@@ -47,6 +52,7 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import static android.R.attr.format;
 import static android.R.id.edit;
 import static com.tricker.moneycalc2.R.id.editMoney1;
 import static com.tricker.moneycalc2.R.id.editMoney2;
@@ -54,6 +60,7 @@ import static com.tricker.moneycalc2.R.id.editName;
 import static com.tricker.moneycalc2.R.id.editRemark1;
 import static com.tricker.moneycalc2.R.id.editState1;
 import static com.tricker.moneycalc2.R.id.marry;
+import static com.tricker.moneycalc2.R.string.date;
 
 
 public class RecordFragment extends Fragment implements OnClickListener, LocationSource, AMapLocationListener, AdapterView.OnItemSelectedListener {
@@ -368,6 +375,8 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 		editDate.setText(TrickerUtils.getSystemDate());
 		editDate.setKeyListener(null);// 相当于设置不可编辑
 		editDate.setOnClickListener(this);
+		editSaleDate.setKeyListener(null);// 相当于设置不可编辑
+		editSaleDate.setOnClickListener(this);
 		btnSave.setOnClickListener(this);
 
 		txtLocation.setOnClickListener(this);
@@ -397,6 +406,19 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 				//改变标题
 				mainActivity.onSectionAttached(3);
 				mainActivity.restoreActionBar();
+				break;
+			case R.id.editSaleDate:
+				DatePickerDialog.OnDateSetListener callback = new DatePickerDialog.OnDateSetListener() {
+					@Override
+					public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+						Date date = new Date(year-1900,month,dayOfMonth);
+
+						String dateTime = TrickerUtils.getDateTimeFormat().format(date);
+						editSaleDate.setText(dateTime);
+						editSaleWeek.setText(TrickerUtils.getDayOfWeek(date));
+					}
+				};
+				TrickerUtils.selectDate(getActivity(), editDate,callback);
 				break;
 			default:
 				break;

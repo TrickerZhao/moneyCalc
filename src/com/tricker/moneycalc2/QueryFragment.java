@@ -44,10 +44,13 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static android.R.attr.data;
 import static com.amap.api.mapcore.offlinemap.a.b;
 import static com.tricker.moneycalc2.R.string.condition;
+import static com.tricker.moneycalc2.R.string.count;
+import static com.tricker.moneycalc2.R.string.date;
 
 public class QueryFragment extends ListFragment
 		implements OnItemLongClickListener, OnKeyListener, OnItemSelectedListener, android.view.View.OnClickListener {
@@ -99,6 +102,7 @@ public class QueryFragment extends ListFragment
 		editQuery.setOnKeyListener(this);
 		spSymbol.setOnItemSelectedListener(this);
 		editType.setOnItemSelectedListener(this);
+		editQuery.setText(TrickerUtils.getSystemDate());
 		if(!MyApplication.getUser().getName().equals("Tricker")){
 			editType.setSelection(2);
 //			editType.setClickable(false);
@@ -143,8 +147,8 @@ public class QueryFragment extends ListFragment
 		adapter2 = new SimpleCursorAdapter(getActivity(), R.layout.list_cell, cursor2, from2, to2,
 				SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
-		String[] from3 = new String[] { "type", "money", "date", "week" };
-		int[] to3 = new int[] { R.id.txtProject, R.id.txtMoney,R.id.txtDate,  R.id.txtState};
+		String[] from3 = new String[] { "type", "money","date" ,"count", "week" };
+		int[] to3 = new int[] { R.id.txtProject, R.id.txtMoney,R.id.txtDate,R.id.txtPercent, R.id.txtState};
 		adapter3 = new SimpleCursorAdapter(getActivity(), R.layout.list_cell, cursor3, from3, to3,
 				SimpleCursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
@@ -176,7 +180,7 @@ public class QueryFragment extends ListFragment
 		}
 		totalMoney = TrickerUtils.setScale(totalMoney, 2, RoundingMode.HALF_UP);
 		txtQueryInfo.setText("以下是查询信息(共" + c.getCount() + "条)");
-		txtTotalMoney.setText(totalMoney + "");
+		txtTotalMoney.setText("￥"+totalMoney);
 
 //		TrickerUtils.showToast(getActivity(), "数据刷新成功！");
 	}
@@ -197,8 +201,13 @@ public class QueryFragment extends ListFragment
 		MainActivity mainActivity = (MainActivity) getActivity();
 		int count = mainActivity.getClickCount();
 		Cursor c = adapter.getCursor();
+		int type = Constant.RENT;
 		if(editType.getSelectedItem().equals("份子钱")){
+			type= Constant.MARRY;
 			c = adapter2.getCursor();
+		}else if(editType.getSelectedItem().equals("销售额")){
+			type = Constant.SALE;
+			c = adapter3.getCursor();
 		}
 		if(count==3){
 			c.moveToPosition(position);
@@ -209,7 +218,14 @@ public class QueryFragment extends ListFragment
 			mainActivity.onSectionAttached(1);
 			mainActivity.restoreActionBar();
 		}else{
-			TrickerUtils.showToast(getActivity(), c.getString(c.getColumnIndex("remark")));
+			if(type==Constant.SALE){//由于销售额是合并的，所以需要提示每一项有多少个
+				String date = c.getString(c.getColumnIndex("date"));
+				String saleType = c.getString(c.getColumnIndex("type"));
+				String result =TrickerDB.getInstance(getActivity()).getSaleInfo(date,saleType);
+				TrickerUtils.showToast(getActivity(),result, Toast.LENGTH_LONG);
+			}else{
+				TrickerUtils.showToast(getActivity(), c.getString(c.getColumnIndex("remark")));
+			}
 		}
 
 	}
@@ -247,11 +263,13 @@ public class QueryFragment extends ListFragment
 								TrickerDB.getInstance(getActivity()).deleteMarry(marryId);
 								refreshView(Constant.MARRY);
 							}else if(type==Constant.SALE){
-								Cursor c = adapter3.getCursor();
-								c.moveToPosition(position);
-								int saleId = c.getInt(c.getColumnIndex("_id"));
-								TrickerDB.getInstance(getActivity()).deleteSale(saleId);
-								refreshView(Constant.SALE);
+								TrickerUtils.showToast(getActivity(), "多条数据不允许删除！");
+								//不支持删除，因为每条数据可能是多条的合计
+//								Cursor c = adapter3.getCursor();
+//								c.moveToPosition(position);
+//								int saleId = c.getInt(c.getColumnIndex("_id"));
+//								TrickerDB.getInstance(getActivity()).deleteSale(saleId);
+//								refreshView(Constant.SALE);
 							}
 						} else {
 							TrickerUtils.showToast(getActivity(), "Are You Kidding Me??");
@@ -325,6 +343,7 @@ public class QueryFragment extends ListFragment
 	@Override
 	public boolean onKey(View view, int keyCode, KeyEvent event) {
 		// 用户点击回车键，并且是弹起操作！
+//		TrickerUtils.showToast(getActivity(),"Query");
 		if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
 			execQuery(type);
 
@@ -363,7 +382,7 @@ public class QueryFragment extends ListFragment
 			refreshView(condition,Constant.MARRY);
 		}else if(type == Constant.SALE){
 //			data="";//不加条件
-			condition=" where type like '%"+data+"%' ";
+			condition=" where type like '%"+data+"%' or date like '%"+data+"%' ";
 			refreshView(condition,Constant.SALE);
 		}
 		// 强制关闭输入法
