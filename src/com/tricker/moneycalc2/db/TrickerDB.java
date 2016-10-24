@@ -30,6 +30,7 @@ import static android.R.attr.key;
 import static android.R.id.list;
 import static com.tricker.moneycalc2.R.id.marry;
 import static com.tricker.moneycalc2.R.string.condition;
+import static com.tricker.moneycalc2.R.string.money;
 import static com.tricker.moneycalc2.R.string.project;
 
 public class TrickerDB {
@@ -308,10 +309,11 @@ public class TrickerDB {
 		String result =type+":\n";
 		String sql="select money,date from SALE where type='"+type+"' and date like '%"+date+"%' order by money asc";
 		Cursor cursor = db.rawQuery(sql,null);
-		Map<String,Integer> map= new TreeMap<String,Integer>();
+		Map<Double,Integer> map= new TreeMap<Double,Integer>();
 		if(cursor.moveToFirst()){
 			do {
-				String money =cursor.getString(cursor.getColumnIndex("money"));
+				String strMoney =cursor.getString(cursor.getColumnIndex("money"));
+				double money = Double.parseDouble(strMoney);
 				if(!map.containsKey(money)){
 					map.put(money,1);
 				}else{
@@ -322,7 +324,7 @@ public class TrickerDB {
 
 		}
 		map = sortMapByKey(map);//对map按照key排序
-		for (String money :map.keySet()){
+		for (Double money :map.keySet()){
 			result +="\t\t￥"+money+"\t\t"+"数量："+map.get(money)+"\n";
 		}
 		if(cursor!=null&&!cursor.isClosed()){
@@ -335,22 +337,21 @@ public class TrickerDB {
 	 * @param map
 	 * @return
 	 */
-	public Map<String, Integer> sortMapByKey(Map<String, Integer> map) {
+	public Map<Double, Integer> sortMapByKey(Map<Double, Integer> map) {
 		if (map == null || map.isEmpty()) {
 			return null;
 		}
-		Map<String, Integer> sortMap = new TreeMap<String, Integer>(
+		Map<Double, Integer> sortMap = new TreeMap<Double, Integer>(
 				new MapKeyComparator());
 
 		sortMap.putAll(map);
 
 		return sortMap;
 	}
-	class MapKeyComparator implements Comparator<String> {
+	class MapKeyComparator implements Comparator<Double> {
 		@Override
-		public int compare(String str1, String str2) {
-
-			return str1.compareTo(str2);
+		public int compare(Double num1, Double num2) {
+			return num1.compareTo(num2);
 		}
 	}
 	/**
