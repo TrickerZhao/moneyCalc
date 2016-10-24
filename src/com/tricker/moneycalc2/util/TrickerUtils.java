@@ -9,7 +9,9 @@ import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -305,6 +307,23 @@ public class TrickerUtils {
 				.getSystemService(Context.INPUT_METHOD_SERVICE);
 
 		imm.hideSoftInputFromWindow(mEditText.getWindowToken(), 0);
+	}
+	public static int getItemPosition(String key){
+		if(key==null||key.equals("")){
+			return -1;
+		}
+		Map<String,Integer> values=new HashMap<>();
+		values.put("堆堆袜",0);
+		values.put("短袜",1);
+		values.put("连裤袜",2);
+		values.put("打底衫",3);
+		values.put("打底裤",4);
+		values.put("内裤",5);
+		values.put("睡衣",6);
+		values.put("内衣",7);
+		values.put("其他",8);
+		values.put("合计",9);
+		return values.get(key);
 	}
 
 }

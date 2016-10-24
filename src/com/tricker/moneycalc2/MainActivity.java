@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.tricker.moneycalc2.db.BaseDao;
 import com.tricker.moneycalc2.db.TrickerDB;
+import com.tricker.moneycalc2.util.Constant;
 import com.tricker.moneycalc2.util.TrickerUtils;
 
 import java.io.File;
@@ -37,12 +38,21 @@ import java.math.RoundingMode;
 import java.util.Calendar;
 import android.support.v7.widget.Toolbar;
 
+import static com.tricker.moneycalc2.util.Constant.ONE_THIRD;
+import static com.tricker.moneycalc2.util.Constant.TWO_PART;
+
 public class MainActivity extends Activity implements NavigationDrawerFragment.NavigationDrawerCallbacks{
-	private static final BigDecimal HALF = new BigDecimal(0.5);// 1/2
-	private static final BigDecimal TWO_PART = new BigDecimal(0.6666666667);// 2/3
-	private static final BigDecimal ONE_THIRD = new BigDecimal(0.3333333333);// 1/3
+//	private static final BigDecimal HALF = new BigDecimal(0.5);// 1/2
+//	private static final BigDecimal TWO_PART = new BigDecimal(0.6666666667);// 2/3
+//	private static final BigDecimal ONE_THIRD = new BigDecimal(0.3333333333);// 1/3
 	//	public static final String ACTION="com.tricker.moneycalc2.intent.action.";
 	private Cursor editCursor;
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	private int type;
 	private int clickCount=0;
 	public int getClickCount() {
 		return clickCount;
@@ -103,7 +113,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 		switch (position) {
 			case 0:
 				selectItem = 0;
-				fragmentManager.beginTransaction().replace(R.id.container, RecordFragment.newInstance(position + 1,getEditCursor()))
+				fragmentManager.beginTransaction().replace(R.id.container, RecordFragment.newInstance(position + 1,getEditCursor(),this.type))
 						.commit();
 				//清空数据，用户再次点击记录，就是新增操作
 				setEditCursor(null);
@@ -112,7 +122,7 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 				break;
 			case 1:
 				selectItem = 1;
-				fragmentManager.beginTransaction().replace(R.id.container, QueryFragment.newInstance(position + 1))
+				fragmentManager.beginTransaction().replace(R.id.container, QueryFragment.newInstance(position + 1,type))
 						.commit();
 				break;
 			case 2:
@@ -172,11 +182,12 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 			// if the drawer is not showing. Otherwise, let the drawer
 			// decide what to show in the action bar.
 			// 查询才显示统计按钮
-			if (selectItem == 1) {
-				getMenuInflater().inflate(R.menu.main, menu);
-			} else {
-				getMenuInflater().inflate(R.menu.global, menu);
-			}
+//			if (selectItem == 1) {
+//				getMenuInflater().inflate(R.menu.main, menu);
+//			} else {
+//				getMenuInflater().inflate(R.menu.global, menu);
+//			}
+			getMenuInflater().inflate(R.menu.global, menu);
 			restoreActionBar();
 			return true;
 		}
@@ -223,11 +234,11 @@ public class MainActivity extends Activity implements NavigationDrawerFragment.N
 					BigDecimal myMoney = TrickerUtils.parseToDecimal(strMoney);
 					String percent = c.getString(c.getColumnIndex("percent"));
 					if (percent.equals("1/2")) {
-						myMoney = myMoney.multiply(HALF);
-						eJMoney = eJMoney.multiply(HALF);
+						myMoney = myMoney.multiply(Constant.HALF);
+						eJMoney = eJMoney.multiply(Constant.HALF);
 					} else if (percent.equals("2/3")) {
-						myMoney = myMoney.multiply(TWO_PART);
-						eJMoney = eJMoney.multiply(ONE_THIRD);
+						myMoney = myMoney.multiply(Constant.TWO_PART);
+						eJMoney = eJMoney.multiply(Constant.ONE_THIRD);
 					}
 					costMoney = costMoney.add(myMoney);
 					costMoney = costMoney.setScale(2, RoundingMode.HALF_UP);

@@ -2,10 +2,13 @@ package com.tricker.moneycalc2.db;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import com.tricker.moneycalc2.MyApplication;
 import com.tricker.moneycalc2.model.City;
@@ -286,21 +289,26 @@ public class TrickerDB {
 		return db.rawQuery(sql, null);
 	}
 	public Cursor loadSales(String condition){
+		return loadSales(condition,false);
+	}
+	public Cursor loadSales(String condition,boolean isShowDetail){
 		if(condition==null||condition.equals("")){
 			condition+=" where 1=1 ";
 		}
 		condition+=" and user='"+ MyApplication.getUser().getName()+"'";
 //		String sql = BaseDao.QUERY_ALL_SALE + condition+ "  order by date desc";
 		//把日期和类型相同的进行合并处理
-
 		String sql = "select _id,substr(date,1,10) date,week,sum(money) money,remark,type,user,count(money) count from SALE" + condition+ " group by type,substr(date,1,10) order by date desc";
+		if(isShowDetail){
+			sql="select _id,date,week,money,remark,type,user,1 count from SALE" + condition+ "  order by date desc";
+		}
 		return db.rawQuery(sql, null);
 	}
 	public String getSaleInfo(String date,String type){
 		String result =type+":\n";
 		String sql="select money,date from SALE where type='"+type+"' and date like '%"+date+"%' order by money asc";
 		Cursor cursor = db.rawQuery(sql,null);
-		Map<String,Integer> map= new HashMap<>(cursor.getCount());
+		Map<String,Integer> map= new TreeMap<String,Integer>();
 		if(cursor.moveToFirst()){
 			do {
 				String money =cursor.getString(cursor.getColumnIndex("money"));
@@ -313,6 +321,7 @@ public class TrickerDB {
 			} while (cursor.moveToNext());
 
 		}
+		map = sortMapByKey(map);//对map按照key排序
 		for (String money :map.keySet()){
 			result +="\t\t￥"+money+"\t\t"+"数量："+map.get(money)+"\n";
 		}
@@ -320,6 +329,29 @@ public class TrickerDB {
 			cursor.close();
 		}
 		return  result;
+	}
+	/**
+	 * 使用 Map按key进行排序
+	 * @param map
+	 * @return
+	 */
+	public Map<String, Integer> sortMapByKey(Map<String, Integer> map) {
+		if (map == null || map.isEmpty()) {
+			return null;
+		}
+		Map<String, Integer> sortMap = new TreeMap<String, Integer>(
+				new MapKeyComparator());
+
+		sortMap.putAll(map);
+
+		return sortMap;
+	}
+	class MapKeyComparator implements Comparator<String> {
+		@Override
+		public int compare(String str1, String str2) {
+
+			return str1.compareTo(str2);
+		}
 	}
 	/**
 	 * 获取省份

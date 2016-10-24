@@ -3,6 +3,8 @@ package com.tricker.moneycalc2;
 import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -53,6 +55,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import static android.R.attr.format;
+import static android.R.attr.fragment;
 import static android.R.id.edit;
 import static com.tricker.moneycalc2.R.id.editMoney1;
 import static com.tricker.moneycalc2.R.id.editMoney2;
@@ -90,24 +93,43 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 
 	private OnLocationChangedListener mListener;
 	private AMapLocationClient mlocationClient;
+	public void setType(int type) {
+		this.type = type;
+	}
 
 	/**
 	 * Returns a new instance of this fragment for the given section number.
 	 */
-	public static RecordFragment newInstance(int sectionNumber, Cursor cursor) {
-
+	public static RecordFragment newInstance(int sectionNumber, Cursor cursor,int type) {
 		RecordFragment fragment = new RecordFragment();
 		Bundle args = new Bundle();
 		args.putInt(ARG_SECTION_NUMBER, sectionNumber);
 		if (cursor != null) {// 说明是从查询界面点击回来的，需要修改
 			isEdit = true;
-			args.putInt("_id", cursor.getInt(cursor.getColumnIndex("_id")));// _id
-			args.putString("project", cursor.getString(cursor.getColumnIndex("project")));// project
-			args.putString("money", cursor.getString(cursor.getColumnIndex("money")));// money
-			args.putString("date", cursor.getString(cursor.getColumnIndex("date")));// date
-			args.putString("percent", cursor.getString(cursor.getColumnIndex("percent")));// percent
-			args.putString("remark", cursor.getString(cursor.getColumnIndex("remark")));// remark
-			args.putString("state", cursor.getString(cursor.getColumnIndex("state")));// state
+			args.putInt("types", type);// type
+			if(type==Constant.RENT){
+				args.putInt("_id", cursor.getInt(cursor.getColumnIndex("_id")));// _id
+				args.putString("project", cursor.getString(cursor.getColumnIndex("project")));// project
+				args.putString("money", cursor.getString(cursor.getColumnIndex("money")));// money
+				args.putString("date", cursor.getString(cursor.getColumnIndex("date")));// date
+				args.putString("percent", cursor.getString(cursor.getColumnIndex("percent")));// percent
+				args.putString("remark", cursor.getString(cursor.getColumnIndex("remark")));// remark
+				args.putString("state", cursor.getString(cursor.getColumnIndex("state")));// state
+			}else if(type==Constant.MARRY){
+				args.putInt("_id", cursor.getInt(cursor.getColumnIndex("_id")));// _id
+				args.putString("name", cursor.getString(cursor.getColumnIndex("name")));// project
+				args.putString("payMoney", cursor.getString(cursor.getColumnIndex("payMoney")));// money
+				args.putString("getMoney", cursor.getString(cursor.getColumnIndex("getMoney")));// date
+				args.putString("remark", cursor.getString(cursor.getColumnIndex("remark")));// remark
+				args.putString("state", cursor.getString(cursor.getColumnIndex("state")));// state
+			}else if(type==Constant.SALE){
+				args.putInt("_id", cursor.getInt(cursor.getColumnIndex("_id")));// _id
+				args.putString("date", cursor.getString(cursor.getColumnIndex("date")));// project
+				args.putString("week", cursor.getString(cursor.getColumnIndex("week")));// money
+				args.putString("money", cursor.getString(cursor.getColumnIndex("money")));// date
+				args.putString("remark", cursor.getString(cursor.getColumnIndex("remark")));// remark
+				args.putString("type", cursor.getString(cursor.getColumnIndex("type")));// state
+			}
 		} else {
 			isEdit = false;
 		}
@@ -312,23 +334,47 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 	};*/
 
 	private void setValues() {
-		editDate.setText(getArguments().getString("date"));
-		editMoney.setText(getArguments().getString("money"));
-		editProject.setText(getArguments().getString("project"));
-		String percent = getArguments().getString("percent");
-		String state = getArguments().getString("state");
-		int position = 0;
-		if (!TextUtils.isEmpty(percent) && percent.equals("1/2")) {
-			position = 1;
-		}
-		editPercent.setSelection(position);
-		editRemark.setText(getArguments().getString("remark"));
+		type=getArguments().getInt("types");
+//		setVisible(type);
+		editType.setSelection(type);
+		editType.setEnabled(false);//编辑不允许修改类型
+		if(type==Constant.RENT){
+			editDate.setText(getArguments().getString("date"));
+			editMoney.setText(getArguments().getString("money"));
+			editProject.setText(getArguments().getString("project"));
+			String percent = getArguments().getString("percent");
+			String state = getArguments().getString("state");
+			int position = 0;
+			if (!TextUtils.isEmpty(percent) && percent.equals("1/2")) {
+				position = 1;
+			}
+			editPercent.setSelection(position);
+			editRemark.setText(getArguments().getString("remark"));
 
-		position = 0;
-		if (!TextUtils.isEmpty(state) && state.equals("已结算")) {
-			position = 1;
+			position = 0;
+			if (!TextUtils.isEmpty(state) && state.equals("已结算")) {
+				position = 1;
+			}
+			editState.setSelection(position);
+		}else if(type==Constant.MARRY){
+			editName.setText(getArguments().getString("name"));
+			editMoney1.setText(getArguments().getString("getMoney"));
+			editMoney2.setText(getArguments().getString("payMoney"));
+			editRemark1.setText(getArguments().getString("remark"));
+			String state = getArguments().getString("state");
+			int position = 0;
+			if (!TextUtils.isEmpty(state) && state.equals("已结算")) {
+				position = 1;
+			}
+			editState.setSelection(position);
+		}else if(type==Constant.SALE){
+			editSaleDate.setText(getArguments().getString("date"));
+			editSaleMoney.setText(getArguments().getString("money"));
+			editSaleWeek.setText(getArguments().getString("week"));
+			editSaleRemark.setText(getArguments().getString("remark"));
+			editSaleType.setSelection(TrickerUtils.getItemPosition(getArguments().getString("type")));
 		}
-		editState.setSelection(position);
+
 
 		btnSave.setText("修改");
 	}
@@ -460,6 +506,7 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 				TrickerDB.getInstance(getActivity()).saveProject(project,true);
 				// TrickerUtils.showToast(getActivity(), "修改成功！");
 				MainActivity mainActivity = (MainActivity) getActivity();
+				mainActivity.setType(this.type);
 				mainActivity.getmNavigationDrawerFragment().selectItem(1);
 			} else {
 				TrickerDB.getInstance(getActivity()).saveProject(project);
@@ -490,6 +537,7 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 				marry.setId(getArguments().getInt("_id"));
 				TrickerDB.getInstance(getActivity()).saveMarry(marry,true);
 				MainActivity mainActivity = (MainActivity) getActivity();
+				mainActivity.setType(this.type);
 				mainActivity.getmNavigationDrawerFragment().selectItem(1);
 			} else {
 				TrickerDB.getInstance(getActivity()).saveMarry(marry);
@@ -515,6 +563,7 @@ public class RecordFragment extends Fragment implements OnClickListener, Locatio
 				sale.setId(getArguments().getInt("_id"));
 				TrickerDB.getInstance(getActivity()).saveSale(sale,true);
 				MainActivity mainActivity = (MainActivity) getActivity();
+				mainActivity.setType(this.type);
 				mainActivity.getmNavigationDrawerFragment().selectItem(1);
 			} else {
 				TrickerDB.getInstance(getActivity()).saveSale(sale);

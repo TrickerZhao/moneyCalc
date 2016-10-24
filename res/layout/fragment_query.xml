@@ -5,12 +5,38 @@
     android:orientation="vertical"
     tools:context="com.tricker.moneycalc2.QueryFragment" >
 
-    <Spinner
-        android:id="@+id/editType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:entries="@array/type" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Spinner
+            android:id="@+id/editType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:entries="@array/type" />
+
+        <Spinner
+            android:id="@+id/editShowMethod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:entries="@array/showMethod" />
+        <Button
+            android:id="@+id/btnCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/count"/>
+        <Button
+            android:id="@+id/btnOneKeySet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OneKeySet"/>
+
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
