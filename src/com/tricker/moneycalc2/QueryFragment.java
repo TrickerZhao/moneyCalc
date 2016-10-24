@@ -379,7 +379,7 @@ public class QueryFragment extends ListFragment
 		// 用户点击回车键，并且是弹起操作！
 //		TrickerUtils.showToast(getActivity(),"Query");
 		if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_UP) {
-			execQuery(type);
+			execQuery(type,isShowDetail);
 
 		}
 		return false;//设置成true，点击键盘上的   × 会无效

@@ -60,7 +60,7 @@
             android:ems="10"
             android:hint="@string/condition"
             android:inputType="text"
-            android:imeOptions="actionSearch"
+            android:imeOptions="actionGo"
              >
 
         </EditText>

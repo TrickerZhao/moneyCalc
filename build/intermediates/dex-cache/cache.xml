@@ -12,6 +12,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="F:\git\MoneyCalc\libs\android-support-v4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="1dc1f63cee098b27db60b9a2833fd7ca58f89636">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\2\android-support-v4_cf1e3b8ba3be9fc1260495606489ea07d461d136\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
@@ -21,11 +30,20 @@
     </item>
     <item
         is-multidex="true"
+        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_7ebfd9964e1faca6d69cd4c425eb2fd57052b18c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="F:\git\MoneyCalc\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.0"
-        sha1="02f35eca87346e595c79f3d260b8ef3a79f838fe">
+        sha1="078a052fc072018cd7db63c157f7e6aacfe3da41">
         <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_bf85378d28243d62503bb911382612b7ffa7361e\classes.dex" />
     </item>
     <item
@@ -34,8 +52,17 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.0"
-        sha1="17162be5eba8dcc0229ef200522d782b995b538b">
+        sha1="880339f72041a290d2b7ca04473b0643c1fcbdeb">
         <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_f281651a9723b9808241e84db7e5924794442c76\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_aca0e94223798e3e5d3c507f71d21ef1e2ed081b\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -45,6 +72,15 @@
         revision="24.0.0"
         sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
         <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_a9e9f36ddc0b0b16bbd8e65940126a0dcf332d7c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_ad8ab8afa89e27b382921fd94fff193c61e7200c\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -75,6 +111,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-v13\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="e3c7e8ff9f476d0d93ee7b046fbe8037a2b822c0">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v13-24.2.1_71293bafe51f15fcf78005f310b725ac78b5a0a6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
@@ -93,12 +138,30 @@
     </item>
     <item
         is-multidex="true"
+        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_a54c4442cb745818ec01a3467cdfc36c21342571\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="F:\git\MoneyCalc\libs\AMap3DMap_3.3.3_AMapNavi_1.9.1_AMapSearch_3.3.0_AMapLocation_2.7.0_20160726.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.0"
         sha1="817a53c1bbef5256e2dc216adaef3c63bd4dad83">
         <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\2\AMap3DMap_3.3.3_AMapNavi_1.9.1_AMapSearch_3.3.0_AMapLocation_2.7.0_20160726_10f8aea4ff06c76291cb2d33ece455e7c940cc81\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_999c9da09e564ba0276cd6b7587513e45b34abb0\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -120,84 +183,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_ae948c4505c6df03d4cac1ccc48324138727732c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\git\MoneyCalc\libs\android-support-v4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="1dc1f63cee098b27db60b9a2833fd7ca58f89636">
-        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\2\android-support-v4_cf1e3b8ba3be9fc1260495606489ea07d461d136\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_7ebfd9964e1faca6d69cd4c425eb2fd57052b18c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_aca0e94223798e3e5d3c507f71d21ef1e2ed081b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_ad8ab8afa89e27b382921fd94fff193c61e7200c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-v13\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="e3c7e8ff9f476d0d93ee7b046fbe8037a2b822c0">
-        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v13-24.2.1_71293bafe51f15fcf78005f310b725ac78b5a0a6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_a54c4442cb745818ec01a3467cdfc36c21342571\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_999c9da09e564ba0276cd6b7587513e45b34abb0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.0"
         sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
         <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_6715b5614f52c87637d5084090cf351fd1cf45a7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="F:\git\MoneyCalc\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.0"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_ae948c4505c6df03d4cac1ccc48324138727732c\classes.dex" />
     </item>
     <item
         is-multidex="true"
