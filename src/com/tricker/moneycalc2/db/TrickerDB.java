@@ -329,6 +329,9 @@ public class TrickerDB {
 				result="￥"+money+"\n"+date+"\n"+week;
 			}
 		}
+		if(cursor!=null&&!cursor.isClosed()){
+			cursor.close();
+		}
 		return result;
 	}
 	public String getSaleInfo(String date,String type){
