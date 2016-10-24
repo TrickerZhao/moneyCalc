@@ -68,7 +68,7 @@ public class QueryFragment extends ListFragment
 	private Spinner spSymbol,editType,editShowMethod;
 	private Button btnCount,btnOneKeySet;
 	private Cursor cursor;
-	private boolean isShowDetail=false;
+	private boolean isShowDetail=true;
 //	private boolean isRent=true;
 	private int type= -1;
 
@@ -123,14 +123,12 @@ public class QueryFragment extends ListFragment
 
 		editShowMethod.setVisibility(View.GONE);
 		editType.setSelection(type);
+		setWidgetVisible(type);
 		if(!MyApplication.getUser().getName().equals("Tricker")){
 			editQuery.setText(TrickerUtils.getSystemDate());
-//			editType.setSelection(2);
+			editType.setSelection(2);
 //			editType.setClickable(false);
 			editType.setEnabled(false);//设置不可编辑
-			editShowMethod.setVisibility(View.VISIBLE);
-
-
 		}
 		return rootView;
 	}
@@ -234,7 +232,7 @@ public class QueryFragment extends ListFragment
 			c = adapter3.getCursor();
 		}
 		//如果在500毫秒内点击2次就是修改
-		if (System.currentTimeMillis() - lastTime < 500) {
+		if (System.currentTimeMillis() - lastTime < 500&&isShowDetail) {//但是合计是不能修改的
 			c.moveToPosition(position);
 			mainActivity.setType(type);
 			mainActivity.setEditCursor(c);
@@ -438,6 +436,7 @@ public class QueryFragment extends ListFragment
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 		if(parent.getId()==R.id.editType){
+			isShowDetail=true;
 			if(position==0){
 				setWidgetVisible(position);
 				execQuery(Constant.RENT);

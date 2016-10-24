@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.0"
-        sha1="6546f74fd36cc25cc2400448671d700202d2cfc4">
+        sha1="02f35eca87346e595c79f3d260b8ef3a79f838fe">
         <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_bf85378d28243d62503bb911382612b7ffa7361e\classes.dex" />
     </item>
     <item
@@ -34,7 +34,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.0"
-        sha1="9fffe2d4ff716f0833ae0d5e6476d60dd390b3ad">
+        sha1="17162be5eba8dcc0229ef200522d782b995b538b">
         <dex dex="F:\git\MoneyCalc\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_f281651a9723b9808241e84db7e5924794442c76\classes.dex" />
     </item>
     <item

@@ -15,100 +15,33 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/mockable-android-24.jar" afterPath="$PROJECT_DIR$/build/generated/mockable-android-24.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/ChooseAreaActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/ChooseAreaActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/MainActivity$1$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/MainActivity$1$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/MainActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/MainActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/MainActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/MainActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/QueryFragment$1$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/QueryFragment$1$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/QueryFragment$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/QueryFragment$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/QueryFragment$2.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/QueryFragment$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/QueryFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/QueryFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$array.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$array.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$attr.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$dimen.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$dimen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$drawable.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$id.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$layout.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$menu.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$string.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$style.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/RecordFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/RecordFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/WeatherActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/WeatherActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/db/TrickerDB.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/db/TrickerDB.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/util/TrickerUtils$1.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/util/TrickerUtils$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/util/TrickerUtils.class" afterPath="$PROJECT_DIR$/build/intermediates/classes/debug/com/tricker/moneycalc2/util/TrickerUtils.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" afterPath="$PROJECT_DIR$/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-runtime-classes/debug/instant-run.jar" afterPath="$PROJECT_DIR$/build/intermediates/incremental-runtime-classes/debug/instant-run.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/ChooseAreaActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/ChooseAreaActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/MainActivity$1$1.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/MainActivity$1$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/MainActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/MainActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/MainActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/MainActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/QueryFragment$1$1.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/QueryFragment$1$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/QueryFragment$1.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/QueryFragment$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/QueryFragment$2.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/QueryFragment$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/QueryFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/QueryFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$array.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$array.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$attr.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$dimen.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$dimen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$drawable.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$id.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$layout.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$menu.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$string.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$style.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/RecordFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/RecordFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/WeatherActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/WeatherActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/db/TrickerDB.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/db/TrickerDB.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/util/TrickerUtils$1.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/util/TrickerUtils$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/util/TrickerUtils.class" afterPath="$PROJECT_DIR$/build/intermediates/incremental-verifier/debug/com/tricker/moneycalc2/util/TrickerUtils.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/build/intermediates/res/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/ChooseAreaActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/ChooseAreaActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/MainActivity$1$1.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/MainActivity$1$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/MainActivity$1.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/MainActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/MainActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/MainActivity.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/QueryFragment$1$1.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/QueryFragment$1$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/QueryFragment$1.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/QueryFragment$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/QueryFragment$2.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/QueryFragment$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/QueryFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/QueryFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$array.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$array.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$attr.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$attr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$dimen.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$dimen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$drawable.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$drawable.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$id.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$layout.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$menu.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$string.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$style.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/R.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/RecordFragment.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/RecordFragment.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/WeatherActivity.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/WeatherActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/db/TrickerDB.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/db/TrickerDB.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/util/TrickerUtils$1.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/util/TrickerUtils$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/util/TrickerUtils.class" afterPath="$PROJECT_DIR$/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/tricker/moneycalc2/util/TrickerUtils.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/source/r/debug/com/tricker/moneycalc2/R.java" afterPath="$PROJECT_DIR$/build/generated/source/r/debug/com/tricker/moneycalc2/R.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/blame/res/debug/multi/values.json" afterPath="$PROJECT_DIR$/build/intermediates/blame/res/debug/multi/values.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" afterPath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/layout.json" afterPath="$PROJECT_DIR$/build/intermediates/blame/res/debug/single/layout.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="$PROJECT_DIR$/build/intermediates/incremental/mergeDebugResources/merger.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout/fragment_query.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/merged/debug/layout/fragment_query.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/res/merged/debug/values/values.xml" afterPath="$PROJECT_DIR$/build/intermediates/res/merged/debug/values/values.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/restart-dex/debug/build-info.xml" afterPath="$PROJECT_DIR$/build/intermediates/restart-dex/debug/build-info.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/fragment_query.xml" afterPath="$PROJECT_DIR$/res/layout/fragment_query.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/percent.xml" afterPath="$PROJECT_DIR$/res/values/percent.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tricker/moneycalc2/MainActivity.java" afterPath="$PROJECT_DIR$/src/com/tricker/moneycalc2/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tricker/moneycalc2/QueryFragment.java" afterPath="$PROJECT_DIR$/src/com/tricker/moneycalc2/QueryFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tricker/moneycalc2/RecordFragment.java" afterPath="$PROJECT_DIR$/src/com/tricker/moneycalc2/RecordFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tricker/moneycalc2/db/TrickerDB.java" afterPath="$PROJECT_DIR$/src/com/tricker/moneycalc2/db/TrickerDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tricker/moneycalc2/util/Constant.java" afterPath="$PROJECT_DIR$/src/com/tricker/moneycalc2/util/Constant.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/tricker/moneycalc2/util/TrickerUtils.java" afterPath="$PROJECT_DIR$/src/com/tricker/moneycalc2/util/TrickerUtils.java" />
     </list>
     <ignored path="MoneyCalc.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -144,8 +77,8 @@
       <file leaf-file-name="QueryFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/tricker/moneycalc2/QueryFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="105" column="47" selection-start-line="105" selection-start-column="43" selection-end-line="105" selection-end-column="47" />
+            <state relative-caret-position="228">
+              <caret line="438" column="30" selection-start-line="438" selection-start-column="30" selection-end-line="438" selection-end-column="30" />
               <folding>
                 <element signature="e#12765#12766#0" expanded="true" />
                 <element signature="e#12808#12809#0" expanded="true" />
@@ -1358,34 +1291,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MoneyCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MoneyCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MoneyCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MoneyCalc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="moneycalc2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane">
@@ -1410,7 +1315,7 @@
     <property name="android.sdk.path" value="F:/devtool/sdk" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="device.picker.selection" value="5f784072" />
+    <property name="device.picker.selection" value="ea15cc5" />
     <property name="android.project.structure.last.selected" value="Project" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
@@ -1880,7 +1785,14 @@
       <option name="project" value="LOCAL" />
       <updated>1477060343752</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="完善销售额,完善所有的修改和删除">
+      <created>1477294869640</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1477294869640</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -1985,11 +1897,12 @@
     <MESSAGE value="增加份子钱添加和展示删除功能" />
     <MESSAGE value="增加销售额选项" />
     <MESSAGE value="完善销售额" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善销售额" />
+    <MESSAGE value="完善销售额,完善所有的修改和删除" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善销售额,完善所有的修改和删除" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="33" />
+      <option name="time" value="34" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2282,14 +2195,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://F:/devTool/sdk/sources/android-21/android/widget/AdapterView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="1128" column="0" selection-start-line="1128" selection-start-column="0" selection-end-line="1128" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://F:/devTool/sdk/sources/android-21/android/app/ActivityThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
@@ -2423,10 +2328,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://F:/devTool/sdk/sources/android-21/android/widget/AdapterView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="1089" column="0" selection-start-line="1089" selection-start-column="0" selection-end-line="1089" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/tricker/moneycalc2/QueryFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="105" column="47" selection-start-line="105" selection-start-column="43" selection-end-line="105" selection-end-column="47" />
+        <state relative-caret-position="228">
+          <caret line="438" column="30" selection-start-line="438" selection-start-column="30" selection-end-line="438" selection-end-column="30" />
           <folding>
             <element signature="e#12765#12766#0" expanded="true" />
             <element signature="e#12808#12809#0" expanded="true" />
