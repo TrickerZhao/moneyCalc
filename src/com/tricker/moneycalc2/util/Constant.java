@@ -13,5 +13,7 @@ public class Constant {
     public static final BigDecimal HALF = new BigDecimal(0.5);// 1/2
     public static final BigDecimal TWO_PART = new BigDecimal(0.6666666667);// 2/3
     public static final BigDecimal ONE_THIRD = new BigDecimal(0.3333333333);// 1/3
-
+    public static final String MAX="max";
+    public static final String MIN="min";
+    public static final String AVERAGE="average";
 }

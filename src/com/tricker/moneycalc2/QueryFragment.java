@@ -43,6 +43,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
@@ -52,6 +53,7 @@ import android.widget.Toast;
 import static android.R.attr.data;
 import static android.R.attr.fragment;
 import static com.amap.api.mapcore.offlinemap.a.b;
+import static com.autonavi.amap.mapcore.MapTilsCacheAndResManager.getInstance;
 import static com.tricker.moneycalc2.R.string.condition;
 import static com.tricker.moneycalc2.R.string.count;
 import static com.tricker.moneycalc2.R.string.date;
@@ -66,7 +68,8 @@ public class QueryFragment extends ListFragment
 	private TextView txtQueryInfo, txtTotalMoney;
 	private EditText editQuery;
 	private Spinner spSymbol,editType,editShowMethod;
-	private Button btnCount,btnOneKeySet;
+	private Button btnCount,btnOneKeySet,btnAverage,btnMax,btnMin;
+	private LinearLayout saleLayout,rentLayout;
 	private Cursor cursor;
 	private boolean isShowDetail=true;
 //	private boolean isRent=true;
@@ -113,15 +116,25 @@ public class QueryFragment extends ListFragment
 		editShowMethod = (Spinner) rootView.findViewById(R.id.editShowMethod);
 		btnCount = (Button) rootView.findViewById(R.id.btnCount);
 		btnOneKeySet = (Button) rootView.findViewById(R.id.btnOneKeySet);
+		btnAverage = (Button) rootView.findViewById(R.id.btnAverageMoney);
+		btnMax = (Button) rootView.findViewById(R.id.btnMaxMoney);
+		btnMin = (Button) rootView.findViewById(R.id.btnMinMoney);
+
+		saleLayout = (LinearLayout) rootView.findViewById(R.id.saleLayout);
+		rentLayout = (LinearLayout) rootView.findViewById(R.id.rentLayout);
 		btnCount.setOnClickListener(this);
 		btnOneKeySet.setOnClickListener(this);
+		btnAverage.setOnClickListener(this);
+		btnMax.setOnClickListener(this);
+		btnMin.setOnClickListener(this);
 		editQuery.setOnClickListener(this);
 		editQuery.setOnKeyListener(this);
 		spSymbol.setOnItemSelectedListener(this);
 		editType.setOnItemSelectedListener(this);
 		editShowMethod.setOnItemSelectedListener(this);
 
-		editShowMethod.setVisibility(View.GONE);
+//		editShowMethod.setVisibility(View.GONE);
+		saleLayout.setVisibility(View.GONE);
 		editType.setSelection(type);
 		setWidgetVisible(type);
 		if(!MyApplication.getUser().getName().equals("Tricker")){
@@ -482,21 +495,27 @@ public class QueryFragment extends ListFragment
 		if(type==Constant.RENT){
 			spSymbol.setVisibility(View.VISIBLE);
 			editQuery.setVisibility(View.VISIBLE);
-			editShowMethod.setVisibility(View.GONE);
-			btnCount.setVisibility(View.VISIBLE);//统计和一键设置只有租金有
-			btnOneKeySet.setVisibility(View.VISIBLE);
+//			editShowMethod.setVisibility(View.GONE);
+			saleLayout.setVisibility(View.GONE);
+//			btnCount.setVisibility(View.VISIBLE);//统计和一键设置只有租金有
+//			btnOneKeySet.setVisibility(View.VISIBLE);
+			rentLayout.setVisibility(View.VISIBLE);
 		}else if(type==Constant.MARRY){
 			spSymbol.setVisibility(View.GONE);
 			editQuery.setVisibility(View.GONE);
-			editShowMethod.setVisibility(View.GONE);
-			btnCount.setVisibility(View.GONE);
-			btnOneKeySet.setVisibility(View.GONE);
+//			editShowMethod.setVisibility(View.GONE);
+			saleLayout.setVisibility(View.GONE);
+//			btnCount.setVisibility(View.GONE);
+//			btnOneKeySet.setVisibility(View.GONE);
+			rentLayout.setVisibility(View.GONE);
 		}else if(type==Constant.SALE){
 			spSymbol.setVisibility(View.GONE);
 			editQuery.setVisibility(View.VISIBLE);
-			editShowMethod.setVisibility(View.VISIBLE);//显示模式（合计还是详情，只有Sale才处理）
-			btnCount.setVisibility(View.GONE);
-			btnOneKeySet.setVisibility(View.GONE);
+//			editShowMethod.setVisibility(View.VISIBLE);//显示模式（合计还是详情，只有Sale才处理）
+			saleLayout.setVisibility(View.VISIBLE);
+//			btnCount.setVisibility(View.GONE);
+//			btnOneKeySet.setVisibility(View.GONE);
+			rentLayout.setVisibility(View.GONE);
 		}
 
 	}
@@ -530,9 +549,27 @@ public class QueryFragment extends ListFragment
 			case R.id.btnOneKeySet:
 				oneKeySet();
 				break;
+			case R.id.btnAverageMoney:
+				getMoneyAndDate(Constant.AVERAGE);
+				break;
+			case R.id.btnMaxMoney:
+				getMoneyAndDate(Constant.MAX);
+				break;
+			case R.id.btnMinMoney:
+				getMoneyAndDate(Constant.MIN);
+				break;
 			default:
 				break;
 		}
+	}
+
+	/**
+	 *获取Sale日均或者最大或者最小
+	 * @param type
+     */
+	private void getMoneyAndDate(String type) {
+		String result=TrickerDB.getInstance(getActivity()).getMoneyAndDate(type);
+		TrickerUtils.showToast(getActivity(),result);
 	}
 
 	private void oneKeySet() {

@@ -18,6 +18,7 @@ import com.tricker.moneycalc2.model.Project;
 import com.tricker.moneycalc2.model.Province;
 import com.tricker.moneycalc2.model.Sale;
 import com.tricker.moneycalc2.model.User;
+import com.tricker.moneycalc2.util.Constant;
 import com.tricker.moneycalc2.util.TrickerUtils;
 
 import android.content.ContentValues;
@@ -30,6 +31,7 @@ import static android.R.attr.key;
 import static android.R.id.list;
 import static com.tricker.moneycalc2.R.id.marry;
 import static com.tricker.moneycalc2.R.string.condition;
+import static com.tricker.moneycalc2.R.string.date;
 import static com.tricker.moneycalc2.R.string.money;
 import static com.tricker.moneycalc2.R.string.project;
 
@@ -304,6 +306,30 @@ public class TrickerDB {
 			sql="select _id,date,week,money,remark,type,user,1 count from SALE" + condition+ "  order by date desc";
 		}
 		return db.rawQuery(sql, null);
+	}
+	public String getMoneyAndDate(String type){
+		String result ="暂无数据！";
+		String sql ="";
+		if(type.equals(Constant.AVERAGE)){
+			sql ="select avg(saleInfo.money) money from (select sum(money) money from SALE  group by substr(date,1,10)) saleInfo";
+		}else if(type.equals(Constant.MAX)){
+			sql="select sum(money) money,substr(date,1,10) date,week from SALE  group by substr(date,1,10) order by sum(money) desc";
+		}else if(type.equals(Constant.MIN)){
+			sql="select sum(money) money,substr(date,1,10) date,week from SALE  group by substr(date,1,10) order by sum(money) asc";
+		}
+		Cursor cursor=db.rawQuery(sql,null);
+		if(cursor!=null&&cursor.getCount()>0){
+			cursor.moveToFirst();
+			String money =cursor.getString(cursor.getColumnIndex("money"));
+			if(type==Constant.AVERAGE){
+				result="￥"+money;
+			}else{
+				String date =cursor.getString(cursor.getColumnIndex("date"));
+				String week =cursor.getString(cursor.getColumnIndex("week"));
+				result="￥"+money+"\n"+date+"\n"+week;
+			}
+		}
+		return result;
 	}
 	public String getSaleInfo(String date,String type){
 		String result =type+":\n";
