@@ -51,6 +51,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import static android.R.attr.data;
+import static android.R.attr.fastScrollEnabled;
 import static android.R.attr.fragment;
 import static com.amap.api.mapcore.offlinemap.a.b;
 import static com.autonavi.amap.mapcore.MapTilsCacheAndResManager.getInstance;
@@ -72,6 +73,7 @@ public class QueryFragment extends ListFragment
 	private LinearLayout saleLayout,rentLayout;
 	private Cursor cursor;
 	private boolean isShowDetail=true;
+	private boolean isShowDay=false;
 //	private boolean isRent=true;
 	private int type= -1;
 
@@ -257,10 +259,14 @@ public class QueryFragment extends ListFragment
 		}else{
 			lastTime = System.currentTimeMillis();
 			if(type==Constant.SALE&&!isShowDetail){//由于销售额是合并的，所以需要提示每一项有多少个
-				String date = c.getString(c.getColumnIndex("date"));
-				String saleType = c.getString(c.getColumnIndex("type"));
-				String result =TrickerDB.getInstance(getActivity()).getSaleInfo(date,saleType);
-				TrickerUtils.showToast(getActivity(),result, Toast.LENGTH_LONG);
+				if(!isShowDay){
+					String date = c.getString(c.getColumnIndex("date"));
+					String saleType = c.getString(c.getColumnIndex("type"));
+					String result =TrickerDB.getInstance(getActivity()).getSaleInfo(date,saleType);
+					TrickerUtils.showToast(getActivity(),result, Toast.LENGTH_LONG);
+				}else{
+					TrickerUtils.showToast(getActivity(),"若需获取详情，请查看相应类型！");
+				}
 			}else{
 				TrickerUtils.showToast(getActivity(), c.getString(c.getColumnIndex("remark")));
 			}
@@ -459,7 +465,7 @@ public class QueryFragment extends ListFragment
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 		if(parent.getId()==R.id.editType){
-			isShowDetail=true;
+//			isShowDetail=true;
 			if(position==0){
 				setWidgetVisible(position);
 				execQuery(Constant.RENT);
@@ -468,7 +474,8 @@ public class QueryFragment extends ListFragment
 				execQuery(Constant.MARRY);
 			}else if(position==2){
 				setWidgetVisible(position);
-				execQuery(Constant.SALE);
+//				execQuery(Constant.SALE);
+				execQuery(Constant.SALE,isShowDetail,isShowDay);
 			}
 		}else if(parent.getId()==R.id.spSymbol){
 			switch (position) {
@@ -490,15 +497,18 @@ public class QueryFragment extends ListFragment
 				case 0://合计（天&类型）
 //					setWidgetVisible(position);
 					isShowDetail=false;
+					isShowDay=false;
 					execQuery(Constant.SALE);
 					break;
 				case 1://合计（天）
 //					setWidgetVisible(position);
 					isShowDetail=false;
+					isShowDay=true;
 					execQuery(Constant.SALE,false,true);
 					break;
 				case 2://详情
 					isShowDetail=true;
+					isShowDay=false;
 					execQuery(Constant.SALE,true);
 					break;
 			}

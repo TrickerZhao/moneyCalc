@@ -29,6 +29,7 @@ import android.os.Environment;
 
 import static android.R.attr.key;
 import static android.R.id.list;
+import static com.tricker.moneycalc2.R.array.saleType;
 import static com.tricker.moneycalc2.R.id.marry;
 import static com.tricker.moneycalc2.R.string.condition;
 import static com.tricker.moneycalc2.R.string.date;
@@ -305,7 +306,7 @@ public class TrickerDB {
 		if(isShowDetail){
 			sql="select _id,date,week,money,remark,type,user,1 count from SALE" + condition+ "  order by date desc";
 		}else if(isShowDay){
-			sql = "select _id,substr(date,1,10) date,week,sum(money) money,remark,type,user,count(money) count from SALE" + condition+ " group by substr(date,1,10) order by date desc";
+			sql = "select _id,substr(date,1,10) date,'' week,sum(money) money,remark,'合计' type,user,'' count from SALE" + condition+ " group by substr(date,1,10) order by date desc";
 		}
 		return db.rawQuery(sql, null);
 	}
@@ -339,7 +340,7 @@ public class TrickerDB {
 	}
 	public String getSaleInfo(String date,String type){
 		String result =type+":\n";
-		String sql="select money,date from SALE where type='"+type+"' and date like '%"+date+"%' order by money asc";
+		String sql="select money,date from SALE where type like '%"+type+"%' and date like '%"+date+"%' order by money asc";
 		Cursor cursor = db.rawQuery(sql,null);
 		Map<Double,Integer> map= new TreeMap<Double,Integer>();
 		if(cursor.moveToFirst()){

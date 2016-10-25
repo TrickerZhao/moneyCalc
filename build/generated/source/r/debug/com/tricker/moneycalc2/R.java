@@ -3027,8 +3027,15 @@ containing a value of this type.
         public static final int Animation_Design_BottomSheetDialog=0x7f070091;
         /**  API 11 theme customizations can go here. 
  API 14 theme customizations can go here. 
+
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        
          */
         public static final int AppBaseTheme=0x7f07000c;
+        /**  All customizations that are NOT specific to a particular API-level can go here. 
+         */
         public static final int AppTheme=0x7f070092;
         public static final int Base_AlertDialog_AppCompat=0x7f070093;
         public static final int Base_AlertDialog_AppCompat_Light=0x7f070094;
