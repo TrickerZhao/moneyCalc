@@ -292,9 +292,9 @@ public class TrickerDB {
 		return db.rawQuery(sql, null);
 	}
 	public Cursor loadSales(String condition){
-		return loadSales(condition,false);
+		return loadSales(condition,false,false);
 	}
-	public Cursor loadSales(String condition,boolean isShowDetail){
+	public Cursor loadSales(String condition,boolean isShowDetail,boolean isShowDay){
 		if(condition==null||condition.equals("")){
 			condition+=" where 1=1 ";
 		}
@@ -304,6 +304,8 @@ public class TrickerDB {
 		String sql = "select _id,substr(date,1,10) date,week,sum(money) money,remark,type,user,count(money) count from SALE" + condition+ " group by type,substr(date,1,10) order by date desc";
 		if(isShowDetail){
 			sql="select _id,date,week,money,remark,type,user,1 count from SALE" + condition+ "  order by date desc";
+		}else if(isShowDay){
+			sql = "select _id,substr(date,1,10) date,week,sum(money) money,remark,type,user,count(money) count from SALE" + condition+ " group by substr(date,1,10) order by date desc";
 		}
 		return db.rawQuery(sql, null);
 	}
@@ -311,7 +313,7 @@ public class TrickerDB {
 		String result ="暂无数据！";
 		String sql ="";
 		if(type.equals(Constant.AVERAGE)){
-			sql ="select avg(saleInfo.money) money from (select sum(money) money from SALE  group by substr(date,1,10)) saleInfo";
+			sql ="select avg(saleInfo.money) money,count(1) count from (select sum(money) money from SALE  group by substr(date,1,10)) saleInfo";
 		}else if(type.equals(Constant.MAX)){
 			sql="select sum(money) money,substr(date,1,10) date,week from SALE  group by substr(date,1,10) order by sum(money) desc";
 		}else if(type.equals(Constant.MIN)){
@@ -322,7 +324,8 @@ public class TrickerDB {
 			cursor.moveToFirst();
 			String money =cursor.getString(cursor.getColumnIndex("money"));
 			if(type==Constant.AVERAGE){
-				result="￥"+money;
+				String count =cursor.getString(cursor.getColumnIndex("count"));
+				result="￥"+money+"\n"+count+"天";
 			}else{
 				String date =cursor.getString(cursor.getColumnIndex("date"));
 				String week =cursor.getString(cursor.getColumnIndex("week"));

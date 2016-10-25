@@ -2633,11 +2633,11 @@ containing a value of this type.
         public static final int auto=0x7f0c0021;
         public static final int beginning=0x7f0c0034;
         public static final int bottom=0x7f0c0022;
-        public static final int btnAverageMoney=0x7f0c009b;
-        public static final int btnCount=0x7f0c009f;
-        public static final int btnMaxMoney=0x7f0c009c;
-        public static final int btnMinMoney=0x7f0c009d;
-        public static final int btnOneKeySet=0x7f0c00a0;
+        public static final int btnAverageMoney=0x7f0c009f;
+        public static final int btnCount=0x7f0c00a3;
+        public static final int btnMaxMoney=0x7f0c00a0;
+        public static final int btnMinMoney=0x7f0c00a1;
+        public static final int btnOneKeySet=0x7f0c00a4;
         public static final int btnSave=0x7f0c00d9;
         public static final int buttonPanel=0x7f0c0047;
         public static final int cancel_action=0x7f0c00db;
@@ -2653,7 +2653,7 @@ containing a value of this type.
         public static final int collapseActionView=0x7f0c0037;
         public static final int container=0x7f0c007a;
         public static final int contentPanel=0x7f0c004d;
-        public static final int countMoney=0x7f0c00a4;
+        public static final int countMoney=0x7f0c009c;
         public static final int current_date=0x7f0c0081;
         public static final int custom=0x7f0c0053;
         public static final int customPanel=0x7f0c0052;
@@ -2673,14 +2673,14 @@ containing a value of this type.
         public static final int editName=0x7f0c00bc;
         public static final int editPercent=0x7f0c00b2;
         public static final int editProject=0x7f0c00af;
-        public static final int editQuery=0x7f0c00a2;
+        public static final int editQuery=0x7f0c009a;
         public static final int editRemark=0x7f0c00b8;
         public static final int editRemark1=0x7f0c00c8;
         public static final int editSaleDate=0x7f0c00cc;
         public static final int editSaleMoney=0x7f0c00d5;
         public static final int editSaleRemark=0x7f0c00d8;
         public static final int editSaleType=0x7f0c00d2;
-        public static final int editShowMethod=0x7f0c009a;
+        public static final int editShowMethod=0x7f0c009e;
         public static final int editState=0x7f0c00b5;
         public static final int editState1=0x7f0c00c5;
         public static final int editType=0x7f0c0098;
@@ -2741,10 +2741,10 @@ containing a value of this type.
         public static final int progress_horizontal=0x7f0c0007;
         public static final int project=0x7f0c00a6;
         public static final int publish_text=0x7f0c007f;
-        public static final int queryInfo=0x7f0c00a3;
+        public static final int queryInfo=0x7f0c009b;
         public static final int radio=0x7f0c0057;
         public static final int refresh_weather=0x7f0c007e;
-        public static final int rentLayout=0x7f0c009e;
+        public static final int rentLayout=0x7f0c00a2;
         public static final int right=0x7f0c0029;
         public static final int row1=0x7f0c00a7;
         public static final int row11=0x7f0c00ca;
@@ -2763,7 +2763,7 @@ containing a value of this type.
         public static final int rowThree=0x7f0c00c0;
         public static final int rowTwo=0x7f0c00bd;
         public static final int sale=0x7f0c00c9;
-        public static final int saleLayout=0x7f0c0099;
+        public static final int saleLayout=0x7f0c009d;
         public static final int screen=0x7f0c001c;
         public static final int scroll=0x7f0c0018;
         public static final int scrollIndicatorDown=0x7f0c0051;
@@ -2795,7 +2795,7 @@ containing a value of this type.
         public static final int snackbar_action=0x7f0c0090;
         public static final int snackbar_text=0x7f0c008f;
         public static final int snap=0x7f0c0019;
-        public static final int spSymbol=0x7f0c00a1;
+        public static final int spSymbol=0x7f0c0099;
         public static final int spacer=0x7f0c0048;
         public static final int split_action_bar=0x7f0c0008;
         public static final int src_atop=0x7f0c001d;
@@ -3027,15 +3027,8 @@ containing a value of this type.
         public static final int Animation_Design_BottomSheetDialog=0x7f070091;
         /**  API 11 theme customizations can go here. 
  API 14 theme customizations can go here. 
-
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        
          */
         public static final int AppBaseTheme=0x7f07000c;
-        /**  All customizations that are NOT specific to a particular API-level can go here. 
-         */
         public static final int AppTheme=0x7f070092;
         public static final int Base_AlertDialog_AppCompat=0x7f070093;
         public static final int Base_AlertDialog_AppCompat_Light=0x7f070094;

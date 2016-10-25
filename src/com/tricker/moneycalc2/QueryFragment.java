@@ -354,7 +354,7 @@ public class QueryFragment extends ListFragment
 	private void refreshView(String condition) {
 		refreshView(condition,Constant.RENT);
 	}
-	private void refreshView(String condition,int type,boolean isShowDetail) {
+	private void refreshView(String condition,int type,boolean isShowDetail,boolean isShowDay) {
 		if(type ==Constant.RENT){
 			Cursor cursor =TrickerDB.getInstance(getActivity()).loadProjects(condition);
 			setCursor(cursor);
@@ -368,10 +368,13 @@ public class QueryFragment extends ListFragment
 			updateTitle(cursor,Constant.MARRY);
 		}else if(type ==Constant.SALE){
 			setListAdapter(adapter3);
-			Cursor cursor =TrickerDB.getInstance(getActivity()).loadSales(condition,isShowDetail);
+			Cursor cursor =TrickerDB.getInstance(getActivity()).loadSales(condition,isShowDetail,isShowDay);
 			adapter3.swapCursor(cursor);
 			updateTitle(cursor,Constant.SALE);
 		}
+	}
+	private void refreshView(String condition,int type,boolean isShowDetail) {
+		refreshView(condition,type,isShowDetail,false);
 	}
 	private void refreshView(String condition,int type) {
 		refreshView(condition,type,false);
@@ -399,11 +402,10 @@ public class QueryFragment extends ListFragment
 	}
 
 	/**
-	 *
-	 * @param type
-	 * @param isShowDetail  显示合计还是详情（现在该参数只针对Sale）
+	 * Sale 按照天还是天&类型合计
+	 * @param isShowDay
      */
-	private void execQuery(int type,boolean isShowDetail) {
+	private void execQuery(int type,boolean isShowDetail,boolean isShowDay) {
 		this.type = type;
 		String condition = "";
 		String data = editQuery.getText().toString();
@@ -430,10 +432,18 @@ public class QueryFragment extends ListFragment
 		}else if(type == Constant.SALE){
 //			data="";//不加条件
 			condition=" where type like '%"+data+"%' or date like '%"+data+"%' ";
-			refreshView(condition,Constant.SALE,isShowDetail);
+			refreshView(condition,Constant.SALE,isShowDetail,isShowDay);
 		}
 		// 强制关闭输入法
 		TrickerUtils.closeKeybord(editQuery,getActivity());
+	}
+	/**
+	 *
+	 * @param type
+	 * @param isShowDetail  显示合计还是详情（现在该参数只针对Sale）
+     */
+	private void execQuery(int type,boolean isShowDetail) {
+		execQuery(type,isShowDetail,false);
 	}
 	/**
 	 * 房租or份子钱
@@ -477,13 +487,17 @@ public class QueryFragment extends ListFragment
 			}
 		}else if(parent.getId()==R.id.editShowMethod){
 			switch (position){
-				case 0:
+				case 0://合计（天&类型）
 //					setWidgetVisible(position);
 					isShowDetail=false;
 					execQuery(Constant.SALE);
 					break;
-				case 1:
+				case 1://合计（天）
 //					setWidgetVisible(position);
+					isShowDetail=false;
+					execQuery(Constant.SALE,false,true);
+					break;
+				case 2://详情
 					isShowDetail=true;
 					execQuery(Constant.SALE,true);
 					break;
