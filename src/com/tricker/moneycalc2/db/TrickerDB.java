@@ -306,7 +306,7 @@ public class TrickerDB {
 		if(isShowDetail){
 			sql="select _id,date,week,money,remark,type,user,1 count from SALE" + condition+ "  order by date desc";
 		}else if(isShowDay){
-			sql = "select _id,substr(date,1,10) date,'' week,sum(money) money,remark,'合计' type,user,'' count from SALE" + condition+ " group by substr(date,1,10) order by date desc";
+			sql = "select _id,substr(date,1,10) date, week,sum(money) money,remark,'合计' type,user,'' count from SALE" + condition+ " group by substr(date,1,10) order by date desc";
 		}
 		return db.rawQuery(sql, null);
 	}
