@@ -325,8 +325,10 @@ public class TrickerDB {
 			cursor.moveToFirst();
 			String money =cursor.getString(cursor.getColumnIndex("money"));
 			if(type==Constant.AVERAGE){
-				String count =cursor.getString(cursor.getColumnIndex("count"));
-				result="￥"+money+"\n"+count+"天";
+				int count =cursor.getInt(cursor.getColumnIndex("count"));
+				if(count!=0){
+					result="￥"+money+"\n"+count+"天";
+				}
 			}else{
 				String date =cursor.getString(cursor.getColumnIndex("date"));
 				String week =cursor.getString(cursor.getColumnIndex("week"));
